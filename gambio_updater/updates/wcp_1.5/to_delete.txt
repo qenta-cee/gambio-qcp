@@ -1,0 +1,9 @@
+lang/german/original_sections/modules/payment/wcp_c2p.lang.inc.php
+lang/german/original_sections/modules/payment/wcp_instantbank.lang.inc.php
+lang/german/original_sections/modules/payment/wcp_elv.lang.inc.php
+lang/english/original_sections/modules/payment/wcp_c2p.lang.inc.php
+lang/english/original_sections/modules/payment/wcp_instantbank.lang.inc.php
+lang/english/original_sections/modules/payment/wcp_elv.lang.inc.php
+includes/modules/payment/wcp_c2p.php
+includes/modules/payment/wcp_instantbank.php
+includes/modules/payment/wcp_elv.php

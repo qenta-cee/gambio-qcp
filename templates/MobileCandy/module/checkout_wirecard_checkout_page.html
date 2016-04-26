@@ -1,0 +1,42 @@
+{load_language_text section="checkout_confirmation"}
+{load_language_text section="buttons" name="button"}
+
+    <div class="order_confirm">
+        {if $SHOW_STEPS}
+        <div class="process_bar">
+            <ul>
+                <li><label><span>{$WCP_SHOPPING_CART_TITLE}</span></label></li>
+                <li><label><span>{$WCP_YOUR_DATA_TITLE}</span></label></li>
+                <li><label><span>{$WCP_PAYMENT_TITLE}</span></label></li>
+                <li class="active"><label><span>{$WCP_CONFIRMATION_TITLE}</span></label></li>
+            </ul>
+        </div>
+        {/if}
+        <h1>
+            {$CHECKOUT_TITLE}
+        </h1>
+    
+        {$FORM_ACTION}
+    
+        <div id="content_wirecard_checkout_page">
+            <div class="heading_success">
+                {$CHECKOUT_HEADER}
+            </div>
+            <div class="content">
+                {$CHECKOUT_CONTENT}
+            </div>
+            {if $IFRAME != 'true'}
+
+            <div class="continue">
+                {if !$NC_SUCCESS_INFO}
+                    {if $FORM_ACTION == ''}
+                         <a href="shopping_cart.php" data-role="button" data-theme="b">{$button.continue}</a>
+                    {else}
+                          <a href="{page_url}#" data-role="button" data-theme="b" class="action_submit">{$button.continue}</a>
+                    {/if}
+                {/if}
+            </div>
+            {/if}
+            {$FORM_END}
+        </div>
+    </div>
