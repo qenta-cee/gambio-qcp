@@ -310,7 +310,7 @@ class wcp_core {
             $post_variables['shopId'] = wcp_core::constant("MODULE_PAYMENT_{$c}_SHOP_ID");
 
         // set layout if isset
-        if(wcp_core::constant("MODULE_PAYMENT_{$c}_DEVICE_DETECTION"))
+        if(wcp_core::constant("MODULE_PAYMENT_{$c}_DEVICE_DETECTION") === 'True')
             $post_variables['layout'] = $this->_getClientDevice();
 
         // set shop logo if desired
