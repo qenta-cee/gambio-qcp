@@ -56,7 +56,6 @@ $smarty->assign('WCP_SHOPPING_CART_TITLE', WCP_SHOPPING_CART_TITLE);
 $smarty->assign('WCP_YOUR_DATA_TITLE', WCP_YOUR_DATA_TITLE);
 $smarty->assign('WCP_PAYMENT_TITLE', WCP_PAYMENT_TITLE);
 $smarty->assign('WCP_CONFIRMATION_TITLE', WCP_CONFIRMATION_TITLE);
-$smarty->assign('tpl_path', CURRENT_TEMPLATE);
 if(isset($_GET['cancel']))
 {
     $smarty->assign('CHECKOUT_TITLE', CHECKOUT_CANCEL_TITLE);
@@ -95,6 +94,7 @@ else
 }
 
 $smarty->assign('LIGHTBOX', gm_get_conf('GM_LIGHTBOX_CHECKOUT'));
+$smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $smarty->caching = 0;
 $t_main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/checkout_wirecard_checkout_page.html');
 

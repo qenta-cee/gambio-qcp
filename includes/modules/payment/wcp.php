@@ -26,7 +26,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '1.5.3');
+define('WCP_PLUGIN_VERSION', '1.5.4');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
@@ -219,7 +219,7 @@ class wcp_core {
         $sql = 'SELECT customers_dob, customers_fax FROM ' . TABLE_CUSTOMERS .' WHERE customers_id="'.(int)$consumerID.'" LIMIT 1;';
         $result = xtc_db_query($sql);
         $consumerInformation = mysql_fetch_assoc($result);
-        if($consumerInformation['customers_dob'] != '0000-00-00 00:00:00')
+        if($consumerInformation['customers_dob'] !== '0000-00-00 00:00:00' && $consumerInformation['customers_dob'] !== '1000-01-01 00:00:00')
         {
             $consumerBirthDateTimestamp = strtotime($consumerInformation['customers_dob']);
             $consumerBirthDate = date('Y-m-d', $consumerBirthDateTimestamp);
@@ -440,7 +440,7 @@ class wcp_core {
         $s = 1; // represents sort-order at displayed configuration
         $serviceUrl = xtc_href_link('shop_content.php', 'coID=7', 'SSL');
         $selection = "'gm_cfg_select_option(array(\'True\', \'False\'), '";
-        $useIframeDefault = ($this->use_iframe_default) ? $this->use_iframe_default : 'True';
+        $useIframeDefault = ($this->use_iframe_default) ? 'True' : 'False';
         $pluginModes = "'gm_cfg_select_option(array(\'Live\', \'Demo\', \'Test\'), '";
 
         require(DIR_FS_CATALOG . 'gm/classes/GMLogoManager.php');
