@@ -26,7 +26,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '1.5.5');
+define('WCP_PLUGIN_VERSION', '1.5.6');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
@@ -77,7 +77,7 @@ class wcp_core {
     /// @brief collect data and create a array with wirecard checkout page infos
     function _isInstalled($c) {
         $result = xtc_db_query("SELECT count(*) FROM ".TABLE_CONFIGURATION." WHERE configuration_key = 'MODULE_PAYMENT_{$c}_STATUS'");
-        $resultRow = mysql_fetch_row($result);
+        $resultRow = $result->fetch_row();
         return $resultRow[0];
     }
 
@@ -201,7 +201,7 @@ class wcp_core {
 
         // check language
         $result = xtc_db_query("SELECT code FROM languages WHERE languages_id = '".(int)$_SESSION['languages_id']."'");
-        list($lang_code) = mysql_fetch_row($result);
+        list($lang_code) = $result->fetch_row();
 
         // set total price
         $total = $order->info['total'];
@@ -218,7 +218,7 @@ class wcp_core {
 
         $sql = 'SELECT customers_dob, customers_fax FROM ' . TABLE_CUSTOMERS .' WHERE customers_id="'.(int)$consumerID.'" LIMIT 1;';
         $result = xtc_db_query($sql);
-        $consumerInformation = mysql_fetch_assoc($result);
+        $consumerInformation = $result->fetch_row();
         if($consumerInformation['customers_dob'] !== '0000-00-00 00:00:00' && $consumerInformation['customers_dob'] !== '1000-01-01 00:00:00')
         {
             $consumerBirthDateTimestamp = strtotime($consumerInformation['customers_dob']);
