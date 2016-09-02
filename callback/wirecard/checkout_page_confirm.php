@@ -1,26 +1,43 @@
 <?php
 /**
-Shop System Plugins - Terms of use
+ * Shop System Plugins - Terms of Use
+ *
+ * The plugins offered are provided free of charge by Wirecard Central Eastern
+ * Europe GmbH
+ * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard
+ * CEE range of products and services.
+ *
+ * They have been tested and approved for full functionality in the standard
+ * configuration
+ * (status on delivery) of the corresponding shop system. They are under
+ * General Public License Version 2 (GPLv2) and can be used, developed and
+ * passed on to third parties under the same terms.
+ *
+ * However, Wirecard CEE does not provide any guarantee or accept any liability
+ * for any errors occurring when used in an enhanced, customized shop system
+ * configuration.
+ *
+ * Operation in an enhanced, customized configuration is at your own risk and
+ * requires a comprehensive test phase by the user of the plugin.
+ *
+ * Customers use the plugins at their own risk. Wirecard CEE does not guarantee
+ * their full functionality neither does Wirecard CEE assume liability for any
+ * disadvantages related to the use of the plugins. Additionally, Wirecard CEE
+ * does not guarantee the full functionality for customized shop systems or
+ * installed plugins of other vendors of plugins within the same shop system.
+ *
+ * Customers are responsible for testing the plugin's functionality before
+ * starting productive operation.
+ *
+ * By installing the plugin into the shop system the customer agrees to these
+ * terms of use. Please do not use the plugin if you do not agree to these
+ * terms of use!
+ *
+ * @author    WirecardCEE
+ * @copyright WirecardCEE
+ * @license   GPLv2
+ */
 
-This terms of use regulates warranty and liability between Wirecard
-Central Eastern Europe (subsequently referred to as WDCEE) and it's
-contractual partners (subsequently referred to as customer or customers)
-which are related to the use of plugins provided by WDCEE.
-
-The Plugin is provided by WDCEE free of charge for it's customers and
-must be used for the purpose of WDCEE's payment platform integration
-only. It explicitly is not part of the general contract between WDCEE
-and it's customer. The plugin has successfully been tested under
-specific circumstances which are defined as the shopsystem's standard
-configuration (vendor's delivery state). The Customer is responsible for
-testing the plugin's functionality before putting it into production
-enviroment.
-The customer uses the plugin at own risk. WDCEE does not guarantee it's
-full functionality neither does WDCEE assume liability for any
-disadvantage related to the use of this plugin. By installing the plugin
-into the shopsystem the customer agrees to the terms of use. Please do
-not use this plugin if you do not agree to the terms of use!
-*/
 // set order-status 0 (not validated)
 define('MODULE_PAYMENT_WCP_ORDER_STATUS_NOT_VALIDATED', 0);
 // set order-status 1 (pending)
@@ -34,47 +51,48 @@ chdir('../../');
 function debug_msg($msg)
 {
     $fh = fopen('logfiles/wirecard_checkout_page_notify_debug.txt', 'a');
-    fwrite($fh, date('r'). ". ". $msg."\n");
+    fwrite($fh, date('r') . ". " . $msg . "\n");
     fclose($fh);
 }
-debug_msg('called script from '.$_SERVER['REMOTE_ADDR']);
-$returnMessage = null;
-if ($_POST)
-{
-    require_once ('includes/application_top.php');
-    require_once ('includes/modules/payment/wcp.php');
 
-		
-    $languageArray = array('language' => htmlentities($_POST['confirmLanguage']),
-        'language_id' => htmlentities($_POST['confirmLanguageId']));
+debug_msg('called script from ' . $_SERVER['REMOTE_ADDR']);
+$returnMessage = null;
+if ($_POST) {
+    $orderStatusSuccess = 2;
+
+    $c = strtoupper($_POST['paymentCode']);
+    if(defined("MODULE_PAYMENT_{$c}_ORDER_STATUS_ID"))
+        $orderStatusSuccess = constant("MODULE_PAYMENT_{$c}_ORDER_STATUS_ID");
+
+    $languageArray = array(
+        'language' => htmlentities($_POST['confirmLanguage']),
+        'language_id' => htmlentities($_POST['confirmLanguageId'])
+    );
 
     $coo_lang_file_master = MainFactory::create_object('LanguageTextManager', array(), true);
-    $coo_lang_file_master->init_from_lang_file('lang/'.$languageArray['language'].'/modules/payment/wcp.php');
+    $coo_lang_file_master->init_from_lang_file('lang/' . $languageArray['language'] . '/modules/payment/wcp.php');
 
-    debug_msg("Finished Initialization of the confirm_callback.php script" );
+    debug_msg("Finished Initialization of the confirm_callback.php script");
     debug_msg("Received this POST: " . print_r($_POST, 1));
     $order_id = isset($_POST['order_id']) ? (int)$_POST['order_id'] : 0;
 
     $order = array();
-    $q = xtc_db_query('SELECT orders_status FROM ' . TABLE_ORDERS . ' WHERE orders_id = "'.$order_id.'" LIMIT 1;');
-    if(xtc_db_num_rows($q))
-    {
-        $order = xtc_db_fetch_array($q);
+    $q = xtc_db_query('SELECT orders_status FROM ' . TABLE_ORDERS . ' WHERE orders_id = "' . $order_id . '" LIMIT 1;');
+    if ($q->num_rows) {
+        $order = $q->fetch_array();
     }
 
     if ($order['orders_status'] == MODULE_PAYMENT_WCP_ORDER_STATUS_PENDING || $order['orders_status'] == MODULE_PAYMENT_WCP_ORDER_STATUS_NOT_VALIDATED) {
-        $q = xtc_db_query("INSERT INTO " . TABLE_PAYMENT_WCP . "
-       (orders_id, response, created_at)
-       VALUES
-       ('" . $order_id . "','" . xtc_db_input(serialize($_POST)) . "', NOW())");
+
+        $q = xtc_db_query("INSERT INTO " . TABLE_PAYMENT_WCP . "(orders_id, response, created_at) VALUES ('" . $order_id . "','" . serialize($_POST) . "', NOW())");
         if (!$q) {
             $returnMessage = 'Transactiontable update failed.';
         }
+
         debug_msg('Payment Table updated=' . $q);
         if (isset($_POST['responseFingerprintOrder']) && isset($_POST['responseFingerprint'])) {
             $responseFingerprintOrder = explode(',', $_POST['responseFingerprintOrder']);
             $responseFingerprintSeed = '';
-            $c = strtoupper($_POST['paymentCode']);
 
             switch (wcp_core::constant("MODULE_PAYMENT_{$c}_PLUGIN_MODE")) {
                 case 'Demo':
@@ -89,16 +107,14 @@ if ($_POST)
                     break;
             }
 
-            if (get_magic_quotes_gpc() || get_magic_quotes_runtime()) {
-                $stipslashes = true;
-            } else {
-                $stipslashes = false;
-            }
+            $stripslashes = (get_magic_quotes_gpc() || get_magic_quotes_runtime());
 
             //calculating fingerprint;
             foreach ($responseFingerprintOrder as $k) {
                 if ($stipslashes) {
-                    $responseFingerprintSeed .= (strtoupper($k) == 'SECRET' ? $preshared_key : stripslashes($_POST[$k]));
+                    $responseFingerprintSeed .= (strtoupper($k) == 'SECRET' ? $preshared_key : stripslashes(
+                        $_POST[$k]
+                    ));
                 } else {
                     $responseFingerprintSeed .= (strtoupper($k) == 'SECRET' ? $preshared_key : $_POST[$k]);
                 }
@@ -110,7 +126,7 @@ if ($_POST)
 
                 switch ($_POST['paymentState']) {
                     case 'SUCCESS':
-                        $order_status = MODULE_PAYMENT_WCP_ORDER_STATUS_SUCCESS;
+                        $order_status = $orderStatusSuccess;
                         break;
 
                     case 'PENDING':
@@ -120,8 +136,13 @@ if ($_POST)
                     default:
                         $order_status = MODULE_PAYMENT_WCP_ORDER_STATUS_FAILED;
                 }
+
                 debug_msg('Callback Process');
-                $q = xtc_db_query('UPDATE ' . TABLE_ORDERS . ' SET orders_status=\'' . xtc_db_input($order_status) . '\' WHERE orders_id=\'' . $order_id . '\';');
+                $q = xtc_db_query(
+                    'UPDATE ' . TABLE_ORDERS . ' SET orders_status=\'' . xtc_db_input(
+                        $order_status
+                    ) . '\' WHERE orders_id=\'' . $order_id . '\';'
+                );
                 if (!$q) {
                     $returnMessage = 'Orderstatus update failed.';
                 }
@@ -136,20 +157,27 @@ if ($_POST)
                         $avsStatus = '';
                     }
                     debug_msg($avsStatus);
-                    $q = xtc_db_query('INSERT INTO ' . TABLE_ORDERS_STATUS_HISTORY . '
+                    $q = xtc_db_query(
+                        'INSERT INTO ' . TABLE_ORDERS_STATUS_HISTORY . '
              (orders_id,  orders_status_id, date_added, customer_notified, comments)
              VALUES
-               (' . (int)$order_id . ', ' . (int)$order_status . ', NOW(), "0", "' . xtc_db_input($avsStatus) . '")');
+               (' . (int)$order_id . ', ' . (int)$order_status . ', NOW(), "0", "' . xtc_db_input($avsStatus) . '")'
+                    );
                     if (!$q) {
                         $returnMessage = 'Statushistory update failed';
                     }
                     debug_msg('Order-Status-History updated=' . $q);
                 }
-                if (MODULE_PAYMENT_WCP_ORDER_STATUS_SUCCESS === $order_status) {
+                if ($orderStatusSuccess === $order_status) {
 
                     //need language code due to order confirmation mail template
-                    $result = xtc_db_query("SELECT code FROM languages where languages_id = " . xtc_db_input(htmlentities($_POST['confirmLanguageId'])));
-                    $resultRow = mysql_fetch_row($result);
+                    $result = xtc_db_query(
+                        "SELECT code FROM languages where languages_id = " . xtc_db_input(
+                            htmlentities($_POST['confirmLanguageId'])
+                        )
+                    );
+
+                    $resultRow = $result->fetch_row();
 
                     $_SESSION['language'] = $languageArray['language'];
                     $_SESSION['language_id'] = $languageArray['language_id'];
@@ -175,18 +203,22 @@ if ($_POST)
                 $order_status = MODULE_PAYMENT_WCP_ORDER_STATUS_FAILED;
 
                 debug_msg('Callback Process');
-                $q = xtc_db_query("UPDATE " . TABLE_ORDERS . "
+                $q = xtc_db_query(
+                    "UPDATE " . TABLE_ORDERS . "
                SET orders_status='" . xtc_db_input($order_status) . "',
                  gm_cancel_date='" . date('Y-m-d H:i:s') . "'
-               WHERE orders_id='" . (int)$order_id . "'");
+               WHERE orders_id='" . (int)$order_id . "'"
+                );
                 if (!$q) {
                     $returnMessage = 'Orderstatus update failed.';
                 }
                 debug_msg('Order-Status updated=' . $q);
-                $q = xtc_db_query("INSERT INTO " . TABLE_ORDERS_STATUS_HISTORY . "
+                $q = xtc_db_query(
+                    "INSERT INTO " . TABLE_ORDERS_STATUS_HISTORY . "
                (orders_id,  orders_status_id, date_added, customer_notified, comments)
                VALUES
-              ('" . (int)$order_id . "', '" . (int)$order_status . "', NOW(), '0', '')");
+              ('" . (int)$order_id . "', '" . (int)$order_status . "', NOW(), '0', '')"
+                );
                 if (!$q) {
                     $returnMessage = 'Statushistory update failed';
                 }
@@ -208,18 +240,22 @@ if ($_POST)
                 debug_msg('Order Failed: ' . $message);
                 $order_status = MODULE_PAYMENT_WCP_ORDER_STATUS_FAILED;
                 debug_msg('Callback Process');
-                $q = xtc_db_query("UPDATE " . TABLE_ORDERS . "
+                $q = xtc_db_query(
+                    "UPDATE " . TABLE_ORDERS . "
                SET orders_status='" . (int)$order_status . "',
                  gm_cancel_date='" . date('Y-m-d H:i:s') . "'
-               WHERE orders_id='" . (int)$order_id . "'");
+               WHERE orders_id='" . (int)$order_id . "'"
+                );
                 if (!$q) {
                     $returnMessage = 'Orderstatus update failed.';
                 }
                 debug_msg('Order-Status updated=' . $q);
-                $q = xtc_db_query("INSERT INTO " . TABLE_ORDERS_STATUS_HISTORY . "
+                $q = xtc_db_query(
+                    "INSERT INTO " . TABLE_ORDERS_STATUS_HISTORY . "
                (orders_id,  orders_status_id, date_added, customer_notified, comments)
                VALUES
-               ('" . (int)$order_id . "', '" . (int)$order_status . "', NOW(), '0', '" . xtc_db_input($message) . "')");
+               ('" . (int)$order_id . "', '" . (int)$order_status . "', NOW(), '0', '" . xtc_db_input($message) . "')"
+                );
 
                 if (!$q) {
                     $returnMessage = 'Statushistory update failed';
@@ -244,10 +280,8 @@ if ($_POST)
     } else {
         $returnMessage = 'Order status workflow manipulated.';
     }
-
-	 xtc_db_close();}
-else
-{
+    xtc_db_close();
+} else {
     $returnMessage = 'Not a POST request';
 }
 echo _wirecardCheckoutPageConfirmResponse($returnMessage);
@@ -263,13 +297,10 @@ function create_status_mail_for_order($oID)
 
 function _wirecardCheckoutPageConfirmResponse($message = null)
 {
-    if($message != null)
-    {
+    if ($message != null) {
         debug_msg($message);
         $value = 'result="NOK" message="' . $message . '" ';
-    }
-    else
-    {
+    } else {
         $value = 'result="OK"';
     }
     return '<QPAY-CONFIRMATION-RESPONSE ' . $value . ' />';

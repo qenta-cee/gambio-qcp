@@ -32,6 +32,9 @@ define('MODULE_PAYMENT_WCP_BMC_STATUS_DESC', '');
 define('MODULE_PAYMENT_WCP_BMC_PLUGIN_MODE_TITLE', 'Plug-In Modus');
 define('MODULE_PAYMENT_WCP_BMC_PLUGIN_MODE_DESC', 'Wechseln Sie zwischen Live, Demo oder Test Modus. <strong>Achtung</strong>: Es werden keine Transaktionen im Demo oder Test Modus verarbeitet!');
 
+define('MODULE_PAYMENT_WCP_BMC_ORDER_STATUS_ID_TITLE', 'Bestellstatus festlegen');
+define('MODULE_PAYMENT_WCP_BMC_ORDER_STATUS_ID_DESC', 'Bestellungen, die mit diesem Modul gemacht werden, auf diesen Status setzen');
+
 define('MODULE_PAYMENT_WCP_BMC_PRESHARED_KEY_TITLE', 'Geheimer Schl&uuml;ssel (SECRET)');
 define('MODULE_PAYMENT_WCP_BMC_PRESHARED_KEY_DESC', 'Vorher vereinbarter geheimer Schl&uuml;ssel');
 
@@ -73,4 +76,5 @@ define('MODULE_PAYMENT_WCP_BMC_CHECKOUT_HEADER', '');
 define('MODULE_PAYMENT_WCP_BMC_CHECKOUT_CONTENT', '<center>Sie werden zur Bezahlung weitergeleitet.</center>');
 
 define('MODULE_PAYMENT_WCP_BMC_REDIRECT_TIMEOUT_SECOUNDS', 2);
-define('MODULE_PAYMENT_WCP_BMC_DEVICE_DETECTION_TITLE', 'automatische Geräteerkennung');define('MODULE_PAYMENT_WCP_BMC_DEVICE_DETECTION_DESC', 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.');
+define('MODULE_PAYMENT_WCP_BMC_DEVICE_DETECTION_TITLE', 'automatische Geräteerkennung');
+define('MODULE_PAYMENT_WCP_BMC_DEVICE_DETECTION_DESC', 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.');

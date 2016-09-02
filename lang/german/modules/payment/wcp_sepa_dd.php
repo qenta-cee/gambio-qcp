@@ -75,3 +75,6 @@ define('MODULE_PAYMENT_WCP_SEPA_DD_CHECKOUT_CONTENT', '<center>Sie werden zur Be
 define('MODULE_PAYMENT_WCP_SEPA_DD_REDIRECT_TIMEOUT_SECOUNDS', 2);
 define('MODULE_PAYMENT_WCP_SEPA_DD_DEVICE_DETECTION_TITLE', 'automatische Geräteerkennung');
 define('MODULE_PAYMENT_WCP_SEPA_DD_DEVICE_DETECTION_DESC', 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.');
+
+define('MODULE_PAYMENT_WCP_SEPA_ORDER_STATUS_ID_TITLE', 'Bestellstatus festlegen');
+define('MODULE_PAYMENT_WCP_SEPA_ORDER_STATUS_ID_DESC', 'Bestellungen, die mit diesem Modul gemacht werden, auf diesen Status setzen');

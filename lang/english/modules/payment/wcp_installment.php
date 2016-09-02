@@ -32,6 +32,9 @@ define('MODULE_PAYMENT_WCP_INSTALLMENT_STATUS_DESC', '');
 define('MODULE_PAYMENT_WCP_INSTALLMENT_PLUGIN_MODE_TITLE', 'plugin mode');
 define('MODULE_PAYMENT_WCP_INSTALLMENT_PLUGIN_MODE_DESC', 'Switch the plugin mode between live, demo or test. <strong>Attention</strong>: Be aware that there will no payment be processed in demo or test mode!');
 
+define('MODULE_PAYMENT_WCP_INSTALLMENT_ORDER_STATUS_ID_TITLE', 'Order status');
+define('MODULE_PAYMENT_WCP_INSTALLMENT_ORDER_STATUS_ID_DESC', 'Order status after successful payment with this module.');
+
 define('MODULE_PAYMENT_WCP_INSTALLMENT_PRESHARED_KEY_TITLE', 'Secret');
 define('MODULE_PAYMENT_WCP_INSTALLMENT_PRESHARED_KEY_DESC', 'Preshared secret key');
 
@@ -73,7 +76,8 @@ define('MODULE_PAYMENT_WCP_INSTALLMENT_CHECKOUT_HEADER', '');
 define('MODULE_PAYMENT_WCP_INSTALLMENT_CHECKOUT_CONTENT', '<center>You will be redirected.</center>');
 
 define('MODULE_PAYMENT_WCP_INSTALLMENT_REDIRECT_TIMEOUT_SECOUNDS', 2);
-define('MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_TITLE', 'automatic device detection');define('MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_DESC', 'If activated, the buyers device will be auto detected to optimise payment page.');
+define('MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_TITLE', 'automatic device detection');
+define('MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_DESC', 'If activated, the buyers device will be auto detected to optimise payment page.');
 
 define('MODULE_PAYMENT_WCP_INSTALLMENT_MIN_AMOUNT_TITLE', 'min. Amount');
 define('MODULE_PAYMENT_WCP_INSTALLMENT_MIN_AMOUNT_DESC', 'Invoice minimum Amount');
