@@ -1,32 +1,46 @@
 <?php
 /**
-    * Shop System Plugins - Terms of use
-
-    *
-* This terms of use regulates warranty and liability between Wirecard
-    * Central Eastern Europe (subsequently referred to as WDCEE) and it's
-    * contractual partners (subsequently referred to as customer or customers)
-    * which are related to the use of plugins provided by WDCEE.
-
-    *
-* The Plugin is provided by WDCEE free of charge for it's customers and
- * must be used for the purpose of WDCEE's payment platform integration
- * only. It explicitly is not part of the general contract between WDCEE
-    * and it's customer. The plugin has successfully been tested under
-    * specific circumstances which are defined as the shopsystem's standard
-    * configuration (vendor's delivery state). The Customer is responsible for
-    * testing the plugin's functionality before putting it into production
-    * enviroment.
-    * The customer uses the plugin at own risk. WDCEE does not guarantee it's
-    * full functionality neither does WDCEE assume liability for any
-    * disadvantage related to the use of this plugin. By installing the plugin
-    * into the shopsystem the customer agrees to the terms of use. Please do
-    * not use this plugin if you do not agree to the terms of use!
-*/
+ * Shop System Plugins - Terms of Use
+ *
+ * The plugins offered are provided free of charge by Wirecard Central Eastern
+ * Europe GmbH
+ * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard
+ * CEE range of products and services.
+ *
+ * They have been tested and approved for full functionality in the standard
+ * configuration
+ * (status on delivery) of the corresponding shop system. They are under
+ * General Public License Version 2 (GPLv2) and can be used, developed and
+ * passed on to third parties under the same terms.
+ *
+ * However, Wirecard CEE does not provide any guarantee or accept any liability
+ * for any errors occurring when used in an enhanced, customized shop system
+ * configuration.
+ *
+ * Operation in an enhanced, customized configuration is at your own risk and
+ * requires a comprehensive test phase by the user of the plugin.
+ *
+ * Customers use the plugins at their own risk. Wirecard CEE does not guarantee
+ * their full functionality neither does Wirecard CEE assume liability for any
+ * disadvantages related to the use of the plugins. Additionally, Wirecard CEE
+ * does not guarantee the full functionality for customized shop systems or
+ * installed plugins of other vendors of plugins within the same shop system.
+ *
+ * Customers are responsible for testing the plugin's functionality before
+ * starting productive operation.
+ *
+ * By installing the plugin into the shop system the customer agrees to these
+ * terms of use. Please do not use the plugin if you do not agree to these
+ * terms of use!
+ *
+ * @author    WirecardCEE
+ * @copyright WirecardCEE
+ * @license   GPLv2
+ */
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '1.5.6');
+define('WCP_PLUGIN_VERSION', '1.6.0');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
@@ -71,7 +85,7 @@ class wcp_core {
     }
 
     function constant($name) {
-      return (defined($name)) ? constant($name) : NULL;
+        return (defined($name)) ? constant($name) : NULL;
     }
 
     /// @brief collect data and create a array with wirecard checkout page infos
@@ -93,9 +107,9 @@ class wcp_core {
 
     /// @brief unset temp order id from session
     function before_process() {
-		if(isset($_SESSION['tmp_oID'])) {
-			$_SESSION['wirecard_checkout_page']['tmp_oID'] = $_SESSION['tmp_oID'];
-		}
+        if(isset($_SESSION['tmp_oID'])) {
+            $_SESSION['wirecard_checkout_page']['tmp_oID'] = $_SESSION['tmp_oID'];
+        }
         unset($_SESSION['tmp_oID']);
         $this->tmpOrders = true;
         return true;
@@ -103,23 +117,23 @@ class wcp_core {
 
     /// @brief finalize payment after order is created
     function payment_action() {
-		global $insert_id;
-		
-		$response = array();
-		
-		//add comment to temp order if payment is started again
-		if($_SESSION['wirecard_checkout_page']['tmp_oID']) {
-			xtc_db_query('INSERT INTO '.TABLE_ORDERS_STATUS_HISTORY.'
+        global $insert_id;
+
+        $response = array();
+
+        //add comment to temp order if payment is started again
+        if($_SESSION['wirecard_checkout_page']['tmp_oID']) {
+            xtc_db_query('INSERT INTO '.TABLE_ORDERS_STATUS_HISTORY.'
                       (orders_id, date_added, customer_notified, comments)
                       VALUES
                       ('. (int)$_SESSION['wirecard_checkout_page']['tmp_oID'].', NOW(), "0", "'.xtc_db_input(sprintf(MODULE_PAYMENT_WCP_ANOTHER_ORDER, $insert_id)) . '")');
 
             unset($_SESSION['wirecard_checkout_page']['tmp_oID']);
         }
-		
-		include(DIR_FS_CATALOG.'lang/'.$_SESSION['language'].'/modules/payment/wcp.php');
 
-		//perform init request and get redirect URL
+        include(DIR_FS_CATALOG.'lang/'.$_SESSION['language'].'/modules/payment/wcp.php');
+
+        //perform init request and get redirect URL
         $content = http_build_query($this->get_order_post_variables_array());
         $header = "Host: checkout.wirecard.com\r\n"
             . "User-Agent: " . $_SERVER["HTTP_USER_AGENT"] . "\r\n"
@@ -137,28 +151,28 @@ class wcp_core {
 
         $context = stream_context_create($options);
 
-		if (!$result = file_get_contents(INIT_SERVER_URL, false, $context)) {
-			  $response["message"] = wcp_core::constant("MODULE_PAYMENT_WCP_COMMUNICATION_ERROR");
-		} else {
-			  parse_str($result, $response);
-		}
+        if (!$result = file_get_contents(INIT_SERVER_URL, false, $context)) {
+            $response["message"] = wcp_core::constant("MODULE_PAYMENT_WCP_COMMUNICATION_ERROR");
+        } else {
+            parse_str($result, $response);
+        }
 
-		//redirect user
+        //redirect user
         if(isset($response["redirectUrl"])) {
-			$c = strtoupper($this->code);
-			$useIFrame = wcp_core::constant("MODULE_PAYMENT_{$c}_USE_IFRAME");
-			
-			if($useIFrame == 'False') {
-				header("Location: " . $response["redirectUrl"]);
-			}
-			else {
+            $c = strtoupper($this->code);
+            $useIFrame = wcp_core::constant("MODULE_PAYMENT_{$c}_USE_IFRAME");
+
+            if($useIFrame == 'False') {
+                header("Location: " . $response["redirectUrl"]);
+            }
+            else {
                 $timeout = wcp_core::constant("MODULE_PAYMENT_{$c}_REDIRECT_TIMEOUT_SECOUNDS")*1000;
                 $disableTimeout = $timeout-50;
                 $reEnableTimeout = $timeout*5;
 
                 // redirect
                 $process_form = '<form name="wcp_process_form" id="wcp_process_form" method="POST" action="'.($response["redirectUrl"]).'" >';
- 
+
                 $process_js = '<script type="text/javascript">
                             setTimeout("var element = document.getElementById(\"wcp_continue_button\");element.style.display = \'none\';",'. $disableTimeout .');
                             setTimeout("document.wcp_process_form.submit();",'.$timeout.');
@@ -176,16 +190,16 @@ class wcp_core {
 
                 include('checkout_wirecard_checkout_page.php');
                 die();
-			}
+            }
         } else {
-			//finalize order
-			$this->xtc_remove_order($_SESSION['tmp_oID'], true);
-			unset($_SESSION['tmp_oID']);
+            //finalize order
+            $this->xtc_remove_order($_SESSION['tmp_oID'], true);
+            unset($_SESSION['tmp_oID']);
 
-			$_SESSION['wirecard_checkout_page']['error'] = $response["message"];
-	
-			//redirect user and show error message
-			xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'payment_error='.$this->code.'&error=true', 'SSL'));
+            $_SESSION['wirecard_checkout_page']['error'] = $response["message"];
+
+            //redirect user and show error message
+            xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, 'payment_error='.$this->code.'&error=true', 'SSL'));
         }
     }
 
@@ -270,9 +284,9 @@ class wcp_core {
             'pluginVersion'         => $pluginVersion,
             'duplicateRequestCheck'        => 'Yes',
             'consumerIpAddress'            => $_SERVER['REMOTE_ADDR'],
-            'consumerUserAgent'            => $_SERVER['HTTP_USER_AGENT'],			
+            'consumerUserAgent'            => $_SERVER['HTTP_USER_AGENT'],
         );
-			
+
         if(!empty($deliveryInformation['firstname']))   $post_variables['consumerShippingFirstName'] = $deliveryInformation['firstname'];
         if(!empty($deliveryInformation['lastname']))    $post_variables['consumerShippingLastName'] = $deliveryInformation['lastname'];
         if(!empty($deliveryInformation['street_address'])) $post_variables['consumerShippingAddress1'] = $deliveryInformation['street_address'];
@@ -292,7 +306,7 @@ class wcp_core {
         if(!empty($billingInformation['country']['iso_code_2'])) $post_variables['consumerBillingCountry'] = $billingInformation['country']['iso_code_2'];
         if(!empty($order->customer['telephone']))       $post_variables['consumerBillingPhone'] = $order->customer['telephone'];
         if(!empty($order->customer['email_address']))   $post_variables['consumerEmail'] = $order->customer['email_address'];
-		
+
 
         if($consumerBirthDate != '')
         {
@@ -366,7 +380,7 @@ class wcp_core {
     {
         $sql = 'SELECT zone_code FROM ' . TABLE_ZONES . ' WHERE zone_name=\'' .xtc_db_input($zoneName) .'\' LIMIT 1;';
         $result = xtc_db_query($sql);
-        $resultRow = mysql_fetch_row($result);
+        $resultRow = $result->fetch_row();
         return $resultRow[0];
     }
 
@@ -411,13 +425,13 @@ class wcp_core {
     }
 
     function get_error() {
-		$return = false;
+        $return = false;
         if(isset($_SESSION['wirecard_checkout_page']['error'])) {
             $return =  array('title' => 'error',
-							'error' => $_SESSION['wirecard_checkout_page']['error']);
-		}
-        
-		unset($_SESSION['wirecard_checkout_page']['error']);
+                'error' => $_SESSION['wirecard_checkout_page']['error']);
+        }
+
+        unset($_SESSION['wirecard_checkout_page']['error']);
 
         return $return;
     }
@@ -448,6 +462,8 @@ class wcp_core {
         $imageURL = $gm_logo->logo_path . $gm_logo->logo_file;
 
         $c = strtoupper($this->code);
+
+
         $q .= "
             ('MODULE_PAYMENT_{$c}_STATUS',                  'True',       '$cg_id', '" . $s++ . "', $selection, now()),
             ('MODULE_PAYMENT_{$c}_PLUGIN_MODE',             'Live',       '$cg_id', '" . $s++ . "', $pluginModes, now()),
@@ -457,7 +473,11 @@ class wcp_core {
             ('MODULE_PAYMENT_{$c}_SHOP_ID',                 '',           '$cg_id', '" . $s++ . "', '',         now()),
             ('MODULE_PAYMENT_{$c}_SERVICE_URL',             '" . $serviceUrl . "','$cg_id', '" . $s++ . "', '',         now()),
             ('MODULE_PAYMENT_{$c}_STATEMENT',               '',           '$cg_id', '" . $s++ . "', '',         now()),
-            ('MODULE_PAYMENT_{$c}_DISPLAY_TEXT',            '',           '$cg_id', '" . $s++ . "', '',         now()),
+            ('MODULE_PAYMENT_{$c}_DISPLAY_TEXT',            '',           '$cg_id', '" . $s++ . "', '',         now()),";
+
+        xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " ( configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_{$c}_ORDER_STATUS_ID', '2',  '$cg_id', '".$s++."', 'xtc_cfg_pull_down_order_statuses(', 'xtc_get_order_status_name', now())");
+
+        $q .="
             ('MODULE_PAYMENT_{$c}_SORT_ORDER',              '0',          '$cg_id', '" . $s++ . "', '',         now()),
             ('MODULE_PAYMENT_{$c}_ALLOWED',                 '',           '$cg_id', '" . $s++ . "', '',         now()),
             ('MODULE_PAYMENT_{$c}_USE_IFRAME',              '" . $useIframeDefault . "',      '$cg_id', '" . $s++ . "', $selection, now()),
@@ -507,39 +527,41 @@ class wcp_core {
     }
 
     /**
-      * @brief define module configuration keys
-      * MODULE_PAYMENT_MODULENAME_STATUS ... activated true/false
-      * MODULE_PAYMENT_MODULENAME_PRESHARED_KEY ... secret key
-      * MODULE_PAYMENT_MODULENAME_CUSTOMER_ID ... Wirecard CEE customer id
-      * MODULE_PAYMENT_MODULENAME_STORE_LOGO_INCLUDE ... use shop logo
-      * MODULE_PAYMENT_MODULENAME_SHOP_ID ... Wirecard CEE shop id
-      * MODULE_PAYMENT_MODULENAME_SERVICE_URL ... shop support-page url
-      * MODULE_PAYMENT_MODULENAME_STATEMENT ... shop info statment
-      * MODULE_PAYMENT_MODULENAME_DISPLAY_TEXT ... shop info text
-      * MODULE_PAYMENT_MODULENAME_DELETE_FAILURE ... delete failed orders true/false
-      * MODULE_PAYMENT_MODULENAME_DELETE_CANCEL ... delete failed orders true/false
-      *
-      * following are Gambio-Defaults:
-      * MODULE_PAYMENT_MODULENAME_SORT_ORDER ... sort order at payment types selection
-      * MODULE_PAYMENT_MODULENAME_ALLOWED ... allowed for which zones
-      **/
+     * @brief define module configuration keys
+     * MODULE_PAYMENT_MODULENAME_STATUS ... list of possible orde statuses
+     * MODULE_PAYMENT_MODULENAME_STATUS ... activated true/false
+     * MODULE_PAYMENT_MODULENAME_PRESHARED_KEY ... secret key
+     * MODULE_PAYMENT_MODULENAME_CUSTOMER_ID ... Wirecard CEE customer id
+     * MODULE_PAYMENT_MODULENAME_STORE_LOGO_INCLUDE ... use shop logo
+     * MODULE_PAYMENT_MODULENAME_SHOP_ID ... Wirecard CEE shop id
+     * MODULE_PAYMENT_MODULENAME_SERVICE_URL ... shop support-page url
+     * MODULE_PAYMENT_MODULENAME_STATEMENT ... shop info statment
+     * MODULE_PAYMENT_MODULENAME_DISPLAY_TEXT ... shop info text
+     * MODULE_PAYMENT_MODULENAME_DELETE_FAILURE ... delete failed orders true/false
+     * MODULE_PAYMENT_MODULENAME_DELETE_CANCEL ... delete failed orders true/false
+     *
+     * following are Gambio-Defaults:
+     * MODULE_PAYMENT_MODULENAME_SORT_ORDER ... sort order at payment types selection
+     * MODULE_PAYMENT_MODULENAME_ALLOWED ... allowed for which zones
+     **/
     function keys() {
         $c = strtoupper($this->code);
-        $keys =  array( "MODULE_PAYMENT_{$c}_STATUS",
-                        "MODULE_PAYMENT_{$c}_PLUGIN_MODE",
-                        "MODULE_PAYMENT_{$c}_PRESHARED_KEY",
-                        "MODULE_PAYMENT_{$c}_CUSTOMER_ID",
-                        "MODULE_PAYMENT_{$c}_LOGO",
-                        "MODULE_PAYMENT_{$c}_SHOP_ID",
-                        "MODULE_PAYMENT_{$c}_SERVICE_URL",
-                        "MODULE_PAYMENT_{$c}_STATEMENT",
-                        "MODULE_PAYMENT_{$c}_DISPLAY_TEXT",
-                        "MODULE_PAYMENT_{$c}_SORT_ORDER",
-                        "MODULE_PAYMENT_{$c}_ALLOWED",
-                        'MODULE_PAYMENT_WCP_DELETE_FAILURE',
-                        'MODULE_PAYMENT_WCP_DELETE_CANCEL',
-                        "MODULE_PAYMENT_{$c}_USE_IFRAME",
-                        "MODULE_PAYMENT_{$c}_DEVICE_DETECTION");
+        $keys =  array( "MODULE_PAYMENT_{$c}_ORDER_STATUS_ID",
+            "MODULE_PAYMENT_{$c}_STATUS",
+            "MODULE_PAYMENT_{$c}_PLUGIN_MODE",
+            "MODULE_PAYMENT_{$c}_PRESHARED_KEY",
+            "MODULE_PAYMENT_{$c}_CUSTOMER_ID",
+            "MODULE_PAYMENT_{$c}_LOGO",
+            "MODULE_PAYMENT_{$c}_SHOP_ID",
+            "MODULE_PAYMENT_{$c}_SERVICE_URL",
+            "MODULE_PAYMENT_{$c}_STATEMENT",
+            "MODULE_PAYMENT_{$c}_DISPLAY_TEXT",
+            "MODULE_PAYMENT_{$c}_SORT_ORDER",
+            "MODULE_PAYMENT_{$c}_ALLOWED",
+            'MODULE_PAYMENT_WCP_DELETE_FAILURE',
+            'MODULE_PAYMENT_WCP_DELETE_CANCEL',
+            "MODULE_PAYMENT_{$c}_USE_IFRAME",
+            "MODULE_PAYMENT_{$c}_DEVICE_DETECTION");
 
         if ($this->has_minmax_amount)
         {
@@ -553,8 +575,8 @@ class wcp_core {
     // from admin/includes/functions/general.php
     function xtc_remove_order($order_id, $restock = false, $canceled = false, $reshipp = false, $reactivateArticle = false)
     {
-		require_once ('includes/application_top.php');
-		
+        require_once ('includes/application_top.php');
+
         if($restock == 'on' || $reshipp == 'on')
         {
             // BOF GM_MOD:
@@ -583,7 +605,7 @@ class wcp_core {
 										AS
 											date
 										FROM " .
-                        TABLE_SPECIALS . "
+                                            TABLE_SPECIALS . "
 										WHERE
 											specials_date_added < '" . $order['date_purchased'] . "'
 										AND
@@ -594,7 +616,7 @@ class wcp_core {
                     {
                         xtc_db_query("
 									UPDATE " .
-                            TABLE_SPECIALS . "
+                                     TABLE_SPECIALS . "
 									SET
 										specials_quantity = specials_quantity + " . $order['products_quantity'] . "
 									WHERE
@@ -628,7 +650,7 @@ class wcp_core {
                     {
                         xtc_db_query("
                                     UPDATE " .
-                            TABLE_PRODUCTS . "
+                                     TABLE_PRODUCTS . "
                                     SET
                                         products_quantity = products_quantity + " . $order['products_quantity'] . "
                                     WHERE
@@ -638,7 +660,7 @@ class wcp_core {
 
                     xtc_db_query("
                                 UPDATE " .
-                        TABLE_PRODUCTS . "
+                                 TABLE_PRODUCTS . "
                                 SET
                                     products_ordered = products_ordered - " . $order['products_quantity'] . "
                                 WHERE

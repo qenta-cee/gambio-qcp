@@ -73,4 +73,8 @@ define('MODULE_PAYMENT_WCP_EPS_CHECKOUT_HEADER', '');
 define('MODULE_PAYMENT_WCP_EPS_CHECKOUT_CONTENT', '<center>You will be redirected.</center>');
 
 define('MODULE_PAYMENT_WCP_EPS_REDIRECT_TIMEOUT_SECOUNDS', 2);
-define('MODULE_PAYMENT_WCP_EPS_DEVICE_DETECTION_TITLE', 'automatic device detection');define('MODULE_PAYMENT_WCP_EPS_DEVICE_DETECTION_DESC', 'If activated, the buyers device will be auto detected to optimise payment page.');
+define('MODULE_PAYMENT_WCP_EPS_DEVICE_DETECTION_TITLE', 'automatic device detection');
+define('MODULE_PAYMENT_WCP_EPS_DEVICE_DETECTION_DESC', 'If activated, the buyers device will be auto detected to optimise payment page.');
+
+define('MODULE_PAYMENT_WCP_EPS_ORDER_STATUS_ID_TITLE', 'Order status');
+define('MODULE_PAYMENT_WCP_EPS_ORDER_STATUS_ID_DESC', 'Order status after successful payment with this module.');

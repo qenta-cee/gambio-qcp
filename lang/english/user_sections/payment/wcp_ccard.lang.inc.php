@@ -35,6 +35,9 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_CCARD_PLUGIN_MODE_TITLE' => 'plugin mode',
 	'MODULE_PAYMENT_WCP_CCARD_PLUGIN_MODE_DESC' => 'Switch the plugin mode between live, demo or test. <strong>Attention</strong>: Be aware that there will no payment be processed in demo or test mode!',
 
+    'MODULE_PAYMENT_WCP_CCARD_ORDER_STATUS_ID_TITLE' => 'Order status',
+    'MODULE_PAYMENT_WCP_CCARD_ORDER_STATUS_ID_DESC' => 'Order status after successful payment with this module.',
+
 	'MODULE_PAYMENT_WCP_CCARD_PRESHARED_KEY_TITLE' => 'Secret',
 	'MODULE_PAYMENT_WCP_CCARD_PRESHARED_KEY_DESC' => 'Preshared secret key',
 
@@ -76,5 +79,6 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_CCARD_CHECKOUT_CONTENT' => '<center>You will be redirected.</center>',
 
 	'MODULE_PAYMENT_WCP_CCARD_REDIRECT_TIMEOUT_SECOUNDS' => 2,
-	'MODULE_PAYMENT_WCP_CCARD_DEVICE_DETECTION_TITLE' => 'automatic device detection',	'MODULE_PAYMENT_WCP_CCARD_DEVICE_DETECTION_DESC' => 'If activated, the buyers device will be auto detected to optimise payment page.',
+	'MODULE_PAYMENT_WCP_CCARD_DEVICE_DETECTION_TITLE' => 'automatic device detection',
+	'MODULE_PAYMENT_WCP_CCARD_DEVICE_DETECTION_DESC' => 'If activated, the buyers device will be auto detected to optimise payment page.',
 );

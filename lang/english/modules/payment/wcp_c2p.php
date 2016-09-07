@@ -32,6 +32,9 @@ define('MODULE_PAYMENT_WCP_C2P_STATUS_DESC', '');
 define('MODULE_PAYMENT_WCP_C2P_PRESHARED_KEY_TITLE', 'Secret');
 define('MODULE_PAYMENT_WCP_C2P_PRESHARED_KEY_DESC', 'Preshared secret key');
 
+define('MODULE_PAYMENT_WCP_C2P_ORDER_STATUS_ID_TITLE', 'Order status');
+define('MODULE_PAYMENT_WCP_C2P_ORDER_STATUS_ID_DESC', 'Order status after successful payment with this module.');
+
 define('MODULE_PAYMENT_WCP_C2P_CUSTOMER_ID_TITLE', 'Customer ID');
 define('MODULE_PAYMENT_WCP_C2P_CUSTOMER_ID_DESC', '');
 

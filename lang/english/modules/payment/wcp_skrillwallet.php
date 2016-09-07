@@ -32,6 +32,9 @@ define('MODULE_PAYMENT_WCP_SKRILLWALLET_STATUS_DESC', '');
 define('MODULE_PAYMENT_WCP_SKRILLWALLET_PLUGIN_MODE_TITLE', 'plugin mode');
 define('MODULE_PAYMENT_WCP_SKRILLWALLET_PLUGIN_MODE_DESC', 'Switch the plugin mode between live, demo or test. <strong>Attention</strong>: Be aware that there will no payment be processed in demo or test mode!');
 
+define('MODULE_PAYMENT_WCP_SKRILLWALLET_ORDER_STATUS_ID_TITLE', 'Order status');
+define('MODULE_PAYMENT_WCP_SKRILLWALLET_ORDER_STATUS_ID_DESC', 'Order status after successful payment with this module.');
+
 define('MODULE_PAYMENT_WCP_SKRILLWALLET_PRESHARED_KEY_TITLE', 'Secret');
 define('MODULE_PAYMENT_WCP_SKRILLWALLET_PRESHARED_KEY_DESC', 'Preshared secret key');
 

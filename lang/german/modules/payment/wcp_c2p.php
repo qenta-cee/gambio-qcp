@@ -70,3 +70,6 @@ define('MODULE_PAYMENT_WCP_C2P_CHECKOUT_HEADER', '');
 define('MODULE_PAYMENT_WCP_C2P_CHECKOUT_CONTENT', '<center>Sie werden zur Bezahlung weitergeleitet. Sollten Sie nicht weitergeleitet werden klicken Sie auf "weiter"!</center>');
 
 define('MODULE_PAYMENT_WCP_C2P_REDIRECT_TIMEOUT_SECOUNDS', 2);
+
+define('MODULE_PAYMENT_WCP_C2P_ORDER_STATUS_ID_TITLE', 'Bestellstatus festlegen');
+define('MODULE_PAYMENT_WCP_C2P_ORDER_STATUS_ID_DESC', 'Bestellungen, die mit diesem Modul gemacht werden, auf diesen Status setzen');
