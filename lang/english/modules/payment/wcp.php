@@ -30,6 +30,10 @@ define('CHECKOUT_FAILURE_TITLE', 'An error occured');
 define('CHECKOUT_FAILURE_HEADER', '');
 define('CHECKOUT_FAILURE_CONTENT', 'An error occured during your payment process');
 
+define('CHECKOUT_PENDING_TITLE', 'The payment process is not finished yet');
+define('CHECKOUT_PENDING_HEADER', '');
+define('CHECKOUT_PENDING_CONTENT', 'The financial institution has not yet approved your payment.');
+
 define('CHECKOUT_REDIRECT_TITLE', 'Redirect.');
 define('CHECKOUT_REDIRECT_HEADER', '');
 define('CHECKOUT_REDIRECT_CONTENT', 'You will be redirected soon.');
