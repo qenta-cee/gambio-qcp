@@ -45,6 +45,8 @@ class wcp_core {
     var $customerIdTestMode = 'D200411';
     var $secretDemoMode = 'B8AKTPWBRMNBV455FG6M2DANE99WU2';
     var $secretTestMode = 'CHCSH7UGHVVX2P7EHDHSY4T2S4CGYK4QBE4M5YUUG2ND5BEZWNRZW5EJYVJQ';
+    var $secretTest3DMode = 'DP4TMTPQQWFJW34647RM798E9A5X7E8ATP462Z4VGZK53YEJ3JWXS98B9P4F';
+    var $shopIdTest3DMode = '3D';
 
     var $has_minmax_amount = false;
 
@@ -229,12 +231,20 @@ class wcp_core {
             $consumerBirthDate = '';
         }
 
+        $shopId = true;
+
         switch(wcp_core::constant("MODULE_PAYMENT_{$c}_PLUGIN_MODE")) {
             case 'Demo': $preshared_key = $this->secretDemoMode;
                 $customerId = $this->customerIdDemoMode;
+                $shopId = false;
                 break;
             case 'Test': $preshared_key = $this->secretTestMode;
                 $customerId = $this->customerIdTestMode;
+                $shopId = false;
+                break;
+            case 'Test3D': $preshared_key = $this->secretTest3DMode;
+                $customerId = $this->customerIdTestMode;
+                $shopId = $this->shopIdTest3DMode;
                 break;
             case 'Live':
             default:  $preshared_key = trim(wcp_core::constant("MODULE_PAYMENT_{$c}_PRESHARED_KEY"));
@@ -306,8 +316,10 @@ class wcp_core {
         }
 
         // set shop id if isset
-        if(constant("MODULE_PAYMENT_{$c}_SHOP_ID"))
+        if(constant("MODULE_PAYMENT_{$c}_SHOP_ID") && $shopId===true)
             $post_variables['shopId'] = wcp_core::constant("MODULE_PAYMENT_{$c}_SHOP_ID");
+        else
+            $post_variables['shopId'] = $shopId===false?"":$shopId;
 
         // set layout if isset
         if(wcp_core::constant("MODULE_PAYMENT_{$c}_DEVICE_DETECTION") === 'True')
@@ -441,7 +453,7 @@ class wcp_core {
         $serviceUrl = xtc_href_link('shop_content.php', 'coID=7', 'SSL');
         $selection = "'gm_cfg_select_option(array(\'True\', \'False\'), '";
         $useIframeDefault = ($this->use_iframe_default) ? 'True' : 'False';
-        $pluginModes = "'gm_cfg_select_option(array(\'Live\', \'Demo\', \'Test\'), '";
+        $pluginModes = "'gm_cfg_select_option(array(\'Live\', \'Demo\', \'Test\', \'Test3D\'), '";
 
         require(DIR_FS_CATALOG . 'gm/classes/GMLogoManager.php');
         $gm_logo = new GMLogoManager("gm_logo_shop");

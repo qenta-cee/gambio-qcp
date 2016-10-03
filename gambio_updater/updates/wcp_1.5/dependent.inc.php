@@ -52,7 +52,7 @@ foreach($result as $paymentsInstalled) {
 
     if(empty($result[0]['configuration_key'])) {
        $query = "INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
-                  VALUE ('MODULE_PAYMENT_{$paymentsInstalled['paymethod']}_PLUGIN_MODE', 'Live', 6, 1, 'gm_cfg_select_option(array(\'Live\', \'Demo\', \'Test\'), ', now())";
+                  VALUE ('MODULE_PAYMENT_{$paymentsInstalled['paymethod']}_PLUGIN_MODE', 'Live', 6, 1, 'gm_cfg_select_option(array(\'Live\', \'Demo\', \'Test\', \'Test3D\'), ', now())";
         $this->query($query);
     }
 
