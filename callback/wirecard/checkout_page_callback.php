@@ -52,6 +52,9 @@ if(isset($_POST))
     switch ($paymentState)
     {
         case 'SUCCESS':
+            $_SESSION['cart']->reset(true);
+            $link = xtc_href_link(FILENAME_CHECKOUT_SUCCESS, '', 'SSL');
+            break;
         case 'PENDING':
             $_SESSION['cart']->reset(true);
             $link = xtc_href_link('checkout_wirecard_checkout_page.php', 'pending=1', 'SSL');
