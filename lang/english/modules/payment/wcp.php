@@ -52,6 +52,7 @@ define('WCP_CONFIRMATION_TITLE', 'Confirmation');
 define('GM_CFG_LIVE', 'live mode');
 define('GM_CFG_DEMO', 'demo mode');
 define('GM_CFG_TEST', 'test mode');
+define('GM_CFG_TEST3D', 'test3D mode');
 
 define('MODULE_PAYMENT_WCP_DELETE_FAILURE_TITLE', 'Delete orders if payment fails');
 define('MODULE_PAYMENT_WCP_DELETE_FAILURE_DESC', 'If enabled, pending orders will be deleted in the order list if payment fails. <strong>Note</strong> that this setting applies to all Wirecard payment methods.');
