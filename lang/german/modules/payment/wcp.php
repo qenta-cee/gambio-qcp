@@ -44,6 +44,7 @@ define('WCP_CONFIRMATION_TITLE', 'Best&auml;tigung');
 define('GM_CFG_LIVE', 'Live Modus');
 define('GM_CFG_DEMO', 'Demo Modus');
 define('GM_CFG_TEST', 'Test Modus');
+define('GM_CFG_TEST3D', 'Test3D Modus');
 
 define('MODULE_PAYMENT_WCP_DELETE_FAILURE_TITLE', 'Bestellungen bei fehlgeschlagener Zahlung l&ouml;schen');
 define('MODULE_PAYMENT_WCP_DELETE_FAILURE_DESC', 'Falls aktiviert, werden die Bestellungen bei fehlgeschlagener Zahlung gel&ouml;scht. <strong>Achtung:</strong> Diese Einstellung gilt für alle Wirecard-Zahlungsmittel.');
