@@ -101,6 +101,9 @@ if ($_POST) {
                 case 'Test':
                     $preshared_key = 'CHCSH7UGHVVX2P7EHDHSY4T2S4CGYK4QBE4M5YUUG2ND5BEZWNRZW5EJYVJQ';
                     break;
+                case 'Test3D':
+                    $preshared_key = 'DP4TMTPQQWFJW34647RM798E9A5X7E8ATP462Z4VGZK53YEJ3JWXS98B9P4F';
+                    break;
                 case 'Live':
                 default:
                     $preshared_key = trim(wcp_core::constant("MODULE_PAYMENT_{$c}_PRESHARED_KEY"));

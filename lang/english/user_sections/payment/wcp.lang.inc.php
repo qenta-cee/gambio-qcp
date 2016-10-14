@@ -51,6 +51,7 @@ $t_language_text_section_content_array = array
 	'GM_CFG_LIVE' => 'live mode',
 	'GM_CFG_DEMO' => 'demo mode',
 	'GM_CFG_TEST' => 'test mode',
+    'GM_CFG_TEST3D' => 'test3d mode',
 
 	'MODULE_PAYMENT_WCP_EXPORT_CONFIG_RECEIVER' => 'Receiver',
 	'MODULE_PAYMENT_WCP_EXPORT_CONFIG_CONFIG_STRING' => 'Configuration',
