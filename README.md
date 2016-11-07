@@ -1,12 +1,10 @@
 # Wirecard Checkout Page plugin for Gambio GX2 and GX3
 
 [![License](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://raw.githubusercontent.com/wirecard/gambio-wcp/master/LICENSE)
-[![Gambio GX2](https://img.shields.io/badge/Gambio_GX2-v2.6-green.svg)](http://www.gambio.de/)
-[![Gambio GX2](https://img.shields.io/badge/Gambio_GX2-v2.7-green.svg)](http://www.gambio.de/)
 [![Gambio GX3](https://img.shields.io/badge/Gambio_GX3-v3.0-green.svg)](http://www.gambio.de/)
 [![PHP v5.3](https://img.shields.io/badge/php-v5.3-yellow.svg)](http://www.php.net)
 
-Wirecard Checkout Page plugin for Gambio GX2 and GX3. 
+Wirecard Checkout Page plugin for Gambio GX3. 
 
 Our [Online Guides](https://guides.wirecard.at/) provide further information on payment methods and additional features. Please observe our [terms of use](https://guides.wirecard.at/shop_plugins:info#terms_of_use) regarding plugins.
 
