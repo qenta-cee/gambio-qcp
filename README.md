@@ -1,4 +1,4 @@
-# Wirecard Checkout Page plugin for Gambio GX2 and GX3
+# Wirecard Checkout Page plugin for Gambio GX3
 
 [![License](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://raw.githubusercontent.com/wirecard/gambio-wcp/master/LICENSE)
 [![Gambio GX3](https://img.shields.io/badge/Gambio_GX3-v3.0-green.svg)](http://www.gambio.de/)
