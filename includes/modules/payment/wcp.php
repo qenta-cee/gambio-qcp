@@ -40,7 +40,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '2.0.1');
+define('WCP_PLUGIN_VERSION', '2.0.2');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
@@ -245,23 +245,22 @@ class wcp_core {
             $consumerBirthDate = '';
         }
 
-        $shopId = true;
-
         switch(wcp_core::constant("MODULE_PAYMENT_{$c}_PLUGIN_MODE")) {
-            case 'Demo': $preshared_key = $this->secretDemoMode;
+            case 'Demo':
+                $preshared_key = $this->secretDemoMode;
                 $customerId = $this->customerIdDemoMode;
-                $shopId = false;
                 break;
-            case 'Test': $preshared_key = $this->secretTestMode;
+            case 'Test':
+                $preshared_key = $this->secretTestMode;
                 $customerId = $this->customerIdTestMode;
-                $shopId = false;
                 break;
-            case 'Test3D': $preshared_key = $this->secretTest3DMode;
+            case 'Test3D':
+                $preshared_key = $this->secretTest3DMode;
                 $customerId = $this->customerIdTestMode;
-                $shopId = $this->shopIdTest3DMode;
-                break;		                  break;
+                break;
             case 'Live':
-            default:  $preshared_key = trim(wcp_core::constant("MODULE_PAYMENT_{$c}_PRESHARED_KEY"));
+            default:
+                $preshared_key = trim(wcp_core::constant("MODULE_PAYMENT_{$c}_PRESHARED_KEY"));
                 $customerId = trim(wcp_core::constant("MODULE_PAYMENT_{$c}_CUSTOMER_ID"));
                 break;
         }
@@ -330,10 +329,9 @@ class wcp_core {
         }
 
         // set shop id if isset
-        if(constant("MODULE_PAYMENT_{$c}_SHOP_ID") && $shopId===true)
+        if(constant("MODULE_PAYMENT_{$c}_SHOP_ID")) {
             $post_variables['shopId'] = wcp_core::constant("MODULE_PAYMENT_{$c}_SHOP_ID");
-        else
-            $post_variables['shopId'] = $shopId===false?"":$shopId;
+        }
 
         // set layout if isset
         if(wcp_core::constant("MODULE_PAYMENT_{$c}_DEVICE_DETECTION") === 'True')
