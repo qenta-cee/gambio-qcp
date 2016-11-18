@@ -349,14 +349,21 @@ class wcp_core {
         }
         // create fingerprint
         $requestFingerprintOrder = 'secret,';
-        $requestFingerprintSeed  = $preshared_key;
+        $tempArray = array('secret' => $preshared_key);
         foreach($post_variables as $key => $value) {
             $requestFingerprintOrder .= $key . ',';
-            $requestFingerprintSeed  .= trim($value);
+            $tempArray[(string)$key] = (string) $value;
         }
         $requestFingerprintOrder .= 'requestFingerprintOrder';
-        $requestFingerprintSeed .= $requestFingerprintOrder;
-        $requestfingerprint = md5($requestFingerprintSeed);
+        $tempArray['requestFingerprintOrder'] = $requestFingerprintOrder;
+
+        $hash = hash_init('sha512', HASH_HMAC, $preshared_key);
+        foreach ($tempArray as $paramName => $paramValue) {
+            hash_update($hash, $paramValue);
+        }
+
+        $requestfingerprint = hash_final($hash);
+
         $post_variables['requestFingerprintOrder'] = $requestFingerprintOrder;
         $post_variables['requestFingerprint']      = $requestfingerprint;
 
