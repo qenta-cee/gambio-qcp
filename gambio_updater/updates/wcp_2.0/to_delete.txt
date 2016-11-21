@@ -7,3 +7,15 @@ lang/english/original_sections/modules/payment/wcp_elv.lang.inc.php
 includes/modules/payment/wcp_c2p.php
 includes/modules/payment/wcp_instantbank.php
 includes/modules/payment/wcp_elv.php
+images/icons/wcp/mpass.jpg
+images/icons/wcp/skrill_direct.jpg
+includes/modules/payment/wcp_mpass.php
+includes/modules/payment/wcp_skrilldirect.php
+lang/english/modules/payment/wcp_mpass.php
+lang/english/modules/payment/wcp_skrilldirect.php
+lang/english/user_sections/payment/wcp_mpass.lang.inc.php
+lang/english/user_sections/payment/wcp_skrilldirect.lang.inc.php
+lang/german/modules/payment/wcp_mpass.php
+lang/german/modules/payment/wcp_skrilldirect.php
+lang/german/user_sections/payment/wcp_mpass.lang.inc.php
+lang/german/user_sections/payment/wcp_skrilldirect.lang.inc.php
