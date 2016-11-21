@@ -91,6 +91,7 @@ if ($_POST) {
 
         debug_msg('Payment Table updated=' . $q);
         if (isset($_POST['responseFingerprintOrder']) && isset($_POST['responseFingerprint'])) {
+            $tempArray = [];
             $responseFingerprintOrder = explode(',', $_POST['responseFingerprintOrder']);
             $responseFingerprintSeed = '';
 
@@ -114,6 +115,9 @@ if ($_POST) {
 
             //calculating fingerprint;
             foreach ($responseFingerprintOrder as $k) {
+                if ($k != 'secret') {
+                    $tempArray[(string)$k] = (string) $_POST[$k];
+                }
                 if ($stipslashes) {
                     $responseFingerprintSeed .= (strtoupper($k) == 'SECRET' ? $preshared_key : stripslashes(
                         $_POST[$k]
@@ -121,9 +125,18 @@ if ($_POST) {
                 } else {
                     $responseFingerprintSeed .= (strtoupper($k) == 'SECRET' ? $preshared_key : $_POST[$k]);
                 }
+
+                if (strcmp($k, 'secret') == 0) {
+                    $tempArray[$k] = $preshared_key;
+                }
             }
 
-            $calculated_fingerprint = md5($responseFingerprintSeed);
+            $hash = hash_init('sha512', HASH_HMAC, $preshared_key);
+
+            foreach ($tempArray as $paramName => $paramValue) {
+                hash_update($hash, $paramValue);
+            }
+            $calculated_fingerprint = hash_final($hash);
             if ($calculated_fingerprint == $_POST['responseFingerprint']) {
                 debug_msg('Fingerprint is OK');
 

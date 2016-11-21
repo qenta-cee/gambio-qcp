@@ -40,7 +40,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '2.0.2');
+define('WCP_PLUGIN_VERSION', '2.1.0');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
@@ -294,6 +294,7 @@ class wcp_core {
             'duplicateRequestCheck'        => 'Yes',
             'consumerIpAddress'            => $_SERVER['REMOTE_ADDR'],
             'consumerUserAgent'            => $_SERVER['HTTP_USER_AGENT'],
+            'customerMerchantCrmId' => md5($order->customer['email_address']),
         );
 
         if(!empty($deliveryInformation['firstname']))   $post_variables['consumerShippingFirstName'] = $deliveryInformation['firstname'];
@@ -349,14 +350,21 @@ class wcp_core {
         }
         // create fingerprint
         $requestFingerprintOrder = 'secret,';
-        $requestFingerprintSeed  = $preshared_key;
+        $tempArray = array('secret' => $preshared_key);
         foreach($post_variables as $key => $value) {
             $requestFingerprintOrder .= $key . ',';
-            $requestFingerprintSeed  .= trim($value);
+            $tempArray[(string)$key] = (string) $value;
         }
         $requestFingerprintOrder .= 'requestFingerprintOrder';
-        $requestFingerprintSeed .= $requestFingerprintOrder;
-        $requestfingerprint = md5($requestFingerprintSeed);
+        $tempArray['requestFingerprintOrder'] = $requestFingerprintOrder;
+
+        $hash = hash_init('sha512', HASH_HMAC, $preshared_key);
+        foreach ($tempArray as $paramName => $paramValue) {
+            hash_update($hash, $paramValue);
+        }
+
+        $requestfingerprint = hash_final($hash);
+
         $post_variables['requestFingerprintOrder'] = $requestFingerprintOrder;
         $post_variables['requestFingerprint']      = $requestfingerprint;
 
