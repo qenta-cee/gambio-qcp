@@ -294,7 +294,7 @@ class wcp_core {
             'duplicateRequestCheck'        => 'Yes',
             'consumerIpAddress'            => $_SERVER['REMOTE_ADDR'],
             'consumerUserAgent'            => $_SERVER['HTTP_USER_AGENT'],
-            'customerMerchantCrmId' => md5($order->customer['email_address']),
+            'consumerMerchantCrmId' => md5($order->customer['email_address']),
         );
 
         if(!empty($deliveryInformation['firstname']))   $post_variables['consumerShippingFirstName'] = $deliveryInformation['firstname'];
