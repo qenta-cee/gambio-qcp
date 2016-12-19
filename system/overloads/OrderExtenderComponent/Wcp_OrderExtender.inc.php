@@ -29,6 +29,7 @@ Released under the GNU General Public License (Version 2)
 class Wcp_OrderExtender extends Wcp_OrderExtender_parent {
 
     function proceed() {
+        parent::proceed();
         $paymentInformation = array();
 
         include_once('../includes/modules/payment/wcp.php');
@@ -93,7 +94,6 @@ class Wcp_OrderExtender extends Wcp_OrderExtender_parent {
             $this->v_output_buffer['below_history'] = $output;
             $this->v_output_buffer['below_history_heading'] = MODULE_PAYMENT_WCP_ORDER_DETAILS_TITLE;
             $this->addContent();
-            parent::proceed();
         }
     }
 }
