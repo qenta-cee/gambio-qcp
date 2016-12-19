@@ -69,9 +69,6 @@ if ($_POST) {
         'language_id' => htmlentities($_POST['confirmLanguageId'])
     );
 
-    $coo_lang_file_master = MainFactory::create_object('LanguageTextManager', array(), true);
-    $coo_lang_file_master->init_from_lang_file('lang/' . $languageArray['language'] . '/modules/payment/wcp.php');
-
     debug_msg("Finished Initialization of the confirm_callback.php script");
     debug_msg("Received this POST: " . print_r($_POST, 1));
     $order_id = isset($_POST['order_id']) ? (int)$_POST['order_id'] : 0;
