@@ -69,9 +69,6 @@ if ($_POST) {
         'language_id' => htmlentities($_POST['confirmLanguageId'])
     );
 
-    $coo_lang_file_master = MainFactory::create_object('LanguageTextManager', array(), true);
-    $coo_lang_file_master->init_from_lang_file('lang/' . $languageArray['language'] . '/modules/payment/wcp.php');
-
     debug_msg("Finished Initialization of the confirm_callback.php script");
     debug_msg("Received this POST: " . print_r($_POST, 1));
     $order_id = isset($_POST['order_id']) ? (int)$_POST['order_id'] : 0;
@@ -211,6 +208,14 @@ if ($_POST) {
                 debug_msg('Invalid Responsefingerprint.');
                 debug_msg('calc-fingerprint: ' . $calculated_fingerprint);
                 debug_msg('response-fingerprint: ' . $_POST['responseFingerprint']);
+                $order_status = MODULE_PAYMENT_WCP_ORDER_STATUS_FAILED;
+                $q = xtc_db_query(
+                    "UPDATE " . TABLE_ORDERS . "
+               SET orders_status='" . xtc_db_input($order_status) . "',
+                 gm_cancel_date='" . date('Y-m-d H:i:s') . "'
+               WHERE orders_id='" . (int)$order_id . "'"
+                );
+                $_SESSION['wirecard_checkout_page_fingerprintinvalid'] = 'FAILURE';
             }
         } else {
             debug_msg('No fingerprint found.');

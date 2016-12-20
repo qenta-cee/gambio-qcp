@@ -30,6 +30,10 @@ define('CHECKOUT_FAILURE_TITLE', 'Ein Fehler ist aufgetreten');
 define('CHECKOUT_FAILURE_HEADER', '');
 define('CHECKOUT_FAILURE_CONTENT', 'Ein Fehler ist bei der Bezahlung aufgetreten!');
 
+define('CHECKOUT_PENDING_TITLE', 'Ihre Zahlung wurde vom Finanzinstitut noch nicht best&auml;tigt');
+define('CHECKOUT_PENDING_HEADER', '');
+define('CHECKOUT_PENDING_CONTENT', 'Die Zahlungsbest&auml;tigung ist ausst&auml;ndig, sie wird sp&auml;ter zugesendet.');
+
 //Status change Mail Constants
 define('CONFIRM_MAIL_SUBJECT', 'Ihre Bestellung ');
 define('CONFIRM_MAIL_COMMENT_SUCCESS', 'Die Zahlung wurde erfolgreich get&auml;tigt.');
