@@ -208,6 +208,14 @@ if ($_POST) {
                 debug_msg('Invalid Responsefingerprint.');
                 debug_msg('calc-fingerprint: ' . $calculated_fingerprint);
                 debug_msg('response-fingerprint: ' . $_POST['responseFingerprint']);
+                $order_status = MODULE_PAYMENT_WCP_ORDER_STATUS_FAILED;
+                $q = xtc_db_query(
+                    "UPDATE " . TABLE_ORDERS . "
+               SET orders_status='" . xtc_db_input($order_status) . "',
+                 gm_cancel_date='" . date('Y-m-d H:i:s') . "'
+               WHERE orders_id='" . (int)$order_id . "'"
+                );
+                $_SESSION['wirecard_checkout_page_fingerprintinvalid'] = 'FAILURE';
             }
         } else {
             debug_msg('No fingerprint found.');

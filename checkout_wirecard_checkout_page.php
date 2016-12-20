@@ -70,6 +70,12 @@ elseif(isset($_GET['failure']))
     $smarty->assign('CHECKOUT_CONTENT', CHECKOUT_FAILURE_CONTENT);
     $smarty->assign('SHOW_STEPS', false);
 }
+elseif (isset($_GET['pending'])) {
+    $smarty->assign('CHECKOUT_TITLE', CHECKOUT_PENDING_TITLE);
+    $smarty->assign('CHECKOUT_HEADER', CHECKOUT_PENDING_HEADER);
+    $smarty->assign('CHECKOUT_CONTENT', CHECKOUT_PENDING_CONTENT);
+    $smarty->assign('SHOW_STEPS', false);
+}
 elseif($_SESSION['wirecard_checkout_page']['useIFrame'] == 'True')
 {
     $iFrame = '<iframe name="' . MODULE_PAYMENT_WCP_WINDOW_NAME . '" src="cout_wirecard_checkout_page_iframe.php?'.SID.'" width="100%" height="660" border="0" frameborder="0"></iframe>';

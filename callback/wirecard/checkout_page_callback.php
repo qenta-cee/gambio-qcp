@@ -51,6 +51,34 @@ if(isset($_POST))
         $dbEntry = $q->fetch_array();
         $paymentInformation = unserialize($dbEntry['response']);
         $paymentState = $paymentInformation['paymentState'];
+        if(isset($_POST['paymentState'])) {
+            $paymentState = $_POST['paymentState'];
+
+            $orderStatusSuccess = 2;
+
+            $c = strtoupper($_POST['paymentCode']);
+            if(defined("MODULE_PAYMENT_{$c}_ORDER_STATUS_ID"))
+                $orderStatusSuccess = constant("MODULE_PAYMENT_{$c}_ORDER_STATUS_ID");
+
+            switch ($_POST['paymentState']) {
+                case 'SUCCESS':
+                    $order_status = $orderStatusSuccess;
+                    break;
+
+                case 'PENDING':
+                    $order_status = MODULE_PAYMENT_WCP_ORDER_STATUS_PENDING;
+                    break;
+
+                default:
+                    $order_status = MODULE_PAYMENT_WCP_ORDER_STATUS_FAILED;
+            }
+
+            $q = xtc_db_query(
+                'UPDATE ' . TABLE_ORDERS . ' SET orders_status=\'' . xtc_db_input(
+                    $order_status
+                ) . '\' WHERE orders_id=\'' . $order_id . '\';'
+            );
+        }
     }
     //fallback update of order
     else {
@@ -63,20 +91,27 @@ if(isset($_POST))
             $paymentInformation = unserialize($dbEntry['response']);
             $paymentState = $paymentInformation['paymentState'];
         }
+        if (isset($_SESSION['wirecard_checkout_page_fingerprintinvalid'])) {
+            $paymentState = $_SESSION['wirecard_checkout_page_fingerprintinvalid'];
+        }
     }
 
     switch ($paymentState)
     {
         case 'SUCCESS':
-        case 'PENDING':
             $_SESSION['cart']->reset(true);
             $link = xtc_href_link(FILENAME_CHECKOUT_SUCCESS, '', 'SSL');
+            break;
+        case 'PENDING':
+            $_SESSION['cart']->reset(true);
+            $link = xtc_href_link('checkout_wirecard_checkout_page.php', 'pending=1', 'SSL');
             break;
         case 'CANCEL':
             $link = xtc_href_link('checkout_wirecard_checkout_page.php', 'cancel=1', 'SSL');
             break;
         default:
             $link = xtc_href_link('checkout_wirecard_checkout_page.php', 'failure=1', 'SSL');
+            unset($_SESSION['wirecard_checkout_page_fingerprintinvalid']);
             break;
     }
 }
