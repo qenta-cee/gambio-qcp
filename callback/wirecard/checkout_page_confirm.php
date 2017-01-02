@@ -47,6 +47,8 @@ define('MODULE_PAYMENT_WCP_ORDER_STATUS_SUCCESS', 2);
 // set order-status 99 (canceled)
 define('MODULE_PAYMENT_WCP_ORDER_STATUS_FAILED', 99);
 chdir('../../');
+require_once('includes/application_top.php');
+require_once('includes/modules/payment/wcp.php');
 
 function debug_msg($msg)
 {
