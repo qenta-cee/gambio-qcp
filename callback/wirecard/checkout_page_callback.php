@@ -39,8 +39,8 @@
  */
 
 chdir('../../');
-require('includes/application_top.php');
-require('includes/modules/payment/wcp.php');
+require_once('includes/application_top.php');
+require_once('includes/modules/payment/wcp.php');
 
 if(isset($_POST))
 {

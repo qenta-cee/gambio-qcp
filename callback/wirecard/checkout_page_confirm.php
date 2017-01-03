@@ -47,6 +47,8 @@ define('MODULE_PAYMENT_WCP_ORDER_STATUS_SUCCESS', 2);
 // set order-status 99 (canceled)
 define('MODULE_PAYMENT_WCP_ORDER_STATUS_FAILED', 99);
 chdir('../../');
+require_once('includes/application_top.php');
+require_once('includes/modules/payment/wcp.php');
 
 function debug_msg($msg)
 {
@@ -79,7 +81,7 @@ if ($_POST) {
         $order = $q->fetch_array();
     }
 
-    if ($order['orders_status'] == MODULE_PAYMENT_WCP_ORDER_STATUS_PENDING || $order['orders_status'] == MODULE_PAYMENT_WCP_ORDER_STATUS_NOT_VALIDATED) {
+    if ($order['orders_status'] != MODULE_PAYMENT_WCP_ORDER_STATUS_FAILED && $order['orders_status'] != $orderStatusSuccess) {
 
         $q = xtc_db_query("INSERT INTO " . TABLE_PAYMENT_WCP . "(orders_id, response, created_at) VALUES ('" . $order_id . "','" . serialize($_POST) . "', NOW())");
         if (!$q) {
