@@ -40,7 +40,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '2.1.3');
+define('WCP_PLUGIN_VERSION', '2.1.4');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
@@ -235,15 +235,18 @@ class wcp_core {
         $sql = 'SELECT customers_dob, customers_fax FROM ' . TABLE_CUSTOMERS .' WHERE customers_id="'.(int)$consumerID.'" LIMIT 1;';
         $result = xtc_db_query($sql);
         $consumerInformation = $result->fetch_row();
-        if($consumerInformation['customers_dob'] !== '0000-00-00 00:00:00' && $consumerInformation['customers_dob'] !== '1000-01-01 00:00:00')
-        {
-            $consumerBirthDateTimestamp = strtotime($consumerInformation['customers_dob']);
-            $consumerBirthDate = date('Y-m-d', $consumerBirthDateTimestamp);
-        }
-        else
-        {
-            $consumerBirthDate = '';
-        }
+
+	    $customerService = StaticGXCoreLoader::getService('Customer');
+	    $customer = $customerService->getCustomerById(MainFactory::create('IdType', $consumerID));
+	    $customerDateOfBirth = $customer->getDateOfBirth();
+
+	    $customerBirthDate = $customerDateOfBirth->format('Y-m-d');
+
+	    if($customerBirthDate ==  '0000-00-00' || $customerBirthDate == '1000-01-01') {
+		    $consumerBirthDate = '';
+	    } else {
+		    $consumerBirthDate = $customerBirthDate;
+	    }
 
         switch(wcp_core::constant("MODULE_PAYMENT_{$c}_PLUGIN_MODE")) {
             case 'Demo':

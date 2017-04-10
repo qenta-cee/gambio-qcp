@@ -50,20 +50,26 @@ class wcp_installment extends wcp_core {
         $total = $order->info['total'];
         $amount = round($xtPrice->xtcCalculateCurrEx($total,$currency), $xtPrice->get_decimal_places($currency));
 
-        $sql = 'SELECT (COUNT(*) > 0) as cnt FROM ' . TABLE_CUSTOMERS . ' WHERE DATEDIFF(NOW(), customers_dob) > 6574 AND customers_id="' . $consumerID . '"';
+	    $customerService = StaticGXCoreLoader::getService('Customer');
+	    $customer = $customerService->getCustomerById(MainFactory::create('IdType', $consumerID));
+	    $customerDateOfBirth = $customer->getDateOfBirth();
+	    $customerBirthDate = $customerDateOfBirth->format('Y-m-d');
 
-        $result = mysql_fetch_assoc(xtc_db_query($sql));
+	    $ageCheck = false;
+	    $nowDate = date('Y-m-d');
+	    if($nowDate - $customerBirthDate >= 18) {
+		    $ageCheck = true;
+	    }
 
-        $ageCheck = (bool)$result['cnt'];
         $country_code = $order->billing['country']['iso_code_2'];
         $minAmountConf = wcp_core::constant("MODULE_PAYMENT_{$c}_MIN_AMOUNT")." ";
         $maxAmountConf = wcp_core::constant("MODULE_PAYMENT_{$c}_MAX_AMOUNT");
 
-		if(empty($minAmountConf)) return false;
-		if(!empty($maxAmountConf) && $minAmountConf > ($maxAmountConf)) return false;
+	    if(!empty($minAmountConf) && $amount < $minAmountConf) return false;
+
+	    if(!empty($maxAmountConf) && $amount > ($maxAmountConf)) return false;
 
         return ($ageCheck &&
-            ($amount >= $minAmountConf && ($amount <= $maxAmountConf || empty($maxAmountConf))) &&
             ($currency == 'EUR') &&
             (in_array($country_code, Array('AT', 'DE', 'CH'))) &&
             ($order->delivery === $order->billing));
