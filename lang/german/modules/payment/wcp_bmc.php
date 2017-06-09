@@ -22,8 +22,8 @@
 	not use this plugin if you do not agree to the terms of use!
 */
 
-define('MODULE_PAYMENT_WCP_BMC_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.');
-define('MODULE_PAYMENT_WCP_BMC_TEXT_TITLE', 'Bancontact/Mister Cash');
+define('MODULE_PAYMENT_WCP_BMC_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.');
+define('MODULE_PAYMENT_WCP_BMC_TEXT_TITLE', 'Bancontact');
 define('MODULE_PAYMENT_WCP_BMC_TEXT_INFO','');
 
 define('MODULE_PAYMENT_WCP_BMC_STATUS_TITLE', 'Aktiv');

@@ -26,7 +26,7 @@ $t_language_text_section_content_array = array
 (
 
 	'MODULE_PAYMENT_WCP_CCARDMOTO_TEXT_DESCRIPTION' => 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.',
-	'MODULE_PAYMENT_WCP_CCARDMOTO_TEXT_TITLE' => 'Kreditkarte - Mail Order / Telephone Order',
+	'MODULE_PAYMENT_WCP_CCARDMOTO_TEXT_TITLE' => 'Kreditkarte - Post / Telefonbestellung',
 	'MODULE_PAYMENT_WCP_CCARDMOTO_TEXT_INFO','',
 
 	'MODULE_PAYMENT_WCP_CCARDMOTO_STATUS_TITLE' => 'Aktiv',
@@ -76,5 +76,6 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_CCARDMOTO_CHECKOUT_CONTENT' => '<center>Sie werden zur Bezahlung weitergeleitet.</center>',
 
 	'MODULE_PAYMENT_WCP_CCARDMOTO_REDIRECT_TIMEOUT_SECOUNDS' => 2,
-	'MODULE_PAYMENT_WCP_CCARDMOTO_DEVICE_DETECTION_TITLE' => 'automatische Geräteerkennung',	'MODULE_PAYMENT_WCP_CCARDMOTO_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',
+	'MODULE_PAYMENT_WCP_CCARDMOTO_DEVICE_DETECTION_TITLE' => 'automatische Geräteerkennung',
+	'MODULE_PAYMENT_WCP_CCARDMOTO_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',
 );

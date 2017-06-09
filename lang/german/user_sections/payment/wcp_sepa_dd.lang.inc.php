@@ -26,7 +26,7 @@ $t_language_text_section_content_array = array
 (
 
 	'MODULE_PAYMENT_WCP_SEPA_DD_TEXT_DESCRIPTION' => 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.',
-	'MODULE_PAYMENT_WCP_SEPA_DD_TEXT_TITLE' => 'Lastschriftverfahren',
+	'MODULE_PAYMENT_WCP_SEPA_DD_TEXT_TITLE' => 'SEPA Lastschrift',
 	'MODULE_PAYMENT_WCP_SEPA_DD_TEXT_INFO','',
 
 	'MODULE_PAYMENT_WCP_SEPA_DD_STATUS_TITLE' => 'Aktiv',

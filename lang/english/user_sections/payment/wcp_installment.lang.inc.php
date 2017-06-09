@@ -76,11 +76,21 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_INSTALLMENT_CHECKOUT_CONTENT' => '<center>You will be redirected.</center>',
 
 	'MODULE_PAYMENT_WCP_INSTALLMENT_MIN_AMOUNT_TITLE' => 'min. Amount',
-	'MODULE_PAYMENT_WCP_INSTALLMENT_MIN_AMOUNT_DESC' => 'Invoice minimum Amount',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_MIN_AMOUNT_DESC' => 'Installment minimum Amount',
 
 	'MODULE_PAYMENT_WCP_INSTALLMENT_MAX_AMOUNT_TITLE' => 'max. Amount',
-	'MODULE_PAYMENT_WCP_INSTALLMENT_MAX_AMOUNT_DESC' => 'Invoice maximum Amount',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_MAX_AMOUNT_DESC' => 'Installment maximum Amount',
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_TERMS_TITLE' => 'payolution terms',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_TERMS_DESC' => 'Consumer must accept payolution terms during the checkout process.',
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_MID_TITLE' => 'payolution mID',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_MID_DESC' => 'Your payolution merchant ID, non-base64-encoded.',
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_PROVIDER_TITLE' => 'Invoice provider',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_PROVIDER_DESC' => 'Choose your installment provider',
 	
 	'MODULE_PAYMENT_WCP_INSTALLMENT_REDIRECT_TIMEOUT_SECOUNDS' => 2,
-	'MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_TITLE' => 'automatic device detection',	'MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_DESC' => 'If activated, the buyers device will be auto detected to optimise payment page.',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_TITLE' => 'automatic device detection',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_DESC' => 'If activated, the buyers device will be auto detected to optimise payment page.',
 );

@@ -26,7 +26,7 @@ $t_language_text_section_content_array = array
 (
 
 	'MODULE_PAYMENT_WCP_INVOICE_TEXT_DESCRIPTION' => 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.',
-	'MODULE_PAYMENT_WCP_INVOICE_TEXT_TITLE' => 'Rechnung',
+	'MODULE_PAYMENT_WCP_INVOICE_TEXT_TITLE' => 'Kauf auf Rechnung',
 	'MODULE_PAYMENT_WCP_INVOICE_TEXT_INFO','',
 
 	'MODULE_PAYMENT_WCP_INVOICE_STATUS_TITLE' => 'Aktiv',
@@ -81,6 +81,16 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_INVOICE_MAX_AMOUNT_TITLE' => 'Max. Bestellsumme',
 	'MODULE_PAYMENT_WCP_INVOICE_MAX_AMOUNT_DESC' => 'Max. Bestellsumme f&uuml;r Rechnung',
 
+	'MODULE_PAYMENT_WCP_INVOICE_TERMS_TITLE' => 'Payolution Nutzungsbedingungen',
+	'MODULE_PAYMENT_WCP_INVOICE_TERMS_DESC' => 'Kunden müssen die Nutzungsbedingungen von payolution während des Bezahlprozesses akzeptieren.',
+
+	'MODULE_PAYMENT_WCP_INVOICE_MID_TITLE' => 'payolution mID',
+	'MODULE_PAYMENT_WCP_INVOICE_MID_DESC' => 'payolution-Händler-ID, Nicht base64 kodiert.',
+
+	'MODULE_PAYMENT_WCP_INVOICE_PROVIDER_TITLE' => 'Provider für Kauf auf Rechnung',
+	'MODULE_PAYMENT_WCP_INVOICE_PROVIDER_DESC' => 'Wählen Sie Ihren Provider für Kauf auf Rechnung aus.',
+
 	'MODULE_PAYMENT_WCP_INVOICE_REDIRECT_TIMEOUT_SECOUNDS' => 2,
-	'MODULE_PAYMENT_WCP_INVOICE_DEVICE_DETECTION_TITLE' => 'automatische Geräteerkennung',	'MODULE_PAYMENT_WCP_INVOICE_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',
+	'MODULE_PAYMENT_WCP_INVOICE_DEVICE_DETECTION_TITLE' => 'automatische Geräteerkennung',
+	'MODULE_PAYMENT_WCP_INVOICE_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',
 );

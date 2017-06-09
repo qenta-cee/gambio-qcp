@@ -23,7 +23,7 @@
 */
 
 define('MODULE_PAYMENT_WCP_VOUCHER_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard CEE payment page when you place an order.');
-define('MODULE_PAYMENT_WCP_VOUCHER_TEXT_TITLE', 'My Voucher');
+define('MODULE_PAYMENT_WCP_VOUCHER_TEXT_TITLE', 'Voucher');
 define('MODULE_PAYMENT_WCP_VOUCHER_TEXT_INFO','');
 
 define('MODULE_PAYMENT_WCP_VOUCHER_STATUS_TITLE', 'Active');

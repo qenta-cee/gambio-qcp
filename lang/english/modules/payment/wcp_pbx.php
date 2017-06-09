@@ -23,7 +23,7 @@
 */
 
 define('MODULE_PAYMENT_WCP_PBX_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard CEE payment page when you place an order.');
-define('MODULE_PAYMENT_WCP_PBX_TEXT_TITLE', 'Mobile Phone Invoicing');
+define('MODULE_PAYMENT_WCP_PBX_TEXT_TITLE', 'paybox');
 define('MODULE_PAYMENT_WCP_PBX_TEXT_INFO','');
 
 define('MODULE_PAYMENT_WCP_PBX_STATUS_TITLE', 'Active');

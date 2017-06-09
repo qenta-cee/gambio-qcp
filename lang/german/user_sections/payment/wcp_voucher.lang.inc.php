@@ -26,7 +26,7 @@ $t_language_text_section_content_array = array
 (
 
 	'MODULE_PAYMENT_WCP_VOUCHER_TEXT_DESCRIPTION' => 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.',
-	'MODULE_PAYMENT_WCP_VOUCHER_TEXT_TITLE' => 'Mein Gutschein',
+	'MODULE_PAYMENT_WCP_VOUCHER_TEXT_TITLE' => 'Gutschein',
 	'MODULE_PAYMENT_WCP_VOUCHER_TEXT_INFO','',
 
 	'MODULE_PAYMENT_WCP_VOUCHER_STATUS_TITLE' => 'Aktiv',
@@ -76,5 +76,6 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_VOUCHER_CHECKOUT_CONTENT' => '<center>Sie werden zur Bezahlung weitergeleitet.</center>',
 
 	'MODULE_PAYMENT_WCP_VOUCHER_REDIRECT_TIMEOUT_SECOUNDS' => 2,
-	'MODULE_PAYMENT_WCP_VOUCHER_DEVICE_DETECTION_TITLE' => 'automatische Geräteerkennung',	'MODULE_PAYMENT_WCP_VOUCHER_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',
+	'MODULE_PAYMENT_WCP_VOUCHER_DEVICE_DETECTION_TITLE' => 'automatische Geräteerkennung',
+	'MODULE_PAYMENT_WCP_VOUCHER_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',
 );

@@ -30,6 +30,7 @@ class wcp_installment extends wcp_core {
     var $defaultPaymethodOrder = 24;
 
     var $has_minmax_amount = true;
+	var $has_provider = "'gm_cfg_select_option(array(\'payolution\', \'RatePay\'), '";
 
     /// @brief initialize wirecard_checkout_page module
     function wcp_installment() {

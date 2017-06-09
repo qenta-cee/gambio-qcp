@@ -23,7 +23,7 @@
 */
 
 define('MODULE_PAYMENT_WCP_SUE_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard CEE payment page when you place an order.');
-define('MODULE_PAYMENT_WCP_SUE_TEXT_TITLE', 'SOFORT Banking (PIN/TAN)');
+define('MODULE_PAYMENT_WCP_SUE_TEXT_TITLE', 'SOFORT Banking');
 define('MODULE_PAYMENT_WCP_SUE_TEXT_INFO','');
 
 define('MODULE_PAYMENT_WCP_SUE_STATUS_TITLE', 'Active');

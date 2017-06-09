@@ -82,6 +82,16 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_INVOICE_MAX_AMOUNT_TITLE' => 'max. Amount',
 	'MODULE_PAYMENT_WCP_INVOICE_MAX_AMOUNT_DESC' => 'Invoice maximum',
 
+	'MODULE_PAYMENT_WCP_INVOICE_TERMS_TITLE' => 'payolution terms',
+	'MODULE_PAYMENT_WCP_INVOICE_TERMS_DESC' => 'Consumer must accept payolution terms during the checkout process.',
+
+	'MODULE_PAYMENT_WCP_INVOICE_MID_TITLE' => 'payolution mID',
+	'MODULE_PAYMENT_WCP_INVOICE_MID_DESC' => 'Your payolution merchant ID, non-base64-encoded.',
+
+	'MODULE_PAYMENT_WCP_INVOICE_PROVIDER_TITLE' => 'Invoice provider',
+	'MODULE_PAYMENT_WCP_INVOICE_PROVIDER_DESC' => 'Choose your invoice provider',
+
 	'MODULE_PAYMENT_WCP_INVOICE_REDIRECT_TIMEOUT_SECOUNDS' => 2,
-	'MODULE_PAYMENT_WCP_INVOICE_DEVICE_DETECTION_TITLE' => 'automatic device detection',	'MODULE_PAYMENT_WCP_INVOICE_DEVICE_DETECTION_DESC' => 'If activated, the buyers device will be auto detected to optimise payment page.',
+	'MODULE_PAYMENT_WCP_INVOICE_DEVICE_DETECTION_TITLE' => 'automatic device detection',
+	'MODULE_PAYMENT_WCP_INVOICE_DEVICE_DETECTION_DESC' => 'If activated, the buyers device will be auto detected to optimise payment page.',
 );

@@ -23,7 +23,7 @@
 */
 
 define('MODULE_PAYMENT_WCP_SEPA_DD_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard CEE payment page when you place an order.');
-define('MODULE_PAYMENT_WCP_SEPA_DD_TEXT_TITLE', 'Direct Debit');
+define('MODULE_PAYMENT_WCP_SEPA_DD_TEXT_TITLE', 'SEPA Direct Debit');
 define('MODULE_PAYMENT_WCP_SEPA_DD_TEXT_INFO','');
 
 define('MODULE_PAYMENT_WCP_SEPA_DD_STATUS_TITLE', 'Active');

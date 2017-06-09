@@ -26,7 +26,7 @@ $t_language_text_section_content_array = array
 (
 
 	'MODULE_PAYMENT_WCP_SEPA_DD_TEXT_DESCRIPTION' => 'You will be redirected to the Wirecard CEE payment page when you place an order.',
-	'MODULE_PAYMENT_WCP_SEPA_DD_TEXT_TITLE' => 'Direct Debit',
+	'MODULE_PAYMENT_WCP_SEPA_DD_TEXT_TITLE' => 'SEPA Direct Debit',
 	'MODULE_PAYMENT_WCP_SEPA_DD_TEXT_INFO','',
 
 	'MODULE_PAYMENT_WCP_SEPA_DD_STATUS_TITLE' => 'Active',

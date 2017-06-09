@@ -45,7 +45,7 @@ define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
 
-class wcp_core {
+class wcp_core{
     var $code, $title, $description, $enabled, $tmpOrders;
     var $process_cart_id;
     /// @note will be overwritten by child classes
@@ -487,12 +487,12 @@ class wcp_core {
 
         $q .= "
             ('MODULE_PAYMENT_{$c}_STATUS',                  'True',       '$cg_id', '" . $s++ . "', $selection, now()),
-            ('MODULE_PAYMENT_{$c}_PLUGIN_MODE',             'Live',       '$cg_id', '" . $s++ . "', $pluginModes, now()),
+            ('MODULE_PAYMENT_{$c}_PLUGIN_MODE',             'Demo',       '$cg_id', '" . $s++ . "', $pluginModes,now()),
             ('MODULE_PAYMENT_{$c}_PRESHARED_KEY',           '',           '$cg_id', '" . $s++ . "', '',         now()),
             ('MODULE_PAYMENT_{$c}_CUSTOMER_ID',             '',           '$cg_id', '" . $s++ . "', '',         now()),
-            ('MODULE_PAYMENT_{$c}_LOGO',                    '" . $imageURL . "','$cg_id', '" . $s++ . "', '' , now()),
+            ('MODULE_PAYMENT_{$c}_LOGO',                    '" . $imageURL . "','$cg_id', '" . $s++ . "', '' ,  now()),
             ('MODULE_PAYMENT_{$c}_SHOP_ID',                 '',           '$cg_id', '" . $s++ . "', '',         now()),
-            ('MODULE_PAYMENT_{$c}_SERVICE_URL',             '" . $serviceUrl . "','$cg_id', '" . $s++ . "', '',         now()),
+            ('MODULE_PAYMENT_{$c}_SERVICE_URL',             '" . $serviceUrl . "','$cg_id', '" . $s++ . "', '', now()),
             ('MODULE_PAYMENT_{$c}_STATEMENT',               '',           '$cg_id', '" . $s++ . "', '',         now()),
             ('MODULE_PAYMENT_{$c}_DISPLAY_TEXT',            '',           '$cg_id', '" . $s++ . "', '',         now()),";
 
@@ -507,9 +507,14 @@ class wcp_core {
             ('MODULE_PAYMENT_{$c}_DEVICE_DETECTION',        'False',      '$cg_id', '" . $s++ . "', $selection, now()) ";
 
         if ($this->has_minmax_amount) {
-            $q .= ",
-                ('MODULE_PAYMENT_{$c}_MIN_AMOUNT',          '100',          '$cg_id', '" . $s++ . "', '',         now()),
-                ('MODULE_PAYMENT_{$c}_MAX_AMOUNT',          '1000',         '$cg_id', '" . $s++ . "', '',         now()) ";
+            $q .= ",('MODULE_PAYMENT_{$c}_MIN_AMOUNT',      '100',        '$cg_id', '" . $s++ . "', '',         now())";
+	        $q .= ",('MODULE_PAYMENT_{$c}_MAX_AMOUNT',      '1000',       '$cg_id', '" . $s++ . "', '',         now())";
+	        $q .= ",('MODULE_PAYMENT_{$c}_TERMS',           'True',       '$cg_id', '" . $s++ ."', $selection, now())";
+	        $q .= ",('MODULE_PAYMENT_{$c}_MID',             '',           '$cg_id', '" . $s++ ."', '',         now())";
+        }
+
+        if ($this->has_provider) {
+        	$q .= ",('MODULE_PAYMENT_{$c}_PROVIDER',        'payolution', '$cg_id', '" . $s++ . "', $this->has_provider, now())";
         }
         xtc_db_query($q);
 
@@ -588,7 +593,13 @@ class wcp_core {
         {
             $keys[] = "MODULE_PAYMENT_{$c}_MIN_AMOUNT";
             $keys[] = "MODULE_PAYMENT_{$c}_MAX_AMOUNT";
+	        $keys[] = "MODULE_PAYMENT_{$c}_TERMS";
+	        $keys[] = "MODULE_PAYMENT_{$c}_MID";
         }
+	    if ($this->has_provider)
+	    {
+		    $keys[] = "MODULE_PAYMENT_{$c}_PROVIDER";
+	    }
 
         return $keys;
     }
@@ -841,3 +852,4 @@ class wcp_core {
         }
     }
 }
+MainFactory::load_origin_class('wcp');
