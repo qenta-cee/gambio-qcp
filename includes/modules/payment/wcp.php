@@ -120,7 +120,6 @@ class wcp_core{
     /// @brief finalize payment after order is created
     function payment_action() {
         global $insert_id;
-
         $response = array();
 
         //add comment to temp order if payment is started again
@@ -207,8 +206,7 @@ class wcp_core{
 
     /// @brief nothing to do
     function get_order_post_variables_array() {
-        global $order, $xtPrice, $insert_id;
-
+        global $order, $xtPrice, $insert_id, $_POST;
         $c = strtoupper($this->code);
 
         require_once('wcp_mobile_detect.php');
@@ -238,14 +236,19 @@ class wcp_core{
 
 	    $customerService = StaticGXCoreLoader::getService('Customer');
 	    $customer = $customerService->getCustomerById(MainFactory::create('IdType', $consumerID));
-	    $customerDateOfBirth = $customer->getDateOfBirth();
-
-	    $customerBirthDate = $customerDateOfBirth->format('Y-m-d');
-
-	    if($customerBirthDate ==  '0000-00-00' || $customerBirthDate == '1000-01-01') {
-		    $consumerBirthDate = '';
+	    
+	    if(isset($_POST['wcp_birthday'])) {
+	    	$customerBirthDate = $_POST['wcp_birthday'];
 	    } else {
-		    $consumerBirthDate = $customerBirthDate;
+		    $customerDateOfBirth = $customer->getDateOfBirth();
+
+		    $customerBirthDate = $customerDateOfBirth->format('Y-m-d');
+
+		    if($customerBirthDate ==  '0000-00-00' || $customerBirthDate == '1000-01-01') {
+			    $consumerBirthDate = '';
+		    } else {
+			    $consumerBirthDate = $customerBirthDate;
+		    }
 	    }
 
         switch(wcp_core::constant("MODULE_PAYMENT_{$c}_PLUGIN_MODE")) {

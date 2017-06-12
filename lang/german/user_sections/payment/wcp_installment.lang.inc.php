@@ -90,6 +90,12 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_INSTALLMENT_PROVIDER_TITLE' => 'Provider für Kauf auf Raten',
 	'MODULE_PAYMENT_WCP_INSTALLMENT_PROVIDER_DESC' => 'Wählen Sie Ihren Provider für Kauf auf Raten aus.',
 
+	'MODULE_PAYMENT_WCP_INSTALLMENT_CONSENT1' => 'Mit der Übermittlung jener Daten an payolution, die für die Abwicklung von Zahlungen mit Kauf auf Rechnung und die Identitäts- und Bonitätsprüfung erforderlich sind, bin ich einverstanden. Meine ',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_CONSENT2' => ' kann ich jederzeit mit Wirkung für die Zukunft widerrufen.',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_LINK' => 'Bewilligung',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_BIRTH' => 'Geburtsdatum',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_BIRTHDAY_ERROR' => 'Sie müssen mindestens 18 Jahre alt sein, um dieses Zahlungsmittel nutzen zu können.',
+
 	'MODULE_PAYMENT_WCP_INSTALLMENT_REDIRECT_TIMEOUT_SECOUNDS' => 2,
 	'MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_TITLE' => 'automatische Geräteerkennung',
 	'MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',

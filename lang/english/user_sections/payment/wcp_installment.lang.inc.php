@@ -89,7 +89,13 @@ $t_language_text_section_content_array = array
 
 	'MODULE_PAYMENT_WCP_INSTALLMENT_PROVIDER_TITLE' => 'Invoice provider',
 	'MODULE_PAYMENT_WCP_INSTALLMENT_PROVIDER_DESC' => 'Choose your installment provider',
-	
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_CONSENT1' => 'I agree that the data which are necessary for the liquidation of purchase on account and which are used to complete the identy and credit check are transmitted to payolution. My ',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_CONSENT2' => ' can be revoked at any time with effect for the future.',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_LINK' => 'consent',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_BIRTH' => 'Birthday',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_BIRTHDAY_ERROR' => 'You must be at least 18 years of age to use this payment method.',
+
 	'MODULE_PAYMENT_WCP_INSTALLMENT_REDIRECT_TIMEOUT_SECOUNDS' => 2,
 	'MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_TITLE' => 'automatic device detection',
 	'MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_DESC' => 'If activated, the buyers device will be auto detected to optimise payment page.',
