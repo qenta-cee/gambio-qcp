@@ -90,6 +90,11 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_INSTALLMENT_PROVIDER_TITLE' => 'Invoice provider',
 	'MODULE_PAYMENT_WCP_INSTALLMENT_PROVIDER_DESC' => 'Choose your installment provider',
 
+	'MODULE_PAYMENT_WCP_INSTALLMENT_CURRENCIES_TITLE' => 'Allowed currencies',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_CURRENCIES_DESC' => 'Insert allowed currencies (e.g. EUR,CHF)',
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_SHIPPING_TITLE' => 'Billing/shipping address must be identical',
+	
 	'MODULE_PAYMENT_WCP_INSTALLMENT_CONSENT1' => 'I agree that the data which are necessary for the liquidation of purchase on account and which are used to complete the identy and credit check are transmitted to payolution. My ',
 	'MODULE_PAYMENT_WCP_INSTALLMENT_CONSENT2' => ' can be revoked at any time with effect for the future.',
 	'MODULE_PAYMENT_WCP_INSTALLMENT_LINK' => 'consent',

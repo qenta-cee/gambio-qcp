@@ -236,7 +236,7 @@ class wcp_core{
 
 	    $customerService = StaticGXCoreLoader::getService('Customer');
 	    $customer = $customerService->getCustomerById(MainFactory::create('IdType', $consumerID));
-	    
+
 	    if(isset($_POST['wcp_birthday'])) {
 	    	$customerBirthDate = $_POST['wcp_birthday'];
 	    } else {
@@ -510,6 +510,8 @@ class wcp_core{
             ('MODULE_PAYMENT_{$c}_DEVICE_DETECTION',        'False',      '$cg_id', '" . $s++ . "', $selection, now()) ";
 
         if ($this->has_minmax_amount) {
+        	$q .= ",('MODULE_PAYMENT_{$c}_SHIPPING',        'False',      '$cg_id', '" . $s++ . "', $selection, now())";
+        	$q .= ",('MODULE_PAYMENT_{$c}_CURRENCIES',      '',           '$cg_id', '" . $s++ . "', '',         now())";
             $q .= ",('MODULE_PAYMENT_{$c}_MIN_AMOUNT',      '100',        '$cg_id', '" . $s++ . "', '',         now())";
 	        $q .= ",('MODULE_PAYMENT_{$c}_MAX_AMOUNT',      '1000',       '$cg_id', '" . $s++ . "', '',         now())";
 	        $q .= ",('MODULE_PAYMENT_{$c}_TERMS',           'True',       '$cg_id', '" . $s++ ."', $selection, now())";
@@ -594,6 +596,8 @@ class wcp_core{
 
         if ($this->has_minmax_amount)
         {
+        	$keys[] = "MODULE_PAYMENT_{$c}_SHIPPING";
+        	$keys[] = "MODULE_PAYMENT_{$c}_CURRENCIES";
             $keys[] = "MODULE_PAYMENT_{$c}_MIN_AMOUNT";
             $keys[] = "MODULE_PAYMENT_{$c}_MAX_AMOUNT";
 	        $keys[] = "MODULE_PAYMENT_{$c}_TERMS";

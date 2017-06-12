@@ -75,7 +75,6 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_INVOICE_CHECKOUT_HEADER' => '',
 	'MODULE_PAYMENT_WCP_INVOICE_CHECKOUT_CONTENT' => '<center>You will be redirected.</center>',
 
-
 	'MODULE_PAYMENT_WCP_INVOICE_MIN_AMOUNT_TITLE' => 'min. Amount',
 	'MODULE_PAYMENT_WCP_INVOICE_MIN_AMOUNT_DESC' => 'Invoice minimum Amount',
 
@@ -90,6 +89,11 @@ $t_language_text_section_content_array = array
 
 	'MODULE_PAYMENT_WCP_INVOICE_PROVIDER_TITLE' => 'Invoice provider',
 	'MODULE_PAYMENT_WCP_INVOICE_PROVIDER_DESC' => 'Choose your invoice provider',
+
+	'MODULE_PAYMENT_WCP_INVOICE_CURRENCIES_TITLE' => 'Allowed currencies',
+	'MODULE_PAYMENT_WCP_INVOICE_CURRENCIES_DESC' => 'Insert allowed currencies (e.g. EUR,CHF)',
+
+	'MODULE_PAYMENT_WCP_INVOICE_SHIPPING_TITLE' => 'Billing/shipping address must be identical',
 
 	'MODULE_PAYMENT_WCP_INVOICE_CONSENT1' => 'I agree that the data which are necessary for the liquidation of purchase on account and which are used to complete the identy and credit check are transmitted to payolution. My ',
 	'MODULE_PAYMENT_WCP_INVOICE_CONSENT2' => ' can be revoked at any time with effect for the future.',

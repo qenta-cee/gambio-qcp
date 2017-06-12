@@ -59,6 +59,9 @@ class wcp_installment extends wcp_core {
 
 		$minAmountConf = wcp_core::constant("MODULE_PAYMENT_{$c}_MIN_AMOUNT")." ";
 		$maxAmountConf = wcp_core::constant("MODULE_PAYMENT_{$c}_MAX_AMOUNT");
+		$shippingConf = wcp_core::constant("MODULE_PAYMENT_{$c}_SHIPPING");
+		$allowedZones = explode(",", wcp_core::constant("MODULE_PAYMENT_{$c}_ALLOWED"));
+		$allowedCurrencies = explode(",", wcp_core::constant("MODULE_PAYMENT_{$c}_CURRENCIES"));
 
 		if(!empty($minAmountConf) && $amount < $minAmountConf) {
 			return false;
@@ -68,7 +71,10 @@ class wcp_installment extends wcp_core {
 			return false;
 		}
 
-		if(!in_array($country_code, Array('AT', 'DE', 'CH')) || $order->delivery !== $order->billing || $currency != 'EUR') {
+		if (( ! in_array($country_code, $allowedZones) && strlen(wcp_core::constant("MODULE_PAYMENT_{$c}_ALLOWED"))) ||
+			( ! in_array($currency, $allowedCurrencies) && strlen(wcp_core::constant("MODULE_PAYMENT_{$c}_CURRENCIES"))) ||
+			($shippingConf && ($order->delivery !== $order->billing))
+		) {
 			return false;
 		}
 
