@@ -322,6 +322,7 @@ class wcp_core{
         if(!empty($billingInformation['country']['iso_code_2'])) $post_variables['consumerBillingCountry'] = $billingInformation['country']['iso_code_2'];
         if(!empty($order->customer['telephone']))       $post_variables['consumerBillingPhone'] = $order->customer['telephone'];
         if(!empty($order->customer['email_address']))   $post_variables['consumerEmail'] = $order->customer['email_address'];
+	    if(isset($_POST['wcp_financial_institution']))  $post_variables['financialInstitution'] = $_POST['wcp_financial_institution'];
 
 
         if($consumerBirthDate != '')

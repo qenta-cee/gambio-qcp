@@ -78,6 +78,8 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_EPS_CHECKOUT_HEADER' => '',
 	'MODULE_PAYMENT_WCP_EPS_CHECKOUT_CONTENT' => '<center>You will be redirected.</center>',
 
+	'MODULE_PAYMENT_WCP_EPS_FINANCIAL_INSTITUTION' => 'Financial institution',
+
 	'MODULE_PAYMENT_WCP_EPS_REDIRECT_TIMEOUT_SECOUNDS' => 2,
 	'MODULE_PAYMENT_WCP_EPS_DEVICE_DETECTION_TITLE' => 'automatic device detection',
 	'MODULE_PAYMENT_WCP_EPS_DEVICE_DETECTION_DESC' => 'If activated, the buyers device will be auto detected to optimise payment page.',
