@@ -100,6 +100,7 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_INVOICE_LINK' => 'consent',
 	'MODULE_PAYMENT_WCP_INVOICE_BIRTH' => 'Birthday',
 	'MODULE_PAYMENT_WCP_INVOICE_BIRTHDAY_ERROR' => 'You must be at least 18 years of age to use this payment method.',
+	'MODULE_PAYMENT_WCP_INVOICE_PAYOLUTION_ERROR' => 'Please accept the payolution terms.',
 
 	'MODULE_PAYMENT_WCP_INVOICE_REDIRECT_TIMEOUT_SECOUNDS' => 2,
 	'MODULE_PAYMENT_WCP_INVOICE_DEVICE_DETECTION_TITLE' => 'automatic device detection',
