@@ -81,3 +81,12 @@ define('MODULE_PAYMENT_WCP_IDL_DEVICE_DETECTION_DESC', 'Erkennen des Kundengerä
 
 define('MODULE_PAYMENT_WCP_IDL_ORDER_STATUS_ID_TITLE', 'Bestellstatus festlegen');
 define('MODULE_PAYMENT_WCP_IDL_ORDER_STATUS_ID_DESC', 'Bestellungen, die mit diesem Modul gemacht werden, auf diesen Status setzen');
+
+define('MODULE_PAYMENT_WCP_IDL_SEND_BASKET_TITLE', 'Warenkorbdaten des Konsumenten mitsenden');
+define('MODULE_PAYMENT_WCP_IDL_SEND_BASKET_DESC', 'Weiterleitung des Warenkorbs des Kunden an den Finanzdienstleister.');
+
+define('MODULE_PAYMENT_WCP_IDL_SEND_SHIPPING_DATA_TITLE', 'Versanddaten des Konsumenten mitsenden');
+define('MODULE_PAYMENT_WCP_IDL_SEND_SHIPPING_DATA_DESC', 'Weiterleitung der Versanddaten des Kunden an den Finanzdienstleister.');
+
+define('MODULE_PAYMENT_WCP_IDL_SEND_BILLING_DATA_TITLE', 'Verrechnungsdaten des Konsumenten mitsenden');
+define('MODULE_PAYMENT_WCP_IDL_SEND_BILLING_DATA_DESC', 'Weiterleitung der Rechnungsdaten des Kunden an den Finanzdienstleister.');
