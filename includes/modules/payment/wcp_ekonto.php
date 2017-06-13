@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_ekonto extends wcp_core {
     var $payment_type = 'EKONTO';
-    var $logoFilename = 'ekonto.jpg';
+    var $logoFilename = 'ekonto.png';
     var $defaultPaymethodOrder = 14;
 
     /// @brief initialize wirecard_checkout_page module

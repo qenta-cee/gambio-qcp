@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_maestro extends wcp_core {
     var $payment_type = 'CCARD';
-    var $logoFilename = 'maestro_secure_code.jpg';
+    var $logoFilename = 'maestro.png';
     var $defaultPaymethodOrder = 1;
 
     /// @brief initialize wirecard_checkout_page module

@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_invoice extends wcp_core {
     var $payment_type = 'INVOICE';
-    var $logoFilename = 'invoice.jpg';
+    var $logoFilename = 'invoice.png';
     var $defaultPaymethodOrder = 23;
 
     var $has_minmax_amount = true;

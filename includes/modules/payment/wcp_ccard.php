@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_ccard extends wcp_core {
     var $payment_type = 'CCARD';
-    var $logoFilename = 'ccard.jpg';
+    var $logoFilename = 'ccard.png';
     var $defaultPaymethodOrder = 1;
 
     /// @brief initialize wirecard_checkout_page module

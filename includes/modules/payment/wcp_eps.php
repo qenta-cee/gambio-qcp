@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_eps extends wcp_core {
     var $payment_type = 'EPS';
-    var $logoFilename = 'eps-online-ueberweisungl.jpg';
+    var $logoFilename = 'eps.png';
     var $defaultPaymethodOrder = 2;
 
 	/**

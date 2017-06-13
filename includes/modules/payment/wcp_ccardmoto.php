@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_ccardmoto extends wcp_core {
     var $payment_type = 'CCARD-MOTO';
-    var $logoFilename = 'ccard_moto.jpg';
+    var $logoFilename = 'ccard.png';
     var $defaultPaymethodOrder = 1;
 
     /// @brief initialize wirecard_checkout_page module

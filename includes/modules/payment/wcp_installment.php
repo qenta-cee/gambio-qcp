@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_installment extends wcp_core {
     var $payment_type = 'INSTALLMENT';
-    var $logoFilename = 'installment.jpg';
+    var $logoFilename = 'installment.png';
     var $defaultPaymethodOrder = 24;
 
     var $has_minmax_amount = true;

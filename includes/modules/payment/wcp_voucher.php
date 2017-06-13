@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_voucher extends wcp_core {
     var $payment_type = 'VOUCHER';
-    var $logoFilename = 'myVoucher.jpg';
+    var $logoFilename = 'voucher.png';
     var $defaultPaymethodOrder = 25;
 
     /// @brief initialize wirecard_checkout_page module

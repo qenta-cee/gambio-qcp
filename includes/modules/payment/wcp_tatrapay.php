@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_tatrapay extends wcp_core {
     var $payment_type = 'TATRAPAY';
-    var $logoFilename = 'tatrapay.jpg';
+    var $logoFilename = 'tatrapay.png';
     var $defaultPaymethodOrder = 5;
 
     /// @brief initialize wirecard_checkout_page module
