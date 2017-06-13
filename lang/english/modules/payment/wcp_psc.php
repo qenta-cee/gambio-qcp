@@ -22,7 +22,7 @@
 	not use this plugin if you do not agree to the terms of use!
 */
 
-define('MODULE_PAYMENT_WCP_PSC_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard CEE payment page when you place an order.');
+define('MODULE_PAYMENT_WCP_PSC_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard payment page when you place an order.');
 define('MODULE_PAYMENT_WCP_PSC_TEXT_TITLE', 'paysafecard');
 define('MODULE_PAYMENT_WCP_PSC_TEXT_INFO','');
 

@@ -22,7 +22,7 @@
 	not use this plugin if you do not agree to the terms of use!
 */
 
-define('MODULE_PAYMENT_WCP_GIROPAY_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.');
+define('MODULE_PAYMENT_WCP_GIROPAY_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.');
 define('MODULE_PAYMENT_WCP_GIROPAY_TEXT_TITLE', 'giropay');
 define('MODULE_PAYMENT_WCP_GIROPAY_TEXT_INFO','');
 

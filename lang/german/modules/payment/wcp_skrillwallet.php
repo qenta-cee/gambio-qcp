@@ -22,7 +22,7 @@
 	not use this plugin if you do not agree to the terms of use!
 */
 
-define('MODULE_PAYMENT_WCP_SKRILLWALLET_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.');
+define('MODULE_PAYMENT_WCP_SKRILLWALLET_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.');
 define('MODULE_PAYMENT_WCP_SKRILLWALLET_TEXT_TITLE', 'Skrill Digital Wallet');
 define('MODULE_PAYMENT_WCP_SKRILLWALLET_TEXT_INFO','');
 
@@ -73,4 +73,5 @@ define('MODULE_PAYMENT_WCP_SKRILLWALLET_CHECKOUT_HEADER', '');
 define('MODULE_PAYMENT_WCP_SKRILLWALLET_CHECKOUT_CONTENT', '<center>Sie werden zur Bezahlung weitergeleitet.</center>');
 
 define('MODULE_PAYMENT_WCP_SKRILLWALLET_REDIRECT_TIMEOUT_SECOUNDS', 2);
-define('MODULE_PAYMENT_WCP_SKRILLWALLET_DEVICE_DETECTION_TITLE', 'automatische Geräteerkennung');define('MODULE_PAYMENT_WCP_SKRILLWALLET_DEVICE_DETECTION_DESC', 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.');
+define('MODULE_PAYMENT_WCP_SKRILLWALLET_DEVICE_DETECTION_TITLE', 'automatische Geräteerkennung');
+define('MODULE_PAYMENT_WCP_SKRILLWALLET_DEVICE_DETECTION_DESC', 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.');

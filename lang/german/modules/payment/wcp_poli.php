@@ -22,7 +22,7 @@
 	not use this plugin if you do not agree to the terms of use!
 */
 
-define('MODULE_PAYMENT_WCP_POLI_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.');
+define('MODULE_PAYMENT_WCP_POLI_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.');
 define('MODULE_PAYMENT_WCP_POLI_TEXT_TITLE', 'POLi');
 define('MODULE_PAYMENT_WCP_POLI_TEXT_INFO','');
 

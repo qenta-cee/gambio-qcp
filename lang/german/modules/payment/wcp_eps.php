@@ -22,7 +22,7 @@
 	not use this plugin if you do not agree to the terms of use!
 */
 
-define('MODULE_PAYMENT_WCP_EPS_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.');
+define('MODULE_PAYMENT_WCP_EPS_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.');
 define('MODULE_PAYMENT_WCP_EPS_TEXT_TITLE', 'eps Online-&Uuml;berweisung');
 define('MODULE_PAYMENT_WCP_EPS_TEXT_INFO','');
 

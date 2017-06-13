@@ -22,7 +22,7 @@
 	not use this plugin if you do not agree to the terms of use!
 */
 
-define('MODULE_PAYMENT_WCP_SUE_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard CEE payment page when you place an order.');
+define('MODULE_PAYMENT_WCP_SUE_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard payment page when you place an order.');
 define('MODULE_PAYMENT_WCP_SUE_TEXT_TITLE', 'SOFORT Banking');
 define('MODULE_PAYMENT_WCP_SUE_TEXT_INFO','');
 
