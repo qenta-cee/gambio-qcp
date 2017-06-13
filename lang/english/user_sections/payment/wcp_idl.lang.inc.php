@@ -75,6 +75,9 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_IDL_CHECKOUT_HEADER' => '',
 	'MODULE_PAYMENT_WCP_IDL_CHECKOUT_CONTENT' => '<center>You will be redirected.</center>',
 
+	'MODULE_PAYMENT_WCP_IDL_FINANCIAL_INSTITUTION' => 'Financial institution',
+
 	'MODULE_PAYMENT_WCP_IDL_REDIRECT_TIMEOUT_SECOUNDS' => 2,
-	'MODULE_PAYMENT_WCP_IDL_DEVICE_DETECTION_TITLE' => 'automatic device detection',	'MODULE_PAYMENT_WCP_IDL_DEVICE_DETECTION_DESC' => 'If activated, the buyers device will be auto detected to optimise payment page.',
+	'MODULE_PAYMENT_WCP_IDL_DEVICE_DETECTION_TITLE' => 'automatic device detection',
+	'MODULE_PAYMENT_WCP_IDL_DEVICE_DETECTION_DESC' => 'If activated, the buyers device will be auto detected to optimise payment page.',
 );
