@@ -26,7 +26,7 @@ $t_language_text_section_content_array = array
 (
 
 	'MODULE_PAYMENT_WCP_MASTERPASS_TEXT_DESCRIPTION' => 'You will be redirected to the Wirecard payment page when you place an order.',
-	'MODULE_PAYMENT_WCP_MASTERPASS_TEXT_TITLE' => 'Credit Card',
+	'MODULE_PAYMENT_WCP_MASTERPASS_TEXT_TITLE' => 'Masterpass',
 	'MODULE_PAYMENT_WCP_MASTERPASS_TEXT_INFO','',
 
 	'MODULE_PAYMENT_WCP_MASTERPASS_STATUS_TITLE' => 'Active',

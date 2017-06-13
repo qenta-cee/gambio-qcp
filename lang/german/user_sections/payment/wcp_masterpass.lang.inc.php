@@ -26,7 +26,7 @@ $t_language_text_section_content_array = array
 (
 
 	'MODULE_PAYMENT_WCP_MASTERPASS_TEXT_DESCRIPTION' => 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.',
-	'MODULE_PAYMENT_WCP_MASTERPASS_TEXT_TITLE' => 'Kreditkarte',
+	'MODULE_PAYMENT_WCP_MASTERPASS_TEXT_TITLE' => 'Masterpass',
 	'MODULE_PAYMENT_WCP_MASTERPASS_TEXT_INFO','',
 
 	'MODULE_PAYMENT_WCP_MASTERPASS_STATUS_TITLE' => 'Aktiv',
