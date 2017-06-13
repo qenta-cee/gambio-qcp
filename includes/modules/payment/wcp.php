@@ -354,6 +354,10 @@ class wcp_core{
 	    	$post_variables = array_merge($post_variables, $this->create_shopping_basket());
 	    }
 
+	    if ($this->payment_type == 'MASTERPASS') {
+	    	$post_variables['shippingProfile'] = 'NO_SHIPPING';
+	    }
+
         // set shop id if isset
         if(constant("MODULE_PAYMENT_{$c}_SHOP_ID")) {
             $post_variables['shopId'] = wcp_core::constant("MODULE_PAYMENT_{$c}_SHOP_ID");
