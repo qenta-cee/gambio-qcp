@@ -24,7 +24,7 @@
 
 require_once(dirname(__FILE__).'/wcp.php');
 
-class wcp_ccard extends wcp_core {
+class wcp_masterpass extends wcp_core {
     var $payment_type = 'MASTERPASS';
     var $logoFilename = 'masterpass.png';
     var $defaultPaymethodOrder = 1;
