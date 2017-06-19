@@ -23,7 +23,7 @@
 */
 
 define('MODULE_PAYMENT_WCP_SEPA_DD_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.');
-define('MODULE_PAYMENT_WCP_SEPA_DD_TEXT_TITLE', 'Lastschriftverfahren');
+define('MODULE_PAYMENT_WCP_SEPA_DD_TEXT_TITLE', 'SEPA Lastschrift');
 define('MODULE_PAYMENT_WCP_SEPA_DD_TEXT_INFO','');
 
 define('MODULE_PAYMENT_WCP_SEPA_DD_STATUS_TITLE', 'Aktiv');
