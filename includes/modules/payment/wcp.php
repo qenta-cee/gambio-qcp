@@ -580,8 +580,8 @@ class wcp_core{
         if ($this->has_minmax_amount) {
         	$q .= ",('MODULE_PAYMENT_{$c}_SHIPPING',        'False',      '$cg_id', '" . $s++ . "', $selection, now())";
         	$q .= ",('MODULE_PAYMENT_{$c}_CURRENCIES',      '',           '$cg_id', '" . $s++ . "', '',         now())";
-            $q .= ",('MODULE_PAYMENT_{$c}_MIN_AMOUNT',      '100',        '$cg_id', '" . $s++ . "', '',         now())";
-	        $q .= ",('MODULE_PAYMENT_{$c}_MAX_AMOUNT',      '1000',       '$cg_id', '" . $s++ . "', '',         now())";
+            $q .= ",('MODULE_PAYMENT_{$c}_MIN_AMOUNT',      '10',         '$cg_id', '" . $s++ . "', '',         now())";
+	        $q .= ",('MODULE_PAYMENT_{$c}_MAX_AMOUNT',      '3500',       '$cg_id', '" . $s++ . "', '',         now())";
 	        $q .= ",('MODULE_PAYMENT_{$c}_TERMS',           'True',       '$cg_id', '" . $s++ ."', $selection, now())";
 	        $q .= ",('MODULE_PAYMENT_{$c}_MID',             '',           '$cg_id', '" . $s++ ."', '',         now())";
         }
