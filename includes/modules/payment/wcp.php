@@ -339,7 +339,8 @@ class wcp_core{
         }
 
         if(!empty($order->customer['email_address']))   $post_variables['consumerEmail'] = $order->customer['email_address'];
-	    if(isset($_POST['wcp_financial_institution']))  $post_variables['financialInstitution'] = $_POST['wcp_financial_institution'];
+	    if(isset($_POST['wcp_financial_institution']) && $this->payment_type == 'EPS')  $post_variables['financialInstitution'] = $_POST['wcp_financial_institution'];
+	    if(isset($_POST['wcp_idl_financial_institution']) && $this->payment_type == 'IDL')  $post_variables['financialInstitution'] = $_POST['wcp_idl_financial_institution'];
 
 
         if($consumerBirthDate != '')

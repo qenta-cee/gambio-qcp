@@ -56,12 +56,12 @@ class wcp_idl extends wcp_core {
 	function selection() {
 		$c = strtoupper($this->code);
 
-		$t_wcp_financial_institution = self::$_idl_financial_institutions;
-		if(trim($_SESSION['wcp_financial_institution']) != '')
+		$t_wcp_idl_financial_institution = self::$_idl_financial_institutions;
+		if(trim($_SESSION['wcp_idl_financial_institution']) != '')
 		{
-			$t_wcp_financial_institution = $_SESSION['wcp_financial_institution'];
+			$t_wcp_idl_financial_institution = $_SESSION['wcp_idl_financial_institution'];
 		}
-		$institution_field = xtc_draw_pull_down_menu("wcp_financial_institution", $t_wcp_financial_institution);
+		$institution_field = xtc_draw_pull_down_menu("wcp_idl_financial_institution", $t_wcp_idl_financial_institution);
 		$field = array('title' => MODULE_PAYMENT_WCP_IDL_FINANCIAL_INSTITUTION, 'field' => $institution_field);
 
 		$fields = array();
@@ -78,7 +78,7 @@ class wcp_idl extends wcp_core {
 	function process_button() {
 		global $_POST;
 
-		$process_button_string = xtc_draw_hidden_field('wcp_financial_institution', $_POST['wcp_financial_institution']);
+		$process_button_string = xtc_draw_hidden_field('wcp_idl_financial_institution', $_POST['wcp_idl_financial_institution']);
 		return $process_button_string;
 	}
 }
