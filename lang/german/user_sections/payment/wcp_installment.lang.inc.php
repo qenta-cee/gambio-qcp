@@ -100,6 +100,7 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_INSTALLMENT_LINK' => 'Einwilligung',
 	'MODULE_PAYMENT_WCP_INSTALLMENT_BIRTH' => 'Geburtsdatum',
 	'MODULE_PAYMENT_WCP_INSTALLMENT_BIRTHDAY_ERROR' => 'Sie müssen mindestens 18 Jahre alt sein, um dieses Zahlungsmittel nutzen zu können.',
+	'MODULE_PAYMENT_WCP_INVOICE_EMPTY_BIRTHDAY_ERROR' => 'Bitte geben Sie ein gültiges Geburtsdatum an.',
 	'MODULE_PAYMENT_WCP_INSTALLMENT_PAYOLUTION_ERROR' => 'Bitte akzeptieren Sie die payolution Konditionen.',
 
 	'MODULE_PAYMENT_WCP_INSTALLMENT_REDIRECT_TIMEOUT_SECOUNDS' => 2,

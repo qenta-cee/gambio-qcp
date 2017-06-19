@@ -82,7 +82,7 @@ class wcp_eps extends wcp_core {
 		{
 			$t_wcp_financial_institution = $_SESSION['wcp_financial_institution'];
 		}
-		$institution_field = xtc_draw_pull_down_menu("wcp_financial_institution", $t_wcp_financial_institution);
+		$institution_field = xtc_draw_pull_down_menu("wcp_financial_institution", $t_wcp_financial_institution, '', 'class="form-control"');
 		$field = array('title' => MODULE_PAYMENT_WCP_EPS_FINANCIAL_INSTITUTION, 'field' => $institution_field);
 
 		$fields = array();

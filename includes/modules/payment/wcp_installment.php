@@ -95,7 +95,7 @@ class wcp_installment extends wcp_core {
 		}
 
 		$maxDate = (date('Y')-18)."-".date('m')."-".date('d');
-		$birthday = '<input type="date" name="wcp_birthday" value="'.$t_wcp_birthday.'" max="'.$maxDate.'"/>';
+		$birthday = '<input type="date" name="wcp_birthday" value="'.$t_wcp_birthday.'" max="'.$maxDate.'"  class="form-control" />';
 		$birthDayField = array('title' => MODULE_PAYMENT_WCP_INSTALLMENT_BIRTH, 'field' => $birthday);
 		$fields = array();
 		array_push($fields, $birthDayField);
@@ -110,9 +110,9 @@ class wcp_installment extends wcp_core {
 			$t_wcp_payolutionterms = $_SESSION['wcp_payolutionterms'];
 		}
 
-		$payolutionTerms = '<input type="checkbox" name="wcp_payolutionterms" value="'.$t_wcp_payolutionterms.'"/><span>'.MODULE_PAYMENT_WCP_INSTALLMENT_CONSENT1;
+		$payolutionTerms = '<input type="checkbox" name="wcp_payolutionterms" value="'.$t_wcp_payolutionterms.'"/>&nbsp;<span>'.MODULE_PAYMENT_WCP_INSTALLMENT_CONSENT1;
 		if (strlen($mId)) {
-			$payolutionTerms .= '<a id="wcp-payolutionlink" href="https://payment.payolution.com/payolution-payment/infoport/dataprivacyconsent?mId='.$mId.'" target="_blank">' . MODULE_PAYMENT_WCP_INSTALLMENT_LINK .'</a>';
+			$payolutionTerms .= '<a id="wcp-payolutionlink" href="https://payment.payolution.com/payolution-payment/infoport/dataprivacyconsent?mId='.$mId.'" target="_blank"><b>' . MODULE_PAYMENT_WCP_INSTALLMENT_LINK .'</b></a>';
 		}else {
 			$payolutionTerms .= MODULE_PAYMENT_WCP_INSTALLMENT_LINK;
 		}
@@ -151,6 +151,11 @@ class wcp_installment extends wcp_core {
 		$maxDate = (date('Y')-18)."-".date('m')."-".date('d');
 		if($_POST['wcp_birthday'] > $maxDate) {
 			$error = MODULE_PAYMENT_WCP_INSTALLMENT_BIRTHDAY_ERROR;
+			$payment_error_return = 'payment_error=' . $this->code . '&error=' . urlencode($error) . '&recheckok=' . false;
+			xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
+		}
+		if($_POST['wcp_birthday'] == '1000-01-01') {
+			$error = MODULE_PAYMENT_WCP_INSTALLMENT_EMPTY_BIRTHDAY_ERROR;
 			$payment_error_return = 'payment_error=' . $this->code . '&error=' . urlencode($error) . '&recheckok=' . false;
 			xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
 		}
