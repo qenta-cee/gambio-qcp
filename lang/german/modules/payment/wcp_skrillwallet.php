@@ -73,7 +73,7 @@ define('MODULE_PAYMENT_WCP_SKRILLWALLET_CHECKOUT_HEADER', '');
 define('MODULE_PAYMENT_WCP_SKRILLWALLET_CHECKOUT_CONTENT', '<center>Sie werden zur Bezahlung weitergeleitet.</center>');
 
 define('MODULE_PAYMENT_WCP_SKRILLWALLET_REDIRECT_TIMEOUT_SECOUNDS', 2);
-define('MODULE_PAYMENT_WCP_SKRILLWALLET_DEVICE_DETECTION_TITLE', 'automatische Geräteerkennung');
+define('MODULE_PAYMENT_WCP_SKRILLWALLET_DEVICE_DETECTION_TITLE', 'Automatische Geräteerkennung');
 define('MODULE_PAYMENT_WCP_SKRILLWALLET_DEVICE_DETECTION_DESC', 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.');
 
 define('MODULE_PAYMENT_WCP_SKRILLWALLET_SEND_BASKET_TITLE', 'Warenkorbdaten des Konsumenten mitsenden');

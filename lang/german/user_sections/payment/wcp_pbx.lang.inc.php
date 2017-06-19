@@ -76,7 +76,7 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_PBX_CHECKOUT_CONTENT' => '<center>Sie werden zur Bezahlung weitergeleitet.</center>',
 
 	'MODULE_PAYMENT_WCP_PBX_REDIRECT_TIMEOUT_SECOUNDS' => 2,
-	'MODULE_PAYMENT_WCP_PBX_DEVICE_DETECTION_TITLE' => 'automatische Geräteerkennung',
+	'MODULE_PAYMENT_WCP_PBX_DEVICE_DETECTION_TITLE' => 'Automatische Geräteerkennung',
 	'MODULE_PAYMENT_WCP_PBX_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',
 
 	'MODULE_PAYMENT_WCP_PBX_SEND_BASKET_TITLE' => 'Warenkorbdaten des Konsumenten mitsenden',

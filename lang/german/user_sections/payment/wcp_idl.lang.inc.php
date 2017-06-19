@@ -81,7 +81,7 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_IDL_FINANCIAL_INSTITUTION' => 'Finanzinstitut',
 
 	'MODULE_PAYMENT_WCP_IDL_REDIRECT_TIMEOUT_SECOUNDS' => 2,
-	'MODULE_PAYMENT_WCP_IDL_DEVICE_DETECTION_TITLE' => 'automatische Geräteerkennung',
+	'MODULE_PAYMENT_WCP_IDL_DEVICE_DETECTION_TITLE' => 'Automatische Geräteerkennung',
 	'MODULE_PAYMENT_WCP_IDL_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',
 
 	'MODULE_PAYMENT_WCP_IDL_SEND_BASKET_TITLE' => 'Warenkorbdaten des Konsumenten mitsenden',

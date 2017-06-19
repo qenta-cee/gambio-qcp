@@ -76,7 +76,7 @@ define('MODULE_PAYMENT_WCP_IDL_CHECKOUT_HEADER', '');
 define('MODULE_PAYMENT_WCP_IDL_CHECKOUT_CONTENT', '<center>Sie werden zur Bezahlung weitergeleitet.</center>');
 
 define('MODULE_PAYMENT_WCP_IDL_REDIRECT_TIMEOUT_SECOUNDS', 2);
-define('MODULE_PAYMENT_WCP_IDL_DEVICE_DETECTION_TITLE', 'automatische Geräteerkennung');
+define('MODULE_PAYMENT_WCP_IDL_DEVICE_DETECTION_TITLE', 'Automatische Geräteerkennung');
 define('MODULE_PAYMENT_WCP_IDL_DEVICE_DETECTION_DESC', 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.');
 
 define('MODULE_PAYMENT_WCP_IDL_ORDER_STATUS_ID_TITLE', 'Bestellstatus festlegen');

@@ -79,7 +79,7 @@ define('MODULE_PAYMENT_WCP_INSTALLMENT_MAX_AMOUNT_TITLE', 'Max. Bestellsumme');
 define('MODULE_PAYMENT_WCP_INSTALLMENT_MAX_AMOUNT_DESC', 'Max. Bestellsumme f&uuml;r Ratenzahlung');
 
 define('MODULE_PAYMENT_WCP_INSTALLMENT_REDIRECT_TIMEOUT_SECOUNDS', 2);
-define('MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_TITLE', 'automatische Geräteerkennung');
+define('MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_TITLE', 'Automatische Geräteerkennung');
 define('MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_DESC', 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.');
 
 define('MODULE_PAYMENT_WCP_INSTALLMENT_ORDER_STATUS_ID_TITLE', 'Bestellstatus festlegen');
