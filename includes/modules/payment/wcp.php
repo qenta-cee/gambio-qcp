@@ -40,12 +40,12 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '2.1.4');
+define('WCP_PLUGIN_VERSION', '2.2.0');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
 
-class wcp_core {
+class wcp_core{
     var $code, $title, $description, $enabled, $tmpOrders;
     var $process_cart_id;
     /// @note will be overwritten by child classes
@@ -120,7 +120,6 @@ class wcp_core {
     /// @brief finalize payment after order is created
     function payment_action() {
         global $insert_id;
-
         $response = array();
 
         //add comment to temp order if payment is started again
@@ -207,8 +206,7 @@ class wcp_core {
 
     /// @brief nothing to do
     function get_order_post_variables_array() {
-        global $order, $xtPrice, $insert_id;
-
+        global $order, $xtPrice, $insert_id, $_POST;
         $c = strtoupper($this->code);
 
         require_once('wcp_mobile_detect.php');
@@ -238,14 +236,19 @@ class wcp_core {
 
 	    $customerService = StaticGXCoreLoader::getService('Customer');
 	    $customer = $customerService->getCustomerById(MainFactory::create('IdType', $consumerID));
-	    $customerDateOfBirth = $customer->getDateOfBirth();
 
-	    $customerBirthDate = $customerDateOfBirth->format('Y-m-d');
-
-	    if($customerBirthDate ==  '0000-00-00' || $customerBirthDate == '1000-01-01') {
-		    $consumerBirthDate = '';
+	    if(isset($_POST['wcp_birthday'])) {
+	    	$customerBirthDate = $_POST['wcp_birthday'];
 	    } else {
-		    $consumerBirthDate = $customerBirthDate;
+		    $customerDateOfBirth = $customer->getDateOfBirth();
+
+		    $customerBirthDate = $customerDateOfBirth->format('Y-m-d');
+
+		    if($customerBirthDate ==  '0000-00-00' || $customerBirthDate == '1000-01-01') {
+			    $consumerBirthDate = '';
+		    } else {
+			    $consumerBirthDate = $customerBirthDate;
+		    }
 	    }
 
         switch(wcp_core::constant("MODULE_PAYMENT_{$c}_PLUGIN_MODE")) {
@@ -300,25 +303,44 @@ class wcp_core {
             'consumerMerchantCrmId' => md5($order->customer['email_address']),
         );
 
-        if(!empty($deliveryInformation['firstname']))   $post_variables['consumerShippingFirstName'] = $deliveryInformation['firstname'];
-        if(!empty($deliveryInformation['lastname']))    $post_variables['consumerShippingLastName'] = $deliveryInformation['lastname'];
-        if(!empty($deliveryInformation['street_address'])) $post_variables['consumerShippingAddress1'] = $deliveryInformation['street_address'];
-        if(!empty($deliveryInformation['suburb']))      $post_variables['consumerShippingAddress2'] = $deliveryInformation['suburb'];
-        if(!empty($deliveryInformation['city']))        $post_variables['consumerShippingCity'] = $deliveryInformation['city'];
-        if(!empty($deliveryInformation['postcode']))    $post_variables['consumerShippingZipCode'] = $deliveryInformation['postcode'];
-        if(!empty($deliveryState))                      $post_variables['consumerShippingState'] = $deliveryState;
-        if(!empty($deliveryInformation['country']['iso_code_2'])) $post_variables['consumerShippingCountry'] = $deliveryInformation['country']['iso_code_2'];
-        if(!empty($order->customer['telephone']))       $post_variables['consumerShippingPhone'] = $order->customer['telephone'];
-        if(!empty($billingInformation['firstname']))    $post_variables['consumerBillingFirstName'] = $billingInformation['firstname'];
-        if(!empty($billingInformation['lastname']))     $post_variables['consumerBillingLastName'] = $billingInformation['lastname'];
-        if(!empty($billingInformation['street_address'])) $post_variables['consumerBillingAddress1'] = $billingInformation['street_address'];
-        if(!empty($billingInformation['suburb']))       $post_variables['consumerBillingAddress2'] = $billingInformation['suburb'];
-        if(!empty($billingInformation['city']))         $post_variables['consumerBillingCity'] = $billingInformation['city'];
-        if(!empty($billingInformation['postcode']))     $post_variables['consumerBillingZipCode'] = $billingInformation['postcode'];
-        if(!empty($billingState))                       $post_variables['consumerBillingState'] = $billingState;
-        if(!empty($billingInformation['country']['iso_code_2'])) $post_variables['consumerBillingCountry'] = $billingInformation['country']['iso_code_2'];
-        if(!empty($order->customer['telephone']))       $post_variables['consumerBillingPhone'] = $order->customer['telephone'];
+	    if (wcp_core::constant("MODULE_PAYMENT_{$c}_SEND_SHIPPING_DATA") === 'True' ||
+		    $this->payment_type == 'INVOICE' || $this->payment_type == 'INSTALLMENT'
+	    ) {
+		    if(!empty($deliveryInformation['firstname']))   $post_variables['consumerShippingFirstName'] = $deliveryInformation['firstname'];
+		    if(!empty($deliveryInformation['lastname']))    $post_variables['consumerShippingLastName'] = $deliveryInformation['lastname'];
+		    if(!empty($deliveryInformation['street_address'])) $post_variables['consumerShippingAddress1'] = $deliveryInformation['street_address'];
+		    if(!empty($deliveryInformation['suburb']))      $post_variables['consumerShippingAddress2'] = $deliveryInformation['suburb'];
+		    if(!empty($deliveryInformation['city']))        $post_variables['consumerShippingCity'] = $deliveryInformation['city'];
+		    if(!empty($deliveryInformation['postcode']))    $post_variables['consumerShippingZipCode'] = $deliveryInformation['postcode'];
+		    if(!empty($deliveryState))                      $post_variables['consumerShippingState'] = $deliveryState;
+		    if(!empty($deliveryInformation['country']['iso_code_2'])) $post_variables['consumerShippingCountry'] = $deliveryInformation['country']['iso_code_2'];
+		    if(!empty($order->customer['telephone']))       $post_variables['consumerShippingPhone'] = $order->customer['telephone'];
+		    if($consumerInformation['customers_fax'] != '' && $consumerInformation['customers_fax'] != null)
+		    {
+			    $post_variables['consumerShippingFax'] = $consumerInformation['customers_fax'];
+		    }
+	    }
+        if(wcp_core::constant("MODULE_PAYMENT_{$c}_SEND_BILLING_DATA") === 'True' ||
+	        $this->payment_type == 'INVOICE' || $this->payment_type == 'INSTALLMENT'
+        ) {
+	        if(!empty($billingInformation['firstname']))    $post_variables['consumerBillingFirstName'] = $billingInformation['firstname'];
+	        if(!empty($billingInformation['lastname']))     $post_variables['consumerBillingLastName'] = $billingInformation['lastname'];
+	        if(!empty($billingInformation['street_address'])) $post_variables['consumerBillingAddress1'] = $billingInformation['street_address'];
+	        if(!empty($billingInformation['suburb']))       $post_variables['consumerBillingAddress2'] = $billingInformation['suburb'];
+	        if(!empty($billingInformation['city']))         $post_variables['consumerBillingCity'] = $billingInformation['city'];
+	        if(!empty($billingInformation['postcode']))     $post_variables['consumerBillingZipCode'] = $billingInformation['postcode'];
+	        if(!empty($billingState))                       $post_variables['consumerBillingState'] = $billingState;
+	        if(!empty($billingInformation['country']['iso_code_2'])) $post_variables['consumerBillingCountry'] = $billingInformation['country']['iso_code_2'];
+	        if(!empty($order->customer['telephone']))       $post_variables['consumerBillingPhone'] = $order->customer['telephone'];
+	        if($consumerInformation['customers_fax'] != '' && $consumerInformation['customers_fax'] != null)
+	        {
+		        $post_variables['consumerBillingFax'] = $consumerInformation['customers_fax'];
+	        }
+        }
+
         if(!empty($order->customer['email_address']))   $post_variables['consumerEmail'] = $order->customer['email_address'];
+	    if(isset($_POST['wcp_financial_institution']) && $this->payment_type == 'EPS')  $post_variables['financialInstitution'] = $_POST['wcp_financial_institution'];
+	    if(isset($_POST['wcp_idl_financial_institution']) && $this->payment_type == 'IDL')  $post_variables['financialInstitution'] = $_POST['wcp_idl_financial_institution'];
 
 
         if($consumerBirthDate != '')
@@ -326,11 +348,16 @@ class wcp_core {
             $post_variables['consumerBirthDate'] = $consumerBirthDate;
         }
 
-        if($consumerInformation['customers_fax'] != '' && $consumerInformation['customers_fax'] != null)
-        {
-            $post_variables['consumerShippingFax'] = $consumerInformation['customers_fax'];
-            $post_variables['consumerBillingFax'] = $consumerInformation['customers_fax'];
-        }
+	    if ($this->constant("MODULE_PAYMENT_{$c}_SEND_BASKET") === 'True'||
+		    ($this->payment_type == 'INVOICE' && "MODULE_PAYMENT_WCP_INVOICE_PROVIDER" != 'payolution') ||
+		    ($this->payment_type == 'INSTALLMENT' && "MODULE_PAYMENT_WCP_INVSTALLMENT_PROVIDER" != 'payolution')
+	    ) {
+	    	$post_variables = array_merge($post_variables, $this->create_shopping_basket());
+	    }
+
+	    if ($this->payment_type == 'MASTERPASS') {
+	    	$post_variables['shippingProfile'] = 'NO_SHIPPING';
+	    }
 
         // set shop id if isset
         if(constant("MODULE_PAYMENT_{$c}_SHOP_ID")) {
@@ -372,6 +399,47 @@ class wcp_core {
         $post_variables['requestFingerprint']      = $requestfingerprint;
 
         return $post_variables;
+    }
+
+	/**
+	 * Create shopping basket items including shipping
+	 *
+	 * @return array
+	 */
+    function create_shopping_basket() {
+	    global $xtPrice, $order;
+	    $basket_prefix = 'basketItem';
+	    $basket = array();
+	    $count = 0;
+	    $tax = 0;
+	    foreach ($order->products as $product) {
+		    $count++;
+		    $tax_amount = $xtPrice->xtcGetTax($product['price'], $product['tax']);
+		    $tax += $tax_amount;
+		    $basket[$basket_prefix . $count .'articleNumber'] = $product['model'];
+		    $basket[$basket_prefix . $count .'unitGrossAmount'] = round($product['price'], $xtPrice->get_decimal_places($_SESSION['currency']));
+		    $basket[$basket_prefix . $count .'unitNetAmount'] = round($product['price'] - $tax_amount, $xtPrice->get_decimal_places($_SESSION['currency']));
+		    $basket[$basket_prefix . $count .'unitTaxAmount'] = round($tax_amount, $xtPrice->get_decimal_places($_SESSION['currency']));
+		    $basket[$basket_prefix . $count .'unitTaxRate'] = $product['tax'];
+		    $basket[$basket_prefix . $count .'description'] = $product['name'];
+		    $basket[$basket_prefix . $count .'name'] = $product['name'];
+		    $basket[$basket_prefix . $count .'quantity'] = $product['qty'];
+	    }
+
+	    if (isset($order->info['shipping_method'])) {
+	    	$count++;
+		    $basket[$basket_prefix .$count .'articleNumber'] = 'shipping';
+		    $basket[$basket_prefix .$count .'unitGrossAmount'] =  round($order->info['shipping_cost'], $xtPrice->get_decimal_places($_SESSION['currency']));
+		    $basket[$basket_prefix .$count .'unitNetAmount'] =  round($order->info['shipping_cost'], $xtPrice->get_decimal_places($_SESSION['currency']));
+		    $basket[$basket_prefix .$count .'unitTaxRate'] = 0;
+		    $basket[$basket_prefix .$count .'unitTaxAmount'] = 0;
+			$basket[$basket_prefix .$count .'name'] = $order->info['shipping_method'];
+		    $basket[$basket_prefix .$count .'description'] = $order->info['shipping_method'];
+		    $basket[$basket_prefix .$count .'quantity'] = 1;
+	    }
+	    $basket['basketItems'] = $count;
+
+	    return $basket;
     }
 
     /// @brief generate customer statement
@@ -487,12 +555,12 @@ class wcp_core {
 
         $q .= "
             ('MODULE_PAYMENT_{$c}_STATUS',                  'True',       '$cg_id', '" . $s++ . "', $selection, now()),
-            ('MODULE_PAYMENT_{$c}_PLUGIN_MODE',             'Live',       '$cg_id', '" . $s++ . "', $pluginModes, now()),
+            ('MODULE_PAYMENT_{$c}_PLUGIN_MODE',             'Demo',       '$cg_id', '" . $s++ . "', $pluginModes,now()),
             ('MODULE_PAYMENT_{$c}_PRESHARED_KEY',           '',           '$cg_id', '" . $s++ . "', '',         now()),
             ('MODULE_PAYMENT_{$c}_CUSTOMER_ID',             '',           '$cg_id', '" . $s++ . "', '',         now()),
-            ('MODULE_PAYMENT_{$c}_LOGO',                    '" . $imageURL . "','$cg_id', '" . $s++ . "', '' , now()),
+            ('MODULE_PAYMENT_{$c}_LOGO',                    '" . $imageURL . "','$cg_id', '" . $s++ . "', '' ,  now()),
             ('MODULE_PAYMENT_{$c}_SHOP_ID',                 '',           '$cg_id', '" . $s++ . "', '',         now()),
-            ('MODULE_PAYMENT_{$c}_SERVICE_URL',             '" . $serviceUrl . "','$cg_id', '" . $s++ . "', '',         now()),
+            ('MODULE_PAYMENT_{$c}_SERVICE_URL',             '" . $serviceUrl . "','$cg_id', '" . $s++ . "', '', now()),
             ('MODULE_PAYMENT_{$c}_STATEMENT',               '',           '$cg_id', '" . $s++ . "', '',         now()),
             ('MODULE_PAYMENT_{$c}_DISPLAY_TEXT',            '',           '$cg_id', '" . $s++ . "', '',         now()),";
 
@@ -504,12 +572,22 @@ class wcp_core {
             ('MODULE_PAYMENT_{$c}_USE_IFRAME',              '" . $useIframeDefault . "',      '$cg_id', '" . $s++ . "', $selection, now()),
             ('MODULE_PAYMENT_WCP_DELETE_FAILURE',           'True',       '$cg_id', '" . $s++ . "', $selection, now()),
             ('MODULE_PAYMENT_WCP_DELETE_CANCEL',            'True',       '$cg_id', '" . $s++ . "', $selection, now()),
-            ('MODULE_PAYMENT_{$c}_DEVICE_DETECTION',        'False',      '$cg_id', '" . $s++ . "', $selection, now()) ";
+            ('MODULE_PAYMENT_{$c}_DEVICE_DETECTION',        'False',      '$cg_id', '" . $s++ . "', $selection, now()),
+            ('MODULE_PAYMENT_{$c}_SEND_SHIPPING_DATA',      'False',      '$cg_id', '" . $s++ . "', $selection, now()),
+            ('MODULE_PAYMENT_{$c}_SEND_BILLING_DATA',       'False',      '$cg_id', '" . $s++ . "', $selection, now()),
+            ('MODULE_PAYMENT_{$c}_SEND_BASKET',             'False',      '$cg_id', '" . $s++ . "', $selection, now())";
 
         if ($this->has_minmax_amount) {
-            $q .= ",
-                ('MODULE_PAYMENT_{$c}_MIN_AMOUNT',          '100',          '$cg_id', '" . $s++ . "', '',         now()),
-                ('MODULE_PAYMENT_{$c}_MAX_AMOUNT',          '1000',         '$cg_id', '" . $s++ . "', '',         now()) ";
+        	$q .= ",('MODULE_PAYMENT_{$c}_SHIPPING',        'False',      '$cg_id', '" . $s++ . "', $selection, now())";
+        	$q .= ",('MODULE_PAYMENT_{$c}_CURRENCIES',      '',           '$cg_id', '" . $s++ . "', '',         now())";
+            $q .= ",('MODULE_PAYMENT_{$c}_MIN_AMOUNT',      '10',         '$cg_id', '" . $s++ . "', '',         now())";
+	        $q .= ",('MODULE_PAYMENT_{$c}_MAX_AMOUNT',      '3500',       '$cg_id', '" . $s++ . "', '',         now())";
+	        $q .= ",('MODULE_PAYMENT_{$c}_TERMS',           'True',       '$cg_id', '" . $s++ ."', $selection, now())";
+	        $q .= ",('MODULE_PAYMENT_{$c}_MID',             '',           '$cg_id', '" . $s++ ."', '',         now())";
+        }
+
+        if ($this->has_provider) {
+        	$q .= ",('MODULE_PAYMENT_{$c}_PROVIDER',        'payolution', '$cg_id', '" . $s++ . "', $this->has_provider, now())";
         }
         xtc_db_query($q);
 
@@ -582,13 +660,24 @@ class wcp_core {
             'MODULE_PAYMENT_WCP_DELETE_FAILURE',
             'MODULE_PAYMENT_WCP_DELETE_CANCEL',
             "MODULE_PAYMENT_{$c}_USE_IFRAME",
-            "MODULE_PAYMENT_{$c}_DEVICE_DETECTION");
+            "MODULE_PAYMENT_{$c}_DEVICE_DETECTION",
+	        "MODULE_PAYMENT_{$c}_SEND_SHIPPING_DATA",
+	        "MODULE_PAYMENT_{$c}_SEND_BILLING_DATA",
+	        "MODULE_PAYMENT_{$c}_SEND_BASKET");
 
         if ($this->has_minmax_amount)
         {
+        	$keys[] = "MODULE_PAYMENT_{$c}_SHIPPING";
+        	$keys[] = "MODULE_PAYMENT_{$c}_CURRENCIES";
             $keys[] = "MODULE_PAYMENT_{$c}_MIN_AMOUNT";
             $keys[] = "MODULE_PAYMENT_{$c}_MAX_AMOUNT";
+	        $keys[] = "MODULE_PAYMENT_{$c}_TERMS";
+	        $keys[] = "MODULE_PAYMENT_{$c}_MID";
         }
+	    if ($this->has_provider)
+	    {
+		    $keys[] = "MODULE_PAYMENT_{$c}_PROVIDER";
+	    }
 
         return $keys;
     }
@@ -841,3 +930,4 @@ class wcp_core {
         }
     }
 }
+MainFactory::load_origin_class('wcp');

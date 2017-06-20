@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_pbx extends wcp_core {
     var $payment_type = 'PBX';
-    var $logoFilename = 'paybox.jpg';
+    var $logoFilename = 'pbx.png';
     var $defaultPaymethodOrder = 16;
 
     /// @brief initialize wirecard_checkout_page module

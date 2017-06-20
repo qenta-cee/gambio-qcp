@@ -25,8 +25,8 @@
 $t_language_text_section_content_array = array
 (
 
-	'MODULE_PAYMENT_WCP_BMC_TEXT_DESCRIPTION' => 'You will be redirected to the Wirecard CEE payment page when you place an order.',
-	'MODULE_PAYMENT_WCP_BMC_TEXT_TITLE' => 'Bancontact/Mister Cash',
+	'MODULE_PAYMENT_WCP_BMC_TEXT_DESCRIPTION' => 'You will be redirected to the Wirecard payment page when you place an order.',
+	'MODULE_PAYMENT_WCP_BMC_TEXT_TITLE' => 'Bancontact',
 	'MODULE_PAYMENT_WCP_BMC_TEXT_INFO','',
 
 	'MODULE_PAYMENT_WCP_BMC_STATUS_TITLE' => 'Active',
@@ -76,5 +76,15 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_BMC_CHECKOUT_CONTENT' => '<center>You will be redirected.</center>',
 
 	'MODULE_PAYMENT_WCP_BMC_REDIRECT_TIMEOUT_SECOUNDS' => 2,
-	'MODULE_PAYMENT_WCP_BMC_DEVICE_DETECTION_TITLE' => 'automatic device detection',	'MODULE_PAYMENT_WCP_BMC_DEVICE_DETECTION_DESC' => 'If activated, the buyers device will be auto detected to optimise payment page.',
+	'MODULE_PAYMENT_WCP_BMC_DEVICE_DETECTION_TITLE' => 'automatic device detection',
+	'MODULE_PAYMENT_WCP_BMC_DEVICE_DETECTION_DESC' => 'If activated, the buyers device will be auto detected to optimise payment page.',
+
+	'MODULE_PAYMENT_WCP_BMC_SEND_BASKET_TITLE' => 'Forward basket data',
+	'MODULE_PAYMENT_WCP_BMC_SEND_BASKET_DESC' => 'Forwarding basket data to the respective financial service provider.',
+
+	'MODULE_PAYMENT_WCP_BMC_SEND_SHIPPING_DATA_TITLE' => 'Forward consumer shipping data',
+	'MODULE_PAYMENT_WCP_BMC_SEND_SHIPPING_DATA_DESC' => 'Forwarding shipping data about your consumer to the respective financial service provider.',
+
+	'MODULE_PAYMENT_WCP_BMC_SEND_BILLING_DATA_TITLE' => 'Forward consumer billing data',
+	'MODULE_PAYMENT_WCP_BMC_SEND_BILLING_DATA_DESC' => 'Forwarding billing data about your consumer to the respective financial service provider.',
 );

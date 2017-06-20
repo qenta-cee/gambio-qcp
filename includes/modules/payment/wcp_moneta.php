@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_moneta extends wcp_core {
     var $payment_type = 'MONETA';
-    var $logoFilename = 'moneta_ru.jpg';
+    var $logoFilename = 'moneta.png';
     var $defaultPaymethodOrder = 13;
 
     /// @brief initialize wirecard_checkout_page module

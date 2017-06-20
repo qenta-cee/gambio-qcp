@@ -22,7 +22,7 @@
 	not use this plugin if you do not agree to the terms of use!
 */
 
-define('MODULE_PAYMENT_WCP_QUICK_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard CEE payment page when you place an order.');
+define('MODULE_PAYMENT_WCP_QUICK_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard payment page when you place an order.');
 define('MODULE_PAYMENT_WCP_QUICK_TEXT_TITLE', '@Quick');
 define('MODULE_PAYMENT_WCP_QUICK_TEXT_INFO','');
 
@@ -78,3 +78,12 @@ define('MODULE_PAYMENT_WCP_QUICK_CHECKOUT_CONTENT', '<center>You will be redirec
 define('MODULE_PAYMENT_WCP_QUICK_REDIRECT_TIMEOUT_SECOUNDS', 2);
 define('MODULE_PAYMENT_WCP_QUICK_DEVICE_DETECTION_TITLE', 'automatic device detection');
 define('MODULE_PAYMENT_WCP_QUICK_DEVICE_DETECTION_DESC', 'If activated, the buyers device will be auto detected to optimise payment page.');
+
+define('MODULE_PAYMENT_WCP_QUICK_SEND_BASKET_TITLE', 'Forward basket data');
+define('MODULE_PAYMENT_WCP_QUICK_SEND_BASKET_DESC', 'Forwarding basket data to the respective financial service provider.');
+
+define('MODULE_PAYMENT_WCP_QUICK_SEND_SHIPPING_DATA_TITLE', 'Forward consumer shipping data');
+define('MODULE_PAYMENT_WCP_QUICK_SEND_SHIPPING_DATA_DESC', 'Forwarding shipping data about your consumer to the respective financial service provider.');
+
+define('MODULE_PAYMENT_WCP_QUICK_SEND_BILLING_DATA_TITLE', 'Forward consumer billing data');
+define('MODULE_PAYMENT_WCP_QUICK_SEND_BILLING_DATA_DESC', 'Forwarding billing data about your consumer to the respective financial service provider.');

@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_giropay extends wcp_core {
     var $payment_type = 'GIROPAY';
-    var $logoFilename = 'giropay.jpg';
+    var $logoFilename = 'giropay.png';
     var $defaultPaymethodOrder = 4;
 
     /// @brief initialize wirecard_checkout_page module

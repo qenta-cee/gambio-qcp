@@ -64,4 +64,87 @@ foreach($result as $paymentsInstalled) {
                   VALUE ('MODULE_PAYMENT_{$paymentsInstalled['paymethod']}_DEVICE_DETECTION', 'False', 6, 13, 'gm_cfg_select_option(array(\'True\', \'False\'), ', now())";
         $this->query($query);
     }
+
+	$query = "SELECT configuration_key FROM configuration WHERE configuration_key = 'MODULE_PAYMENT_{$c}_SEND_SHIPPING_DATA'";
+	$result = $this->query($query);
+
+	if(empty($result[0]['configuration_key'])) {
+		$query = "INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
+				  VALUE ('MODULE_PAYMENT_{$paymentsInstalled['paymethod']}_SEND_SHIPPING_DATA', 'False', 6, 19, 'gm_cfg_select_option(array(\'True\', \'False\'), ', now())";
+		$this->query($query);
+	}
+
+	$query = "SELECT configuration_key FROM configuration WHERE configuration_key = 'MODULE_PAYMENT_{$c}_SEND_BILLING_DATA'";
+	$result = $this->query($query);
+
+	if(empty($result[0]['configuration_key'])) {
+		$query = "INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
+				  VALUE ('MODULE_PAYMENT_{$paymentsInstalled['paymethod']}_SEND_BILLING_DATA', 'False', 6, 20, 'gm_cfg_select_option(array(\'True\', \'False\'), ', now())";
+		$this->query($query);
+	}
+
+	$query = "SELECT configuration_key FROM configuration WHERE configuration_key = 'MODULE_PAYMENT_{$c}_SEND_BASKET'";
+	$result = $this->query($query);
+
+	if(empty($result[0]['configuration_key'])) {
+		$query = "INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
+				  VALUE ('MODULE_PAYMENT_{$paymentsInstalled['paymethod']}_SEND_BASKET', 'False', 6, 21, 'gm_cfg_select_option(array(\'True\', \'False\'), ', now())";
+		$this->query($query);
+	}
+
+    if ($c === 'WCP_INVOICE' || $c === 'WCP_INSTALLMENT') {
+	    $query = "SELECT configuration_key FROM configuration WHERE configuration_key = 'MODULE_PAYMENT_{$c}_SHIPPING'";
+	    $result = $this->query($query);
+
+	    if(empty($result[0]['configuration_key'])) {
+		    $query = "INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
+				  VALUE ('MODULE_PAYMENT_{$paymentsInstalled['paymethod']}_SHIPPING', 'False', 6, 22, 'gm_cfg_select_option(array(\'True\', \'False\'), ', now())";
+		    $this->query($query);
+	    }
+	    $query = "SELECT configuration_key FROM configuration WHERE configuration_key = 'MODULE_PAYMENT_{$c}_CURRENCIES'";
+	    $result = $this->query($query);
+
+	    if(empty($result[0]['configuration_key'])) {
+		    $query = "INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
+				  VALUE ('MODULE_PAYMENT_{$paymentsInstalled['paymethod']}_CURRENCIES', '', 6, 23, '', now())";
+		    $this->query($query);
+	    }
+	    $query = "SELECT configuration_key FROM configuration WHERE configuration_key = 'MODULE_PAYMENT_{$c}_TERMS'";
+	    $result = $this->query($query);
+
+	    if(empty($result[0]['configuration_key'])) {
+		    $query = "INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
+				  VALUE ('MODULE_PAYMENT_{$paymentsInstalled['paymethod']}_TERMS', 'False', 6, 24, 'gm_cfg_select_option(array(\'True\', \'False\'), ', now())";
+		    $this->query($query);
+	    }
+	    $query = "SELECT configuration_key FROM configuration WHERE configuration_key = 'MODULE_PAYMENT_{$c}_MID'";
+	    $result = $this->query($query);
+
+	    if(empty($result[0]['configuration_key'])) {
+		    $query = "INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
+				  VALUE ('MODULE_PAYMENT_{$paymentsInstalled['paymethod']}_MID', '', 6, 25, '', now())";
+		    $this->query($query);
+	    }
+    }
+	if($c === 'WCP_INVOICE') {
+		$query  = "SELECT configuration_key FROM configuration WHERE configuration_key = 'MODULE_PAYMENT_{$c}_PROVIDER'";
+		$result = $this->query($query);
+
+		if (empty($result[0]['configuration_key'])) {
+			$query = "INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
+				  VALUE ('MODULE_PAYMENT_{$paymentsInstalled['paymethod']}_PROVIDER', 'payolution', 6, 26, 'gm_cfg_select_option(array(\'payolution\', \'RatePay\', \'Wirecard\'), ', now())";
+			$this->query($query);
+		}
+	}
+	if($c === 'WCP_INSTALLMENT') {
+		$query  = "SELECT configuration_key FROM configuration WHERE configuration_key = 'MODULE_PAYMENT_{$c}_PROVIDER'";
+		$result = $this->query($query);
+
+		if (empty($result[0]['configuration_key'])) {
+			$query = "INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
+				  VALUE ('MODULE_PAYMENT_{$paymentsInstalled['paymethod']}_PROVIDER', 'payolution', 6, 26, 'gm_cfg_select_option(array(\'payolution\', \'RatePay\'), ', now())";
+			$this->query($query);
+		}
+	}
+
 }

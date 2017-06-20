@@ -22,7 +22,7 @@
 	not use this plugin if you do not agree to the terms of use!
 */
 
-define('MODULE_PAYMENT_WCP_INSTALLMENT_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard CEE payment page when you place an order.');
+define('MODULE_PAYMENT_WCP_INSTALLMENT_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard payment page when you place an order.');
 define('MODULE_PAYMENT_WCP_INSTALLMENT_TEXT_TITLE', 'Installment');
 define('MODULE_PAYMENT_WCP_INSTALLMENT_TEXT_INFO','');
 
@@ -84,3 +84,12 @@ define('MODULE_PAYMENT_WCP_INSTALLMENT_MIN_AMOUNT_DESC', 'Invoice minimum Amount
 
 define('MODULE_PAYMENT_WCP_INSTALLMENT_MAX_AMOUNT_TITLE', 'max. Amount');
 define('MODULE_PAYMENT_WCP_INSTALLMENT_MAX_AMOUNT_DESC', 'Invoice maximum Amount');
+
+define('MODULE_PAYMENT_WCP_INSTALLMENT_SEND_BASKET_TITLE', 'Forward basket data');
+define('MODULE_PAYMENT_WCP_INSTALLMENT_SEND_BASKET_DESC', 'Forwarding basket data to the respective financial service provider.');
+
+define('MODULE_PAYMENT_WCP_INSTALLMENT_SEND_SHIPPING_DATA_TITLE', 'Forward consumer shipping data');
+define('MODULE_PAYMENT_WCP_INSTALLMENT_SEND_SHIPPING_DATA_DESC', 'Forwarding shipping data about your consumer to the respective financial service provider.');
+
+define('MODULE_PAYMENT_WCP_INSTALLMENT_SEND_BILLING_DATA_TITLE', 'Forward consumer billing data');
+define('MODULE_PAYMENT_WCP_INSTALLMENT_SEND_BILLING_DATA_DESC', 'Forwarding billing data about your consumer to the respective financial service provider.');

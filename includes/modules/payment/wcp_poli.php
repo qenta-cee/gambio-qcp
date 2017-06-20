@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_poli extends wcp_core {
     var $payment_type = 'POLI';
-    var $logoFilename = 'poli.jpg';
+    var $logoFilename = 'poli.png';
     var $customerStatementLength = 9;
     var $defaultPaymethodOrder = 13;
 

@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_quick extends wcp_core {
     var $payment_type = 'QUICK';
-    var $logoFilename = 'quick.jpg';
+    var $logoFilename = 'quick.png';
     var $defaultPaymethodOrder = 18;
 
     /// @brief initialize wirecard_checkout_page module

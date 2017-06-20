@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_skrillwallet extends wcp_core {
     var $payment_type = 'SKRILLWALLET';
-    var $logoFilename = 'skrill_digital_wallet.jpg';
+    var $logoFilename = 'skrillwallet.png';
     var $defaultPaymethodOrder = 8;
 
     /// @brief initialize wirecard_checkout_page module

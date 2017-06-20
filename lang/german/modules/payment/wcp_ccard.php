@@ -22,7 +22,7 @@
 	not use this plugin if you do not agree to the terms of use!
 */
 
-define('MODULE_PAYMENT_WCP_CCARD_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.');
+define('MODULE_PAYMENT_WCP_CCARD_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.');
 define('MODULE_PAYMENT_WCP_CCARD_TEXT_TITLE', 'Kreditkarte');
 define('MODULE_PAYMENT_WCP_CCARD_TEXT_INFO','');
 
@@ -76,5 +76,14 @@ define('MODULE_PAYMENT_WCP_CCARD_CHECKOUT_HEADER', '');
 define('MODULE_PAYMENT_WCP_CCARD_CHECKOUT_CONTENT', '<center>Sie werden zur Bezahlung weitergeleitet.</center>');
 
 define('MODULE_PAYMENT_WCP_CCARD_REDIRECT_TIMEOUT_SECOUNDS', 2);
-define('MODULE_PAYMENT_WCP_CCARD_DEVICE_DETECTION_TITLE', 'automatische Geräteerkennung');
+define('MODULE_PAYMENT_WCP_CCARD_DEVICE_DETECTION_TITLE', 'Automatische Geräteerkennung');
 define('MODULE_PAYMENT_WCP_CCARD_DEVICE_DETECTION_DESC', 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.');
+
+define('MODULE_PAYMENT_WCP_CCARD_SEND_BASKET_TITLE', 'Warenkorbdaten des Konsumenten mitsenden');
+define('MODULE_PAYMENT_WCP_CCARD_SEND_BASKET_DESC', 'Weiterleitung des Warenkorbs des Kunden an den Finanzdienstleister.');
+
+define('MODULE_PAYMENT_WCP_CCARD_SEND_SHIPPING_DATA_TITLE', 'Versanddaten des Konsumenten mitsenden');
+define('MODULE_PAYMENT_WCP_CCARD_SEND_SHIPPING_DATA_DESC', 'Weiterleitung der Versanddaten des Kunden an den Finanzdienstleister.');
+
+define('MODULE_PAYMENT_WCP_CCARD_SEND_BILLING_DATA_TITLE', 'Verrechnungsdaten des Konsumenten mitsenden');
+define('MODULE_PAYMENT_WCP_CCARD_SEND_BILLING_DATA_DESC', 'Weiterleitung der Rechnungsdaten des Kunden an den Finanzdienstleister.');

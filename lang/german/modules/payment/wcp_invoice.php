@@ -22,7 +22,7 @@
 	not use this plugin if you do not agree to the terms of use!
 */
 
-define('MODULE_PAYMENT_WCP_INVOICE_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.');
+define('MODULE_PAYMENT_WCP_INVOICE_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.');
 define('MODULE_PAYMENT_WCP_INVOICE_TEXT_TITLE', 'Rechnung');
 define('MODULE_PAYMENT_WCP_INVOICE_TEXT_INFO','');
 
@@ -79,8 +79,17 @@ define('MODULE_PAYMENT_WCP_INVOICE_MAX_AMOUNT_TITLE', 'Max. Bestellsumme');
 define('MODULE_PAYMENT_WCP_INVOICE_MAX_AMOUNT_DESC', 'Max. Bestellsumme f&uuml;r Rechnung');
 
 define('MODULE_PAYMENT_WCP_INVOICE_REDIRECT_TIMEOUT_SECOUNDS', 2);
-define('MODULE_PAYMENT_WCP_INVOICE_DEVICE_DETECTION_TITLE', 'automatische Geräteerkennung');
+define('MODULE_PAYMENT_WCP_INVOICE_DEVICE_DETECTION_TITLE', 'Automatische Geräteerkennung');
 define('MODULE_PAYMENT_WCP_INVOICE_DEVICE_DETECTION_DESC', 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.');
 
 define('MODULE_PAYMENT_WCP_INVOICE_ORDER_STATUS_ID_TITLE', 'Bestellstatus festlegen');
 define('MODULE_PAYMENT_WCP_INVOICE_ORDER_STATUS_ID_DESC', 'Bestellungen, die mit diesem Modul gemacht werden, auf diesen Status setzen');
+
+define('MODULE_PAYMENT_WCP_INVOICE_SEND_BASKET_TITLE', 'Warenkorbdaten des Konsumenten mitsenden');
+define('MODULE_PAYMENT_WCP_INVOICE_SEND_BASKET_DESC', 'Weiterleitung des Warenkorbs des Kunden an den Finanzdienstleister.');
+
+define('MODULE_PAYMENT_WCP_INVOICE_SEND_SHIPPING_DATA_TITLE', 'Versanddaten des Konsumenten mitsenden');
+define('MODULE_PAYMENT_WCP_INVOICE_SEND_SHIPPING_DATA_DESC', 'Weiterleitung der Versanddaten des Kunden an den Finanzdienstleister.');
+
+define('MODULE_PAYMENT_WCP_INVOICE_SEND_BILLING_DATA_TITLE', 'Verrechnungsdaten des Konsumenten mitsenden');
+define('MODULE_PAYMENT_WCP_INVOICE_SEND_BILLING_DATA_DESC', 'Weiterleitung der Rechnungsdaten des Kunden an den Finanzdienstleister.');

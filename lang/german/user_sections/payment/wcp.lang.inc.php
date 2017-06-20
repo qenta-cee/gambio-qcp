@@ -24,7 +24,6 @@
 
 $t_language_text_section_content_array = array
 (
-
 	'CHECKOUT_CANCEL_TITLE' => 'Bezahlung abgebrochen',
 	'CHECKOUT_CANCEL_HEADER' => '',
 	'CHECKOUT_CANCEL_CONTENT' => 'Sie haben Ihre Bezahlung abgebrochen!',
@@ -49,6 +48,7 @@ $t_language_text_section_content_array = array
 	'GM_CFG_TEST' => 'Test Modus',
     'GM_CFG_TEST3D' => 'Test3D Modus',
 
+	'MODULE_PAYMENT_WCP_TEXT_TITLE' => 'Wirecard',
 	'MODULE_PAYMENT_WCP_EXPORT_CONFIG_RECEIVER' => 'Empfänger',
 	'MODULE_PAYMENT_WCP_EXPORT_CONFIG_CONFIG_STRING' => 'Konfiguration',
 	'MODULE_PAYMENT_WCP_EXPORT_CONFIG_DESC_TEXT' => 'Beschreibung',

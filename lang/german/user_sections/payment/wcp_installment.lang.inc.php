@@ -25,8 +25,8 @@
 $t_language_text_section_content_array = array
 (
 
-	'MODULE_PAYMENT_WCP_INSTALLMENT_TEXT_DESCRIPTION' => 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.',
-	'MODULE_PAYMENT_WCP_INSTALLMENT_TEXT_TITLE' => 'Ratenzahlung',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_TEXT_DESCRIPTION' => 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_TEXT_TITLE' => 'Kauf auf Raten',
 	'MODULE_PAYMENT_WCP_INSTALLMENT_TEXT_INFO','',
 
 	'MODULE_PAYMENT_WCP_INSTALLMENT_STATUS_TITLE' => 'Aktiv',
@@ -81,6 +81,38 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_INSTALLMENT_MAX_AMOUNT_TITLE' => 'Max. Bestellsumme',
 	'MODULE_PAYMENT_WCP_INSTALLMENT_MAX_AMOUNT_DESC' => 'Max. Bestellsumme f&uuml;r Ratenzahlung',
 
+	'MODULE_PAYMENT_WCP_INSTALLMENT_TERMS_TITLE' => 'Payolution Nutzungsbedingungen',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_TERMS_DESC' => 'Kunden müssen die Nutzungsbedingungen von payolution während des Bezahlprozesses akzeptieren.',
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_MID_TITLE' => 'payolution mID',
+	'MODULE_PAYMENT_WCP_INSTLALMENT_MID_DESC' => 'payolution-Händler-ID, Nicht base64 kodiert.',
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_PROVIDER_TITLE' => 'Provider für Kauf auf Raten',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_PROVIDER_DESC' => 'Wählen Sie Ihren Provider für Kauf auf Raten aus.',
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_CURRENCIES_TITLE' => 'Erlaubte Währungen',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_CURRENCIES_DESC' => 'Geben Sie erlaubte Währungen ein (e.g. EUR,CHF)',
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_SHIPPING_TITLE' => 'Rechnungs-/Versandadresse müssen übereinstimmen',
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_CONSENT1' => 'Mit der Übermittlung jener Daten an payolution, die für die Abwicklung von Zahlungen mit Kauf auf Rechnung und die Identitäts- und Bonitätsprüfung erforderlich sind, bin ich einverstanden. Meine ',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_CONSENT2' => ' kann ich jederzeit mit Wirkung für die Zukunft widerrufen.',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_LINK' => 'Einwilligung',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_BIRTH' => 'Geburtsdatum',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_BIRTHDAY_ERROR' => 'Sie müssen mindestens 18 Jahre alt sein, um dieses Zahlungsmittel nutzen zu können.',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_EMPTY_BIRTHDAY_ERROR' => 'Bitte geben Sie ein gültiges Geburtsdatum an.',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_PAYOLUTION_ERROR' => 'Bitte akzeptieren Sie die payolution Konditionen.',
+
 	'MODULE_PAYMENT_WCP_INSTALLMENT_REDIRECT_TIMEOUT_SECOUNDS' => 2,
-	'MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_TITLE' => 'automatische Geräteerkennung',	'MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_TITLE' => 'Automatische Geräteerkennung',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_SEND_BASKET_TITLE' => 'Warenkorbdaten des Konsumenten mitsenden',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_SEND_BASKET_DESC' => 'Weiterleitung des Warenkorbs des Kunden an den Finanzdienstleister.',
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_SEND_SHIPPING_DATA_TITLE' => 'Versanddaten des Konsumenten mitsenden',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_SEND_SHIPPING_DATA_DESC' => 'Weiterleitung der Versanddaten des Kunden an den Finanzdienstleister.',
+
+	'MODULE_PAYMENT_WCP_INSTALLMENT_SEND_BILLING_DATA_TITLE' => 'Verrechnungsdaten des Konsumenten mitsenden',
+	'MODULE_PAYMENT_WCP_INSTALLMENT_SEND_BILLING_DATA_DESC' => 'Weiterleitung der Rechnungsdaten des Kunden an den Finanzdienstleister.',
 );

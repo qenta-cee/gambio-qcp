@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_trustly extends wcp_core {
     var $payment_type = 'TRUSTLY';
-    var $logoFilename = 'trustly.jpg';
+    var $logoFilename = 'trustly.png';
     var $defaultPaymethodOrder = 15;
 
     /// @brief initialize wirecard_checkout_page module

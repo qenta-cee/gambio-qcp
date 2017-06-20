@@ -24,7 +24,6 @@
 
 $t_language_text_section_content_array = array
 (
-
 	'CHECKOUT_CANCEL_TITLE' => 'Payment was canceled',
 	'CHECKOUT_CANCEL_HEADER' => '',
 	'CHECKOUT_CANCEL_CONTENT' => 'Your Payment was canceled!',

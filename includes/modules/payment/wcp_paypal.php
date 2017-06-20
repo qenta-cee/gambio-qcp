@@ -27,7 +27,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 class wcp_paypal extends wcp_core {
     var $payment_type = 'PAYPAL';
     var $use_iframe_default = true;
-    var $logoFilename = 'paypal.jpg';
+    var $logoFilename = 'paypal.png';
     var $defaultPaymethodOrder = 19;
 
     /// @brief initialize wirecard_checkout_page module

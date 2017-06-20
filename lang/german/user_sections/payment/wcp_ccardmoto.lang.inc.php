@@ -25,8 +25,8 @@
 $t_language_text_section_content_array = array
 (
 
-	'MODULE_PAYMENT_WCP_CCARDMOTO_TEXT_DESCRIPTION' => 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard CEE weitergeleitet.',
-	'MODULE_PAYMENT_WCP_CCARDMOTO_TEXT_TITLE' => 'Kreditkarte - Mail Order / Telephone Order',
+	'MODULE_PAYMENT_WCP_CCARDMOTO_TEXT_DESCRIPTION' => 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.',
+	'MODULE_PAYMENT_WCP_CCARDMOTO_TEXT_TITLE' => 'Kreditkarte - Post / Telefonbestellung',
 	'MODULE_PAYMENT_WCP_CCARDMOTO_TEXT_INFO','',
 
 	'MODULE_PAYMENT_WCP_CCARDMOTO_STATUS_TITLE' => 'Aktiv',
@@ -76,5 +76,15 @@ $t_language_text_section_content_array = array
 	'MODULE_PAYMENT_WCP_CCARDMOTO_CHECKOUT_CONTENT' => '<center>Sie werden zur Bezahlung weitergeleitet.</center>',
 
 	'MODULE_PAYMENT_WCP_CCARDMOTO_REDIRECT_TIMEOUT_SECOUNDS' => 2,
-	'MODULE_PAYMENT_WCP_CCARDMOTO_DEVICE_DETECTION_TITLE' => 'automatische Geräteerkennung',	'MODULE_PAYMENT_WCP_CCARDMOTO_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',
+	'MODULE_PAYMENT_WCP_CCARDMOTO_DEVICE_DETECTION_TITLE' => 'Automatische Geräteerkennung',
+	'MODULE_PAYMENT_WCP_CCARDMOTO_DEVICE_DETECTION_DESC' => 'Erkennen des Kundengeräts (Smartphone, Tablet, Desktop PC) zum Anzeigen einer optimierten Zahlseite.',
+
+	'MODULE_PAYMENT_WCP_CCARDMOTO_SEND_BASKET_TITLE' => 'Warenkorbdaten des Konsumenten mitsenden',
+	'MODULE_PAYMENT_WCP_CCARDMOTO_SEND_BASKET_DESC' => 'Weiterleitung des Warenkorbs des Kunden an den Finanzdienstleister.',
+
+	'MODULE_PAYMENT_WCP_CCARDMOTO_SEND_SHIPPING_DATA_TITLE' => 'Versanddaten des Konsumenten mitsenden',
+	'MODULE_PAYMENT_WCP_CCARDMOTO_SEND_SHIPPING_DATA_DESC' => 'Weiterleitung der Versanddaten des Kunden an den Finanzdienstleister.',
+
+	'MODULE_PAYMENT_WCP_CCARDMOTO_SEND_BILLING_DATA_TITLE' => 'Verrechnungsdaten des Konsumenten mitsenden',
+	'MODULE_PAYMENT_WCP_CCARDMOTO_SEND_BILLING_DATA_DESC' => 'Weiterleitung der Rechnungsdaten des Kunden an den Finanzdienstleister.',
 );
