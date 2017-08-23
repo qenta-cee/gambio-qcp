@@ -160,7 +160,7 @@ class wcp_invoice extends wcp_core {
 			$payment_error_return = 'payment_error=' . $this->code . '&error=' . urlencode($error) . '&recheckok=' . false;
 			xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
 		}
-		if(!isset($_POST['wcp_payolutionterms'])) {
+		if(!isset($_POST['wcp_payolutionterms']) && MODULE_PAYMENT_WCP_INVOICE_PROVIDER == 'payolution' && MODULE_PAYMENT_WCP_INVOICE_TERMS ) {
 			$error = MODULE_PAYMENT_WCP_INVOICE_PAYOLUTION_ERROR;
 			$payment_error_return = 'payment_error=' . $this->code . '&error=' . urlencode($error) . '&recheckok=' . false;
 			xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
