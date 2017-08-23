@@ -71,7 +71,7 @@ class wcp_core{
         $this->code         = get_class($this);
         $configExportUrl          = GM_HTTP_SERVER.DIR_WS_ADMIN.'wcp_config_export.php';
         $c                  = strtoupper($this->code);
-        $logoTag = ($this->logoFilename) ? '<img src="'.DIR_WS_CATALOG.'images/icons/wcp/'.$this->logoFilename.'" alt="'.$c.' Logo" width="50px"/>' : '';
+        $logoTag = ($this->logoFilename) ? '<img src="'.DIR_WS_CATALOG.'images/icons/wcp/'.$this->logoFilename.'" alt="'.$c.' Logo"/>' : '';
 
         $this->title        = $logoTag.' '.wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_TITLE");
         $this->description  = wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_DESCRIPTION");
