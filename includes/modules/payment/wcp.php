@@ -40,7 +40,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '2.2.0');
+define('WCP_PLUGIN_VERSION', '2.2.1');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
@@ -416,7 +416,7 @@ class wcp_core{
 		    $count++;
 		    $tax_amount = $xtPrice->xtcGetTax($product['price'], $product['tax']);
 		    $tax += $tax_amount;
-		    $basket[$basket_prefix . $count .'articleNumber'] = $product['model'];
+		    $basket[$basket_prefix . $count .'articleNumber'] = $product['id'];
 		    $basket[$basket_prefix . $count .'unitGrossAmount'] = round($product['price'], $xtPrice->get_decimal_places($_SESSION['currency']));
 		    $basket[$basket_prefix . $count .'unitNetAmount'] = round($product['price'] - $tax_amount, $xtPrice->get_decimal_places($_SESSION['currency']));
 		    $basket[$basket_prefix . $count .'unitTaxAmount'] = round($tax_amount, $xtPrice->get_decimal_places($_SESSION['currency']));
