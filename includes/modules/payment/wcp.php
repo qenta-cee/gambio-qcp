@@ -105,6 +105,22 @@ class wcp_core{
 
     /// @brief decorate process button
     function process_button() {
+	    $config = $this->get_config_values();
+	    $customerId = $config[1];
+
+	    if(isset($_SESSION['wcp-consumerDeviceId'])) {
+		    $consumerDeviceId = $_SESSION['wcp-consumerDeviceId'];
+	    } else {
+		    $timestamp = microtime();
+		    $consumerDeviceId = md5($customerId . "_" . $timestamp);
+		    $_SESSION['wcp-consumerDeviceId'] = $consumerDeviceId;
+	    }
+	    $ratepay = '<script language="JavaScript">var di = {t:"'.$consumerDeviceId.'",v:"WDWL",l:"Checkout"};</script>';
+	    $ratepay .= '<script type="text/javascript" src="//d.ratepay.com/'.$consumerDeviceId.'/di.js"></script>';
+	    $ratepay .= '<noscript><link rel="stylesheet" type="text/css" href="//d.ratepay.com/di.css?t='.$consumerDeviceId.'&v=WDWL&l=Checkout"></noscript>';
+	    $ratepay .= '<object type="application/x-shockwave-flash" data="//d.ratepay.com/WDWL/c.swf" width="0" height="0"><param name="movie" value="//d.ratepay.com/WDWL/c.swf" /><param name="flashvars" value="t='.$consumerDeviceId.'&v=WDWL"/><param name="AllowScriptAccess" value="always"/></object>';
+
+	    return $ratepay;
     }
 
     /// @brief unset temp order id from session
@@ -251,25 +267,9 @@ class wcp_core{
 		    }
 	    }
 
-        switch(wcp_core::constant("MODULE_PAYMENT_{$c}_PLUGIN_MODE")) {
-            case 'Demo':
-                $preshared_key = $this->secretDemoMode;
-                $customerId = $this->customerIdDemoMode;
-                break;
-            case 'Test':
-                $preshared_key = $this->secretTestMode;
-                $customerId = $this->customerIdTestMode;
-                break;
-            case 'Test3D':
-                $preshared_key = $this->secretTest3DMode;
-                $customerId = $this->customerIdTestMode;
-                break;
-            case 'Live':
-            default:
-                $preshared_key = trim(wcp_core::constant("MODULE_PAYMENT_{$c}_PRESHARED_KEY"));
-                $customerId = trim(wcp_core::constant("MODULE_PAYMENT_{$c}_CUSTOMER_ID"));
-                break;
-        }
+	    $config = $this->get_config_values();
+	    $preshared_key = $config[0];
+	    $customerId = $config[1];
 
         $orderDescription = $billingInformation['firstname'].' '.$billingInformation['lastname'].' - '.$order->customer['email_address'];
 
@@ -302,6 +302,11 @@ class wcp_core{
             'consumerUserAgent'            => $_SERVER['HTTP_USER_AGENT'],
             'consumerMerchantCrmId' => md5($order->customer['email_address']),
         );
+
+	    if(isset($_SESSION['wcp-consumerDeviceId'])){
+		    $post_variables['consumerDeviceId'] = $_SESSION['wcp-consumerDeviceId'];
+		    unset($_SESSION['wcp-consumerDeviceId']);
+	    }
 
 	    if (wcp_core::constant("MODULE_PAYMENT_{$c}_SEND_SHIPPING_DATA") === 'True' ||
 		    $this->payment_type == 'INVOICE' || $this->payment_type == 'INSTALLMENT'
@@ -401,6 +406,30 @@ class wcp_core{
         return $post_variables;
     }
 
+    function get_config_values() {
+    	$c = strtoupper($this->code);
+
+	    switch(wcp_core::constant("MODULE_PAYMENT_{$c}_PLUGIN_MODE")) {
+		    case 'Demo':
+			    $preshared_key = $this->secretDemoMode;
+			    $customerId = $this->customerIdDemoMode;
+			    break;
+		    case 'Test':
+			    $preshared_key = $this->secretTestMode;
+			    $customerId = $this->customerIdTestMode;
+			    break;
+		    case 'Test3D':
+			    $preshared_key = $this->secretTest3DMode;
+			    $customerId = $this->customerIdTestMode;
+			    break;
+		    case 'Live':
+		    default:
+			    $preshared_key = trim(wcp_core::constant("MODULE_PAYMENT_{$c}_PRESHARED_KEY"));
+			    $customerId = trim(wcp_core::constant("MODULE_PAYMENT_{$c}_CUSTOMER_ID"));
+			    break;
+	    }
+	    return array($preshared_key, $customerId);
+    }
 	/**
 	 * Create shopping basket items including shipping
 	 *
