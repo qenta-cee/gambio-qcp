@@ -90,13 +90,13 @@ class wcp_invoice extends wcp_core {
 	    }
 
 	    $t_wcp_birthday = $birthDate;
-	    if(trim($_SESSION['wcp_birthday']) != '')
+	    if(trim($_SESSION['wcp_birthday_invoice']) != '')
 	    {
-		    $t_wcp_birthday = $_SESSION['wcp_birthday'];
+		    $t_wcp_birthday = $_SESSION['wcp_birthday_invoice'];
 	    }
 
 	    $maxDate = (date('Y')-18)."-".date('m')."-".date('d');
-	    $birthday = '<input type="date" name="wcp_birthday" value="'.$t_wcp_birthday.'" max="'.$maxDate.'" class="form-control" />';
+	    $birthday = '<input type="date" name="wcp_birthday_invoice" value="'.$t_wcp_birthday.'" max="'.$maxDate.'" class="form-control" />';
 	    $birthDayField = array('title' => MODULE_PAYMENT_WCP_INVOICE_BIRTH, 'field' => $birthday);
 	    $fields = array();
 	    array_push($fields, $birthDayField);
@@ -144,18 +144,34 @@ class wcp_invoice extends wcp_core {
     function process_button() {
 	    global $_POST;
 
-	    $process_button_string = xtc_draw_hidden_field('wcp_birthday', $_POST['wcp_birthday']);
+	    $process_button_string = xtc_draw_hidden_field('wcp_birthday_invoice', $_POST['wcp_birthday_invoice']);
+	    $config = $this->get_config_values();
+	    $customerId = $config[1];
+
+	    if(isset($_SESSION['wcp-consumerDeviceId'])) {
+		    $consumerDeviceId = $_SESSION['wcp-consumerDeviceId'];
+	    } else {
+		    $timestamp = microtime();
+		    $consumerDeviceId = md5($customerId . "_" . $timestamp);
+		    $_SESSION['wcp-consumerDeviceId'] = $consumerDeviceId;
+	    }
+	    $ratepay = '<script language="JavaScript">var di = {t:"'.$consumerDeviceId.'",v:"WDWL",l:"Checkout"};</script>';
+	    $ratepay .= '<script type="text/javascript" src="//d.ratepay.com/'.$consumerDeviceId.'/di.js"></script>';
+	    $ratepay .= '<noscript><link rel="stylesheet" type="text/css" href="//d.ratepay.com/di.css?t='.$consumerDeviceId.'&v=WDWL&l=Checkout"></noscript>';
+	    $ratepay .= '<object type="application/x-shockwave-flash" data="//d.ratepay.com/WDWL/c.swf" width="0" height="0"><param name="movie" value="//d.ratepay.com/WDWL/c.swf" /><param name="flashvars" value="t='.$consumerDeviceId.'&v=WDWL"/><param name="AllowScriptAccess" value="always"/></object>';
+	    $process_button_string .= $ratepay;
+
 	    return $process_button_string;
     }
 
 	function pre_confirmation_check() {
 		$maxDate = (date('Y')-18)."-".date('m')."-".date('d');
-		if($_POST['wcp_birthday'] > $maxDate) {
+		if($_POST['wcp_birthday_invoice'] > $maxDate) {
 			$error = MODULE_PAYMENT_WCP_INVOICE_BIRTHDAY_ERROR;
 			$payment_error_return = 'payment_error=' . $this->code . '&error=' . urlencode($error) . '&recheckok=' . false;
 			xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
 		}
-		if($_POST['wcp_birthday'] == '1000-01-01') {
+		if($_POST['wcp_birthday_invoice'] == '1000-01-01') {
 			$error = MODULE_PAYMENT_WCP_INVOICE_EMPTY_BIRTHDAY_ERROR;
 			$payment_error_return = 'payment_error=' . $this->code . '&error=' . urlencode($error) . '&recheckok=' . false;
 			xtc_redirect(xtc_href_link(FILENAME_CHECKOUT_PAYMENT, $payment_error_return, 'SSL', true, false));
