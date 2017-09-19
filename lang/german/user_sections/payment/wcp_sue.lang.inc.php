@@ -26,7 +26,7 @@ $t_language_text_section_content_array = array
 (
 
 	'MODULE_PAYMENT_WCP_SUE_TEXT_DESCRIPTION' => 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.',
-	'MODULE_PAYMENT_WCP_SUE_TEXT_TITLE' => 'SOFORT &Uuml;berweisung',
+	'MODULE_PAYMENT_WCP_SUE_TEXT_TITLE' => 'Sofort.',
 	'MODULE_PAYMENT_WCP_SUE_TEXT_INFO','',
 
 	'MODULE_PAYMENT_WCP_SUE_STATUS_TITLE' => 'Aktiv',
