@@ -23,7 +23,7 @@
 */
 
 define('MODULE_PAYMENT_WCP_SUE_TEXT_DESCRIPTION', 'Sie werden nach der Bestellung zur Bezahlung zu unserem Zahlungsdienstleister Wirecard weitergeleitet.');
-define('MODULE_PAYMENT_WCP_SUE_TEXT_TITLE', 'SOFORT &Uuml;berweisung (PIN/TAN)');
+define('MODULE_PAYMENT_WCP_SUE_TEXT_TITLE', 'Sofort.');
 define('MODULE_PAYMENT_WCP_SUE_TEXT_INFO','');
 
 define('MODULE_PAYMENT_WCP_SUE_STATUS_TITLE', 'Aktiv');
