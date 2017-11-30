@@ -102,7 +102,9 @@ else
 $smarty->assign('LIGHTBOX', gm_get_conf('GM_LIGHTBOX_CHECKOUT'));
 $smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $smarty->caching = 0;
-$t_main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/checkout_wirecard_checkout_page.html');
+if($_SESSION['wirecard_checkout_page']['useIFrame'] != 'True')
+    $t_main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/checkout_wirecard_checkout_page.html');
+else $t_main_content = $smarty->fetch(CURRENT_TEMPLATE.'/module/checkout_wirecard_checkout_page_iframe.html');
 
 $coo_layout_control = MainFactory::create_object('LayoutContentControl');
 $coo_layout_control->set_data('GET', $_GET);
