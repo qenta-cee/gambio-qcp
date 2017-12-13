@@ -35,7 +35,7 @@ define('CHECKOUT_PENDING_HEADER', '');
 define('CHECKOUT_PENDING_CONTENT', 'Die Zahlungsbest&auml;tigung ist ausst&auml;ndig, sie wird sp&auml;ter zugesendet.');
 
 define('CHECKOUT_CONTINUE_BUTTON', 'WEITER');
-define('CHECKOUT_CANCEL_BUTTON', 'ZUMACHEN');
+define('CHECKOUT_CANCEL_BUTTON', 'SCHLIEßEN');
 
 //Status change Mail Constants
 define('CONFIRM_MAIL_SUBJECT', 'Ihre Bestellung ');

@@ -99,7 +99,6 @@ else
     $smarty->assign('FORM_ACTION', $_SESSION['wirecard_checkout_page']['process_form']);
     $smarty->assign('BUTTON_CONTINUE', $_SESSION['wirecard_checkout_page']['translation']['button_continue']);
     $smarty->assign('BUTTON_CANCEL', $_SESSION['wirecard_checkout_page']['translation']['button_cancel']);
-    //$smarty->assign('BUTTON_CONTINUE', xtc_image_submit('contgr.gif', IMAGE_BUTTON_CONTINUE,  'id="wirecardCheckoutPageCheckoutButton"'));
     $smarty->assign('FORM_END', '</form>'.$_SESSION['wirecard_checkout_page']['process_js']);
     $smarty->assign('CHECKOUT_TITLE', $_SESSION['wirecard_checkout_page']['translation']['title']);
     $smarty->assign('CHECKOUT_HEADER', $_SESSION['wirecard_checkout_page']['translation']['header']);
