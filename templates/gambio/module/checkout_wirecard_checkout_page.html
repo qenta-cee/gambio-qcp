@@ -1,6 +1,3 @@
-{load_language_text section="checkout_confirmation"}
-{load_language_text section="buttons" name="button"}
-
 {if $LIGHTBOX == 'true'}<div id="lightbox_content" style="display:none">{/if}
     <div class="order_confirm{if $LIGHTBOX == 'true'} lightbox_block{/if}">
         {if $SHOW_STEPS}
@@ -16,9 +13,10 @@
         <h1>
             {$CHECKOUT_TITLE}
         </h1>
-    
+
         {$FORM_ACTION}
-    
+
+        {if !$IFRAME}
         <div id="content_wirecard_checkout_page">
             <div class="heading_success">
                 {$CHECKOUT_HEADER}
@@ -26,23 +24,23 @@
             <div class="content">
                 {$CHECKOUT_CONTENT}
             </div>
-            {if $IFRAME != 'true'}
-                
-                
-            <div class="continue">
+
+
+
+            <div class="row">
                 {if !$NC_SUCCESS_INFO}
-                    {if $FORM_ACTION == ''}
-                        <div class="continue_button" id="wcp_continue_button" style="float: right;"><a href="shopping_cart.php" class="button_green_big button_set_big"><span class="button-outer"><span class="button-inner"><img class="png-fix" src="{$tpl_path}img/icons/icon-white-shoppingcart.png" alt="" style="margin-right:10px; float:left" />{$button.continue}</span></span></a></div>
-                    {else}
-                        <div class="continue_button" id="wcp_continue_button" style="display:none;float: right;"><a href="#" class="button_green_big button_set_big action_submit"><span class="button-outer"><span class="button-inner"><img class="png-fix" src="{$tpl_path}img/icons/icon-white-shoppingcart.png" alt="" style="margin-right:10px; float:left" />{$button.continue}</span></span></a></div>
-                    {/if}
+                {if $FORM_ACTION == ''}
+                <div class="continue_button" id="wcp_continue_button" style="float: right;"><a href="shopping_cart.php" class="button_green_big button_set_big"><span class="button-outer"><span class="button-inner"><img class="png-fix" src="{$tpl_path}img/icons/icon-white-shoppingcart.png" alt="" style="margin-right:10px; float:left" />{$BUTTON_CONTINUE}</span></span></a></div>
+                {else}
+                <div class="continue_button" id="wcp_continue_button" style="display:none;float: right;"><a href="#" class="button_green_big button_set_big action_submit"><span class="button-outer"><span class="button-inner"><img class="png-fix" src="{$tpl_path}img/icons/icon-white-shoppingcart.png" alt="" style="margin-right:10px; float:left" />{$BUTTON_CONTINUE}</span></span></a></div>
+                {/if}
                 {/if}
             </div>
-            {/if}
             {$FORM_END}
         </div>
+        {/if}
     </div>
-{if $LIGHTBOX == 'true'}
-    <a href="{$LIGHTBOX_CLOSE}" class="icon_lightbox_close_checkout button_close_lightbox" title="{#gm_window_close#}">{#gm_window_close#}</a>
+    {if $LIGHTBOX == 'true'}
+    <a href="{$LIGHTBOX_CLOSE}" class="icon_lightbox_close_checkout button_close_lightbox" title="{$BUTTON_CANCEL}">{$BUTTON_CANCEL}</a>
 </div>
 {/if}

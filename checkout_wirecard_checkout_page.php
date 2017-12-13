@@ -84,7 +84,7 @@ elseif (isset($_GET['pending'])) {
 }
 elseif($_SESSION['wirecard_checkout_page']['useIFrame'] == 'True')
 {
-    $iFrame = '<iframe name="' . MODULE_PAYMENT_WCP_WINDOW_NAME . '" src="cout_wirecard_checkout_page_iframe.php?'.SID.'" width="100%" height="850" border="0" frameborder="0">' . '</iframe>';
+    $iFrame = '<iframe name="' . MODULE_PAYMENT_WCP_WINDOW_NAME . '" src="cout_wirecard_checkout_page_iframe.php?'.SID.'" width="100%" height="850" border="0" frameborder="0"></iframe>';
     $smarty->assign('FORM_ACTION', $iFrame);
     $smarty->assign('BUTTON_CONTINUE', $_SESSION['wirecard_checkout_page']['translation']['button_continue']);
     $smarty->assign('BUTTON_CANCEL', $_SESSION['wirecard_checkout_page']['translation']['button_cancel']);

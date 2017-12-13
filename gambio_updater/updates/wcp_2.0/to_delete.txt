@@ -51,3 +51,9 @@ images/icons/wcp/skrill_digital_wallet.jpg
 images/icons/wcp/sofort_ueberweisung.jpg
 images/icons/wcp/tatrapay.jpg
 images/icons/wcp/trustly.jpg
+includes/modules/payment/wcp_quick.php
+lang/english/modules/payment/wcp_quick.php
+lang/english/user_sections/payment/wcp_quick.lang.inc.php
+lang/german/modules/payment/wcp_quick.php
+lang/german/user_sections/payment/wcp_quick.lang.inc.php
+images/icons/wcp/quick.png
