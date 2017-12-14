@@ -46,7 +46,6 @@ class wcp_eps extends wcp_core {
 		Array( 'id' => 'ARZ|BKB', 'text' => 'Br&uuml;ll Kallmus Bank AG'),
 		Array( 'id' => 'ARZ|BTV', 'text' => 'BTV VIER L&Auml;NDER BANK'),
 		Array( 'id' => 'ARZ|CBGG', 'text' => 'Capital Bank Grawe Gruppe AG'),
-		Array( 'id' => 'ARZ|VB', 'text' => 'Volksbank Gruppe'),
 		Array( 'id' => 'ARZ|DB', 'text' => 'Dolomitenbank'),
 		Array( 'id' => 'Bawag|EB', 'text' => 'Easybank AG'),
 		Array( 'id' => 'Spardat|EBS', 'text' => 'Erste Bank und Sparkassen'),
@@ -65,6 +64,7 @@ class wcp_eps extends wcp_core {
 		Array( 'id' => 'ARZ|SB', 'text' => 'Schoellerbank AG'),
 		Array( 'id' => 'Bawag|SBW', 'text' => 'Sparda Bank Wien'),
 		Array( 'id' => 'ARZ|SBA', 'text' => 'SPARDA-BANK AUSTRIA'),
+        Array( 'id' => 'ARZ|VB', 'text' => 'Volksbank Gruppe'),
 		Array( 'id' => 'ARZ|VKB', 'text' => 'Volkskreditbank AG'),
 		Array( 'id' => 'ARZ|VRB', 'text' => 'VR-Bank Braunau')
 	);
