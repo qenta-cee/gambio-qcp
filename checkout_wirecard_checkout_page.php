@@ -61,8 +61,6 @@ if(isset($_GET['cancel']))
     $smarty->assign('CHECKOUT_TITLE', CHECKOUT_CANCEL_TITLE);
     $smarty->assign('CHECKOUT_HEADER', CHECKOUT_CANCEL_HEADER);
     $smarty->assign('CHECKOUT_CONTENT', CHECKOUT_CANCEL_CONTENT);
-    $smarty->assign('BUTTON_CONTINUE', $_SESSION['wirecard_checkout_page']['translation']['button_continue']);
-    $smarty->assign('BUTTON_CANCEL', $_SESSION['wirecard_checkout_page']['translation']['button_cancel']);
     $smarty->assign('SHOW_STEPS', false);
 }
 elseif(isset($_GET['failure']))
@@ -70,24 +68,18 @@ elseif(isset($_GET['failure']))
     $smarty->assign('CHECKOUT_TITLE', CHECKOUT_FAILURE_TITLE);
     $smarty->assign('CHECKOUT_HEADER', CHECKOUT_FAILURE_HEADER);
     $smarty->assign('CHECKOUT_CONTENT', CHECKOUT_FAILURE_CONTENT);
-    $smarty->assign('BUTTON_CONTINUE', $_SESSION['wirecard_checkout_page']['translation']['button_continue']);
-    $smarty->assign('BUTTON_CANCEL', $_SESSION['wirecard_checkout_page']['translation']['button_cancel']);
     $smarty->assign('SHOW_STEPS', false);
 }
 elseif (isset($_GET['pending'])) {
     $smarty->assign('CHECKOUT_TITLE', CHECKOUT_PENDING_TITLE);
     $smarty->assign('CHECKOUT_HEADER', CHECKOUT_PENDING_HEADER);
     $smarty->assign('CHECKOUT_CONTENT', CHECKOUT_PENDING_CONTENT);
-    $smarty->assign('BUTTON_CONTINUE', $_SESSION['wirecard_checkout_page']['translation']['button_continue']);
-    $smarty->assign('BUTTON_CANCEL', $_SESSION['wirecard_checkout_page']['translation']['button_cancel']);
     $smarty->assign('SHOW_STEPS', false);
 }
 elseif($_SESSION['wirecard_checkout_page']['useIFrame'] == 'True')
 {
     $iFrame = '<iframe name="' . MODULE_PAYMENT_WCP_WINDOW_NAME . '" src="cout_wirecard_checkout_page_iframe.php?'.SID.'" width="100%" height="850" border="0" frameborder="0"></iframe>';
     $smarty->assign('FORM_ACTION', $iFrame);
-    $smarty->assign('BUTTON_CONTINUE', $_SESSION['wirecard_checkout_page']['translation']['button_continue']);
-    $smarty->assign('BUTTON_CANCEL', $_SESSION['wirecard_checkout_page']['translation']['button_cancel']);
     $smarty->assign('CHECKOUT_TITLE', $_SESSION['wirecard_checkout_page']['translation']['title']);
     $smarty->assign('CHECKOUT_HEADER', $_SESSION['wirecard_checkout_page']['translation']['header']);
     $smarty->assign('CHECKOUT_CONTENT', $_SESSION['wirecard_checkout_page']['translation']['content']);
@@ -97,8 +89,6 @@ elseif($_SESSION['wirecard_checkout_page']['useIFrame'] == 'True')
 else
 {
     $smarty->assign('FORM_ACTION', $_SESSION['wirecard_checkout_page']['process_form']);
-    $smarty->assign('BUTTON_CONTINUE', $_SESSION['wirecard_checkout_page']['translation']['button_continue']);
-    $smarty->assign('BUTTON_CANCEL', $_SESSION['wirecard_checkout_page']['translation']['button_cancel']);
     $smarty->assign('FORM_END', '</form>'.$_SESSION['wirecard_checkout_page']['process_js']);
     $smarty->assign('CHECKOUT_TITLE', $_SESSION['wirecard_checkout_page']['translation']['title']);
     $smarty->assign('CHECKOUT_HEADER', $_SESSION['wirecard_checkout_page']['translation']['header']);
@@ -107,7 +97,8 @@ else
     $smarty->assign('IFRAME', false);
     $smarty->assign('GM_CART_ON_TOP', false);
 }
-
+$smarty->assign('BUTTON_CONTINUE', $_SESSION['wirecard_checkout_page']['translation']['button_continue']);
+$smarty->assign('BUTTON_CANCEL', $_SESSION['wirecard_checkout_page']['translation']['button_cancel']);
 $smarty->assign('LIGHTBOX', gm_get_conf('GM_LIGHTBOX_CHECKOUT'));
 $smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $smarty->caching = 0;
