@@ -1,25 +1,24 @@
-{load_language_text section="checkout_confirmation"}
-{load_language_text section="buttons" name="button"}
-
-<div>
+{literal}<style type="text/css">body {background: none !important}</style>{/literal}<div>
     <div id="checkout_success" class="checkout">
-    
-    {$FORM_ACTION}
-    
+
+        {$FORM_ACTION}
+
         <div id="wrap_box" class="wrap_shop" style="background-color: #FFF;">
-        
+
             <div class="heading_success">
                 {$CHECKOUT_HEADER}
             </div>
-            <div class="content_container">
+            <div class="content container">
                 <br /><br /><br />
                 {$CHECKOUT_CONTENT}
                 <br /><br /><br />
             </div>
-        
-            <div class="content_container">
-                {if !$NC_SUCCESS_INFO}<div class="continue_button"><a href="{page_url}#" data-role="button" data-theme="b" class="action_submit">{$button.continue}</a></div>{/if}
-            </div>	
+
+            <div class="content container">
+                {if !$NC_SUCCESS_INFO}
+                <div class="continue_button"><a href="{page_url}#" data-role="button" data-theme="b" class="action_submit">{$BUTTON_CONTINUE}</a></div>
+                {/if}
+            </div>
         </div>
         {$FORM_END}
     </div>

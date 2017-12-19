@@ -40,7 +40,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '2.2.2');
+define('WCP_PLUGIN_VERSION', '2.2.3');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
@@ -198,7 +198,9 @@ class wcp_core{
                 $translation = array(
                     'title'   => wcp_core::constant("MODULE_PAYMENT_{$c}_CHECKOUT_TITLE"),
                     'header'  => wcp_core::constant("MODULE_PAYMENT_{$c}_CHECKOUT_HEADER"),
-                    'content' => wcp_core::constant("MODULE_PAYMENT_{$c}_CHECKOUT_CONTENT")
+                    'content' => wcp_core::constant("MODULE_PAYMENT_{$c}_CHECKOUT_CONTENT"),
+                    'button_continue' => wcp_core::constant("CHECKOUT_CONTINUE_BUTTON"),
+                    'button_cancel' => wcp_core::constant("CHECKOUT_CANCEL_BUTTON")
                 );
                 $_SESSION['wirecard_checkout_page']['useIFrame'] = $useIFrame;
                 $_SESSION['wirecard_checkout_page']['process_form'] = $process_form;

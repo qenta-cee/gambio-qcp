@@ -38,6 +38,9 @@ define('CHECKOUT_REDIRECT_TITLE', 'Redirect.');
 define('CHECKOUT_REDIRECT_HEADER', '');
 define('CHECKOUT_REDIRECT_CONTENT', 'You will be redirected soon.');
 
+define('CHECKOUT_CONTINUE_BUTTON', 'CONTINUE');
+define('CHECKOUT_CANCEL_BUTTON', 'CLOSE');
+
 //Status change Mail Constants
 define('CONFIRM_MAIL_SUBJECT', 'Your order ');
 define('CONFIRM_MAIL_COMMENT_SUCCESS', 'Your payment has been successfull proceeded.');

@@ -1,6 +1,3 @@
-{load_language_text section="checkout_confirmation"}
-{load_language_text section="buttons" name="button"}
-
 <div>
     <div id="checkout_success" class="checkout">
     
@@ -18,7 +15,7 @@
             </div>
         
             <div class="continue">
-                {if !$NC_SUCCESS_INFO}<div class="continue_button" id="wcp_continue_button" style="display:none;float: right;"><a href="#" class="button_green_big button_set_big action_submit"><span class="button-outer"><span class="button-inner"><img class="png-fix" src="{$tpl_path}img/icons/icon-white-shoppingcart.png" alt="" style="margin-right:10px; float:left" />{$button.continue}</span></span></a></div>{/if}
+                {if !$NC_SUCCESS_INFO}<div class="continue_button" id="wcp_continue_button" style="display:none;float: right;"><a href="#" class="button_green_big button_set_big action_submit"><span class="button-outer"><span class="button-inner"><img class="png-fix" src="{$tpl_path}img/icons/icon-white-shoppingcart.png" alt="" style="margin-right:10px; float:left" />{$BUTTON_CONTINUE}</span></span></a></div>{/if}
             </div>
         </div>
         {$FORM_END}
