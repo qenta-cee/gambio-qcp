@@ -40,7 +40,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '2.2.4');
+define('WCP_PLUGIN_VERSION', '2.2.5');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
@@ -69,7 +69,7 @@ class wcp_core{
         include(DIR_FS_CATALOG.'lang/'.$_SESSION['language'].'/modules/payment/wcp.php');
 
         $this->code         = get_class($this);
-        $configExportUrl          = GM_HTTP_SERVER.DIR_WS_ADMIN.'wcp_config_export.php';
+        $configExportUrl    = GM_HTTP_SERVER.DIR_WS_ADMIN.'wcp_config_export.php';
         $c                  = strtoupper($this->code);
         $logoTag = ($this->logoFilename) ? '<img src="'.DIR_WS_CATALOG.'images/icons/wcp/'.$this->logoFilename.'" alt="'.$c.' Logo"/>' : '';
 
@@ -272,6 +272,7 @@ class wcp_core{
 	    $config = $this->get_config_values();
 	    $preshared_key = $config[0];
 	    $customerId = $config[1];
+        $shopId = $config[2];
 
         $orderDescription = $billingInformation['firstname'].' '.$billingInformation['lastname'].' - '.$order->customer['email_address'];
 
@@ -367,8 +368,10 @@ class wcp_core{
 	    }
 
         // set shop id if isset
-        if(constant("MODULE_PAYMENT_{$c}_SHOP_ID")) {
+        if (constant("MODULE_PAYMENT_{$c}_SHOP_ID")) {
             $post_variables['shopId'] = wcp_core::constant("MODULE_PAYMENT_{$c}_SHOP_ID");
+        } else if ($shopId != "") {
+            $post_variables['shopId'] = $shopId;
         }
 
         // set layout if isset
@@ -410,6 +413,7 @@ class wcp_core{
 
     function get_config_values() {
     	$c = strtoupper($this->code);
+        $shopId = "";
 
 	    switch(wcp_core::constant("MODULE_PAYMENT_{$c}_PLUGIN_MODE")) {
 		    case 'Demo':
@@ -423,6 +427,7 @@ class wcp_core{
 		    case 'Test3D':
 			    $preshared_key = $this->secretTest3DMode;
 			    $customerId = $this->customerIdTestMode;
+                $shopId = $this->shopIdTest3DMode;
 			    break;
 		    case 'Live':
 		    default:
@@ -430,7 +435,7 @@ class wcp_core{
 			    $customerId = trim(wcp_core::constant("MODULE_PAYMENT_{$c}_CUSTOMER_ID"));
 			    break;
 	    }
-	    return array($preshared_key, $customerId);
+	    return array($preshared_key, $customerId, $shopId);
     }
 	/**
 	 * Create shopping basket items including shipping
