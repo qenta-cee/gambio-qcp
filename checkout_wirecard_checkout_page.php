@@ -97,7 +97,7 @@ else
     $smarty->assign('IFRAME', false);
     $smarty->assign('GM_CART_ON_TOP', false);
 }
-$smarty->assign('BUTTON_CONTINUE', $_SESSION['wirecard_checkout_page']['translation']['button_continue']);
+$smarty->assign('BUTTON_CONTINUE', IMAGE_BUTTON_CONTINUE);
 $smarty->assign('BUTTON_CANCEL', $_SESSION['wirecard_checkout_page']['translation']['button_cancel']);
 $smarty->assign('LIGHTBOX', gm_get_conf('GM_LIGHTBOX_CHECKOUT'));
 $smarty->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');

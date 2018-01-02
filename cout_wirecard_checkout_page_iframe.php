@@ -41,7 +41,7 @@ $smarty = new Smarty;
 $smarty->assign('language', $_SESSION['language']);
 
 $smarty->assign('FORM_ACTION', $_SESSION['wirecard_checkout_page']['process_form']);
-$smarty->assign('BUTTON_CONTINUE', $_SESSION['wirecard_checkout_page']['translation']['button_continue']);
+$smarty->assign('BUTTON_CONTINUE', IMAGE_BUTTON_CONTINUE);
 $smarty->assign('BUTTON_CANCEL', $_SESSION['wirecard_checkout_page']['translation']['button_cancel']);
 $smarty->assign('FORM_END', '</form>'.$_SESSION['wirecard_checkout_page']['process_js']);
 $smarty->assign('CHECKOUT_TITLE', $_SESSION['wirecard_checkout_page']['translation']['title']);
