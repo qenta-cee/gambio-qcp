@@ -23,7 +23,7 @@
 */
 
 define('MODULE_PAYMENT_WCP_SUE_TEXT_DESCRIPTION', 'You will be redirected to the Wirecard payment page when you place an order.');
-define('MODULE_PAYMENT_WCP_SUE_TEXT_TITLE', 'Online bank transfer.');
+define('MODULE_PAYMENT_WCP_SUE_TEXT_TITLE', 'Pay now. Online bank transfer');
 define('MODULE_PAYMENT_WCP_SUE_TEXT_INFO','');
 
 define('MODULE_PAYMENT_WCP_SUE_STATUS_TITLE', 'Active');
