@@ -26,7 +26,7 @@ $t_language_text_section_content_array = array
 (
 
 	'MODULE_PAYMENT_WCP_SUE_TEXT_DESCRIPTION' => 'You will be redirected to the Wirecard payment page when you place an order.',
-	'MODULE_PAYMENT_WCP_SUE_TEXT_TITLE' => 'Pay now. Online bank transfer',
+	'MODULE_PAYMENT_WCP_SUE_TEXT_TITLE' => 'Online bank transfer.',
 	'MODULE_PAYMENT_WCP_SUE_TEXT_INFO','',
 
 	'MODULE_PAYMENT_WCP_SUE_STATUS_TITLE' => 'Active',
