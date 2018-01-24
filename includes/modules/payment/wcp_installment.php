@@ -155,8 +155,7 @@ class wcp_installment extends wcp_core {
 			$_SESSION['wcp-consumerDeviceId'] = $consumerDeviceId;
 		}
 
-        if($this->payment_type == 'INVOICE' && wcp_core::constant("MODULE_PAYMENT_WCP_INVOICE_PROVIDER") == "RatePay" ||
-            $this->payment_type == 'INSTALLMENT' && wcp_core::constant("MODULE_PAYMENT_WCP_INSTALLMENT_PROVIDER") == "RatePay")
+        if(wcp_core::constant("MODULE_PAYMENT_WCP_INSTALLMENT_PROVIDER") == "RatePay")
         {
             $ratepay = '<script language="JavaScript">var di = {t:"'.$consumerDeviceId.'",v:"WDWL",l:"Checkout"};</script>';
             $ratepay .= '<script type="text/javascript" src="//d.ratepay.com/'.$consumerDeviceId.'/di.js"></script>';
