@@ -40,7 +40,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '2.2.5');
+define('WCP_PLUGIN_VERSION', '2.2.6');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
@@ -115,10 +115,8 @@ class wcp_core{
 		    $consumerDeviceId = md5($customerId . "_" . $timestamp);
 		    $_SESSION['wcp-consumerDeviceId'] = $consumerDeviceId;
 	    }
-	    $ratepay = '<script language="JavaScript">var di = {t:"'.$consumerDeviceId.'",v:"WDWL",l:"Checkout"};</script>';
-	    $ratepay .= '<script type="text/javascript" src="//d.ratepay.com/'.$consumerDeviceId.'/di.js"></script>';
-	    $ratepay .= '<noscript><link rel="stylesheet" type="text/css" href="//d.ratepay.com/di.css?t='.$consumerDeviceId.'&v=WDWL&l=Checkout"></noscript>';
-	    $ratepay .= '<object type="application/x-shockwave-flash" data="//d.ratepay.com/WDWL/c.swf" width="0" height="0"><param name="movie" value="//d.ratepay.com/WDWL/c.swf" /><param name="flashvars" value="t='.$consumerDeviceId.'&v=WDWL"/><param name="AllowScriptAccess" value="always"/></object>';
+
+       $ratepay = "";
 
 	    return $ratepay;
     }
