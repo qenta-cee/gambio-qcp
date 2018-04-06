@@ -71,9 +71,8 @@ class wcp_core{
         $this->code         = get_class($this);
         $configExportUrl    = GM_HTTP_SERVER.DIR_WS_ADMIN.'wcp_config_export.php';
         $c                  = strtoupper($this->code);
-        $logoTag = ($this->logoFilename) ? '<img src="'.DIR_WS_CATALOG.'images/icons/wcp/'.$this->logoFilename.'" alt="'.$c.' Logo"/>' : '';
 
-        $this->title        = $logoTag.' '.wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_TITLE");
+		$this->title        = ' '.wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_TITLE");
         $this->description  = wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_DESCRIPTION");
         if(strpos($_SERVER['REQUEST_URI'], 'admin/modules.php') !== false && $this->_isInstalled($c)) {
             $this->description .= '<a href="'.$configExportUrl.'?pm='.$c.'" class="button" style="margin: auto; ">'.wcp_core::constant("MODULE_PAYMENT_WCP_EXPORT_CONFIG_LABEL").'</a>';
@@ -253,8 +252,8 @@ class wcp_core{
 	    $customerService = StaticGXCoreLoader::getService('Customer');
 	    $customer = $customerService->getCustomerById(MainFactory::create('IdType', $consumerID));
 
-	    if(isset($_POST['wcp_birthday'])) {
-	    	$customerBirthDate = $_POST['wcp_birthday'];
+	    if(isset($_POST['wcp_birthday_invoice'])) {
+	    	$customerBirthDate = $_POST['wcp_birthday_invoice'];
 	    } else {
 		    $customerDateOfBirth = $customer->getDateOfBirth();
 
@@ -302,6 +301,7 @@ class wcp_core{
             'consumerIpAddress'            => $_SERVER['REMOTE_ADDR'],
             'consumerUserAgent'            => $_SERVER['HTTP_USER_AGENT'],
             'consumerMerchantCrmId' => md5($order->customer['email_address']),
+			'consumerBirthDate'		=> $customerBirthDate
         );
 
 	    if(isset($_SESSION['wcp-consumerDeviceId'])){
@@ -349,10 +349,10 @@ class wcp_core{
 	    if(isset($_POST['wcp_idl_financial_institution']) && $this->payment_type == 'IDL')  $post_variables['financialInstitution'] = $_POST['wcp_idl_financial_institution'];
 
 
-        if($consumerBirthDate != '')
-        {
-            $post_variables['consumerBirthDate'] = $consumerBirthDate;
-        }
+		if(!empty($consumerBirthDate))
+		{
+			$post_variables['consumerBirthDate'] = $consumerBirthDate;
+		}
 
 	    if ($this->constant("MODULE_PAYMENT_{$c}_SEND_BASKET") === 'True'||
 		    ($this->payment_type == 'INVOICE' && "MODULE_PAYMENT_WCP_INVOICE_PROVIDER" != 'payolution') ||
