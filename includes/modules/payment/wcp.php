@@ -40,7 +40,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '2.2.6');
+define('WCP_PLUGIN_VERSION', '2.2.7');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 
@@ -72,7 +72,7 @@ class wcp_core{
         $configExportUrl    = GM_HTTP_SERVER.DIR_WS_ADMIN.'wcp_config_export.php';
         $c                  = strtoupper($this->code);
 
-		$this->title        = ' '.wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_TITLE");
+        $this->title        = ' '.wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_TITLE");
         $this->description  = wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_DESCRIPTION");
         if(strpos($_SERVER['REQUEST_URI'], 'admin/modules.php') !== false && $this->_isInstalled($c)) {
             $this->description .= '<a href="'.$configExportUrl.'?pm='.$c.'" class="button" style="margin: auto; ">'.wcp_core::constant("MODULE_PAYMENT_WCP_EXPORT_CONFIG_LABEL").'</a>';
@@ -252,8 +252,8 @@ class wcp_core{
 	    $customerService = StaticGXCoreLoader::getService('Customer');
 	    $customer = $customerService->getCustomerById(MainFactory::create('IdType', $consumerID));
 
-	    if(isset($_POST['wcp_birthday_invoice'])) {
-	    	$customerBirthDate = $_POST['wcp_birthday_invoice'];
+        if((isset($_POST['wcp_birthday_invoice'])) || (isset($_POST['wcp_birthday']))) {
+            $customerBirthDate = (isset($_POST['wcp_birthday_invoice'])) ? $_POST['wcp_birthday_invoice'] : $_POST['wcp_birthday'];
 	    } else {
 		    $customerDateOfBirth = $customer->getDateOfBirth();
 
