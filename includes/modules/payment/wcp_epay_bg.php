@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_epay_bg extends wcp_core {
     var $payment_type = 'EPAY_BG';
-    var $logoFilename = 'epay.png';
+    var $logoFilename = 'epay_bg.png';
     var $defaultPaymethodOrder = 20;
 
     /// @brief initialize wirecard_checkout_page module

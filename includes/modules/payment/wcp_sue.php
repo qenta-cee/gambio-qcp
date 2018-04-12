@@ -27,7 +27,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 class wcp_sue extends wcp_core {
     var $payment_type = 'SOFORTUEBERWEISUNG';
     var $use_iframe_default = true;
-    var $logoFilename = 'sofortueberweisung.png';
+    var $logoFilename = 'sue.png';
     var $defaultPaymethodOrder = 6;
 
     /// @brief initialize wirecard_checkout_page module

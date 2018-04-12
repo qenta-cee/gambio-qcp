@@ -71,6 +71,7 @@ class wcp_core{
         $this->code         = get_class($this);
         $configExportUrl    = GM_HTTP_SERVER.DIR_WS_ADMIN.'wcp_config_export.php';
         $c                  = strtoupper($this->code);
+        $this->logo_url     = DIR_WS_CATALOG.'images/icons/payment/'.'wcp_'.$this->logoFilename ;
 
         $this->title        = ' '.wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_TITLE");
         $this->description  = wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_DESCRIPTION");
@@ -522,7 +523,7 @@ class wcp_core{
     function selection() {
         if (!$this->_preCheck())
             return false;
-        return array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info);
+        return array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info, 'logo_url' => $this->logo_url);
     }
 
     /**
