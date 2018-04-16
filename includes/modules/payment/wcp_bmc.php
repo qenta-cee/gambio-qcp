@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_bmc extends wcp_core {
     var $payment_type = 'BANCONTACT_MISTERCASH';
-    var $logoFilename = 'bancontact.png';
+    var $logoFilename = 'bmc.png';
     var $defaultPaymethodOrder = 10;
 
     /// @brief initialize wirecard_checkout_page module

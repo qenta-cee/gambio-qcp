@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_sepa_dd extends wcp_core {
     var $payment_type = 'SEPA-DD';
-    var $logoFilename = 'sepa-dd.png';
+    var $logoFilename = 'sepa_dd.png';
     var $defaultPaymethodOrder = 21;
 
     /// @brief initialize wirecard_checkout_page module

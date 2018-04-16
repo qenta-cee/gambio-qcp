@@ -26,7 +26,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_p24 extends wcp_core {
     var $payment_type = 'Przelewy24';
-    var $logoFilename = 'przelewy24.png';
+    var $logoFilename = 'p24.png';
     var $defaultPaymethodOrder = 11;
 
     /// @brief initialize wirecard_checkout_page module
