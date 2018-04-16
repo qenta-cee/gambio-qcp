@@ -27,7 +27,7 @@ require_once(dirname(__FILE__).'/wcp.php');
 
 class wcp_idl extends wcp_core {
     var $payment_type = 'IDL';
-    var $logoFilename = 'ideal.png';
+    var $logoFilename = 'idl.png';
     var $defaultPaymethodOrder = 3;
 
 	/**
