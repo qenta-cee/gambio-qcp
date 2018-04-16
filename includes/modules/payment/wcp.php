@@ -68,6 +68,7 @@ class wcp_core{
     /// @brief initialize wirecard_checkout_page module
     function init() {
         include(DIR_FS_CATALOG.'lang/'.$_SESSION['language'].'/modules/payment/wcp.php');
+        include(DIR_FS_CATALOG . 'release_info.php');
 
         $this->code         = get_class($this);
         $configExportUrl    = GM_HTTP_SERVER.DIR_WS_ADMIN.'wcp_config_export.php';
