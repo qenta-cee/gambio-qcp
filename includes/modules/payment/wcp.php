@@ -43,6 +43,7 @@ define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
 define('WCP_PLUGIN_VERSION', '2.2.7');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
+define('COMPARE_SHOP_VERSION', 'v3.9');
 
 
 class wcp_core{
@@ -71,9 +72,15 @@ class wcp_core{
         $this->code         = get_class($this);
         $configExportUrl    = GM_HTTP_SERVER.DIR_WS_ADMIN.'wcp_config_export.php';
         $c                  = strtoupper($this->code);
-        $this->logo_url     = DIR_WS_CATALOG.'images/icons/payment/'.'wcp_'.$this->logoFilename ;
 
-        $this->title        = ' '.wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_TITLE");
+        if(strpos($gx_version, COMPARE_SHOP_VERSION) !== false) {
+            $this->logo_url     = DIR_WS_CATALOG.'images/icons/payment/'.'wcp_'.$this->logoFilename ;
+            $this->title        = ' '.wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_TITLE");
+        } else {
+            $logoTag = ($this->logoFilename) ? '<img src="'.DIR_WS_CATALOG.'images/icons/payment/'.$this->logoFilename.'" alt="'.$c.' Logo"/>' : '';
+            $this->title        = $logoTag.' '.wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_TITLE");
+        }
+
         $this->description  = wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_DESCRIPTION");
         if(strpos($_SERVER['REQUEST_URI'], 'admin/modules.php') !== false && $this->_isInstalled($c)) {
             $this->description .= '<a href="'.$configExportUrl.'?pm='.$c.'" class="button" style="margin: auto; ">'.wcp_core::constant("MODULE_PAYMENT_WCP_EXPORT_CONFIG_LABEL").'</a>';
@@ -521,9 +528,15 @@ class wcp_core{
     }
 
     function selection() {
-        if (!$this->_preCheck())
+        include(DIR_FS_CATALOG . 'release_info.php');
+        if (!$this->_preCheck()) {
             return false;
-        return array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info, 'logo_url' => $this->logo_url);
+        }
+        if(strpos($gx_version, COMPARE_SHOP_VERSION) !== false) {
+            return array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info, 'logo_url' => $this->logo_url);
+        } else {
+            return array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info);
+        }
     }
 
     /**
