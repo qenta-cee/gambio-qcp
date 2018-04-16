@@ -77,7 +77,7 @@ class wcp_core{
             $this->logo_url     = DIR_WS_CATALOG.'images/icons/payment/'.'wcp_'.$this->logoFilename ;
             $this->title        = ' '.wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_TITLE");
         } else {
-            $logoTag = ($this->logoFilename) ? '<img src="'.DIR_WS_CATALOG.'images/icons/payment/'.$this->logoFilename.'" alt="'.$c.' Logo"/>' : '';
+            $logoTag = ($this->logoFilename) ? '<img src="'.DIR_WS_CATALOG.'images/icons/payment/'.'wcp_'.$this->logoFilename.'" alt="'.$c.' Logo"/>' : '';
             $this->title        = $logoTag.' '.wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_TITLE");
         }
 
