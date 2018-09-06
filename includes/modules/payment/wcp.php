@@ -40,7 +40,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '2.2.7');
+define('WCP_PLUGIN_VERSION', '2.2.8');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 define('COMPARE_SHOP_VERSION', 'v3.9');
@@ -74,7 +74,7 @@ class wcp_core{
         $configExportUrl    = GM_HTTP_SERVER.DIR_WS_ADMIN.'wcp_config_export.php';
         $c                  = strtoupper($this->code);
 
-        if(strpos($gx_version, COMPARE_SHOP_VERSION) !== false) {
+        if (version_compare($gx_version, COMPARE_SHOP_VERSION, '>=')) {
             $this->logo_url     = DIR_WS_CATALOG.'images/icons/payment/'.'wcp_'.$this->logoFilename ;
             $this->title        = ' '.wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_TITLE");
         } else {
@@ -533,7 +533,7 @@ class wcp_core{
         if (!$this->_preCheck()) {
             return false;
         }
-        if(strpos($gx_version, COMPARE_SHOP_VERSION) !== false) {
+	    if (version_compare($gx_version, COMPARE_SHOP_VERSION, '>=')) {
             return array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info, 'logo_url' => $this->logo_url);
         } else {
             return array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info);
