@@ -40,7 +40,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '2.2.8');
+define('WCP_PLUGIN_VERSION', '2.2.9');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 define('COMPARE_SHOP_VERSION', 'v3.9');
@@ -263,17 +263,12 @@ class wcp_core{
 
         if((isset($_POST['wcp_birthday_invoice'])) || (isset($_POST['wcp_birthday']))) {
             $customerBirthDate = (isset($_POST['wcp_birthday_invoice'])) ? $_POST['wcp_birthday_invoice'] : $_POST['wcp_birthday'];
-	    } else {
-		    $customerDateOfBirth = $customer->getDateOfBirth();
+        } else {
+            $customerDateOfBirth = $customer->getDateOfBirth();
+            $customerBirthDate = $customerDateOfBirth->format('Y-m-d');
+        }
 
-		    $customerBirthDate = $customerDateOfBirth->format('Y-m-d');
-
-		    if($customerBirthDate ==  '0000-00-00' || $customerBirthDate == '1000-01-01') {
-			    $consumerBirthDate = '';
-		    } else {
-			    $consumerBirthDate = $customerBirthDate;
-		    }
-	    }
+        $consumerBirthDate = (($customerBirthDate ==  '0000-00-00' || $customerBirthDate == '1000-01-01') ? '' : $customerBirthDate);
 
 	    $config = $this->get_config_values();
 	    $preshared_key = $config[0];
@@ -309,8 +304,7 @@ class wcp_core{
             'duplicateRequestCheck'        => 'Yes',
             'consumerIpAddress'            => $_SERVER['REMOTE_ADDR'],
             'consumerUserAgent'            => $_SERVER['HTTP_USER_AGENT'],
-            'consumerMerchantCrmId' => md5($order->customer['email_address']),
-			'consumerBirthDate'		=> $customerBirthDate
+            'consumerMerchantCrmId' => md5($order->customer['email_address'])
         );
 
 	    if(isset($_SESSION['wcp-consumerDeviceId'])){
@@ -978,5 +972,8 @@ class wcp_core{
             xtc_db_query("DELETE FROM orders_tax_sum_items WHERE order_id = '" . (int)$order_id . "'");
         }
     }
+
+
 }
+
 MainFactory::load_origin_class('wcp');
