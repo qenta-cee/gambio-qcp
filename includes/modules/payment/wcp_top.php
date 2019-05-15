@@ -67,7 +67,6 @@ function wcp_preserve_postparams($restore = false)
         foreach ($preserved as $p => $v) {
             $_POST[$p] = $v;
         }
-
         return;
     }
 

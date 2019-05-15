@@ -40,7 +40,7 @@
 
 define('TABLE_PAYMENT_WCP', 'payment_wirecard_checkout_page');
 define('INIT_SERVER_URL', 'https://checkout.wirecard.com/page/init-server.php');
-define('WCP_PLUGIN_VERSION', '2.2.9');
+define('WCP_PLUGIN_VERSION', '2.3.0');
 define('WCP_PLUGIN_NAME', 'GambioGX2_WCP');
 define('MODULE_PAYMENT_WCP_WINDOW_NAME', 'wirecardCheckoutPageIFrame');
 define('COMPARE_SHOP_VERSION', 'v3.9');
@@ -85,7 +85,7 @@ class wcp_core{
         $this->description  = wcp_core::constant("MODULE_PAYMENT_{$c}_TEXT_DESCRIPTION");
         if (wcp_core::constant('DIR_WS_ADMIN') !== null) {
             $configExportUrl = GM_HTTP_SERVER . DIR_WS_ADMIN . 'wcp_config_export.php';
-            if(strpos($_SERVER['REQUEST_URI'], 'admin/modules.php') !== false && $this->_isInstalled($c)) {
+            if (strpos($_SERVER['REQUEST_URI'], 'admin/modules.php') !== false && $this->_isInstalled($c)) {
                 $this->description .= '<a href="'.$configExportUrl.'?pm='.$c.'" class="button" style="margin: auto; ">'.wcp_core::constant("MODULE_PAYMENT_WCP_EXPORT_CONFIG_LABEL").'</a>';
             }
         }
