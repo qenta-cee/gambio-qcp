@@ -39,7 +39,11 @@
  */
 
 chdir('../../');
+
+require_once('includes/modules/payment/wcp_top.php');
+wcp_preserve_postparams();
 require_once('includes/application_top.php');
+wcp_preserve_postparams(true);
 require_once('includes/modules/payment/wcp.php');
 
 if(isset($_POST))
