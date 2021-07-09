@@ -50,7 +50,7 @@ elseif (isset($_GET['pending'])) {
 }
 elseif($_SESSION['qenta_checkout_page']['useIFrame'] == 'True')
 {
-    $iFrame = '<iframe name="' . MODULE_PAYMENT_QCP_WINDOW_NAME . '" src="cout_qenta_checkout_page_iframe.php?'.SID.'" width="100%" height="850" border="0" frameborder="0"></iframe>';
+    $iFrame = '<iframe name="' . MODULE_PAYMENT_QCP_WINDOW_NAME . '" src="cout_qenta_checkout_page_iframe.php?'.SID.'" width="100%" height="850" border="0" frameborder="0" sandbox="allow-top-navigation"></iframe>';
     $smarty->assign('FORM_ACTION', $iFrame);
     $smarty->assign('CHECKOUT_TITLE', $_SESSION['qenta_checkout_page']['translation']['title']);
     $smarty->assign('CHECKOUT_HEADER', $_SESSION['qenta_checkout_page']['translation']['header']);
