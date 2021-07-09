@@ -8,12 +8,6 @@
 [![PHP v7.2](https://img.shields.io/badge/php-v7.2-yellow.svg)](http://www.php.net)
 
 ----
-**IMPORTANT INFORMATION**
-You are visiting a shop extension which will become obsolete in the near future. It will be replaced by a new one, which has new features and enhanced functionality very soon.
-Please then use our new shop extension available on gambio.qenta.com, which will be released soon and then maintained, updated and supported on a regular basis.
-If you have any questions, please contact shop-systems-support@qenta.com
-
-----
 
 QENTA Checkout Page plugin for Gambio GX3.
 
@@ -36,5 +30,3 @@ QENTA Checkout Page offers:
 - PCI DSS 3 compliant, no PCI certification necessary for merchants.
 - Easy to add new payment methods, additional features, languages and currencies, etc.
 - Web interface for managing payments (approvals, cancelations, credits, etc.).
-- Benefit from QENTA Bank´s license to conclude credit card acceptance contracts (acquiring) and issue credit cards.
-- With QENTA Collecting only a single contract is required for payouts within various payment methods.
