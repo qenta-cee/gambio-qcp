@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Shop System Plugins
  * - Terms of use can be found under
  * https://guides.qenta.com/shop_plugins:info
  * - License can be found under:
  * https://github.com/qenta-cee/gambio-qcp/blob/master/LICENSE
-*/
+ */
 
 // set order-status 0 (not validated)
 define('MODULE_PAYMENT_QCP_ORDER_STATUS_NOT_VALIDATED', 0);
@@ -30,19 +31,14 @@ function debug_msg($msg)
     fclose($fh);
 }
 
-debug_msg('Confirm called script from ' . $_SERVER['REMOTE_ADDR']);
 $returnMessage = null;
 
-debug_msg('Confirm POST received: ' . print_r($_POST, true));
-
-debug_msg('Confirm paymentCode received: ' . print_r($_POST['paymentCode'], true));
 
 if ($_POST) {
     $orderStatusSuccess = 2;
 
     $c = strtoupper($_POST['paymentCode']);
-    debug_msg('Confirm paymentCode: ' . print_r($c, true));
-    if(defined("MODULE_PAYMENT_{$c}_ORDER_STATUS_ID"))
+    if (defined("MODULE_PAYMENT_{$c}_ORDER_STATUS_ID"))
         $orderStatusSuccess = constant("MODULE_PAYMENT_{$c}_ORDER_STATUS_ID");
 
     $languageArray = array(
@@ -53,15 +49,12 @@ if ($_POST) {
     debug_msg("Finished Initialization of the confirm_callback.php script");
 
     $order_id = isset($_POST['order_id']) ? (int)$_POST['order_id'] : 0;
-    debug_msg("order_id confirm: " . print_r($order_id, true));
 
     $order = array();
     $q = xtc_db_query('SELECT orders_status FROM ' . TABLE_ORDERS . ' WHERE orders_id = "' . $order_id . '" LIMIT 1;');
     if ($q->num_rows) {
         $order = $q->fetch_array();
     }
-
-    debug_msg('Confirm POST orders_status: ' . print_r($order['orders_status'], true));
 
     if ($order['orders_status'] != MODULE_PAYMENT_QCP_ORDER_STATUS_FAILED && $order['orders_status'] != $orderStatusSuccess) {
 
@@ -119,7 +112,6 @@ if ($_POST) {
             $calculated_fingerprint = hash_final($hash);
             if ($calculated_fingerprint == $_POST['responseFingerprint']) {
                 debug_msg('Fingerprint is OK');
-                debug_msg("paymentState: " . print_r($_POST['paymentState'], true));
 
                 switch ($_POST['paymentState']) {
                     case 'SUCCESS':
@@ -134,9 +126,6 @@ if ($_POST) {
                         $order_status = MODULE_PAYMENT_QCP_ORDER_STATUS_FAILED;
                 }
 
-                debug_msg("after switch order_status: " . print_r($order_status, true));
-                debug_msg("after switch orderStatusSuccess: " . print_r($orderStatusSuccess, true));
-
                 debug_msg('Callback Process');
                 $q = xtc_db_query(
                     'UPDATE ' . TABLE_ORDERS . ' SET orders_status=\'' . xtc_db_input(
@@ -146,8 +135,6 @@ if ($_POST) {
                 if (!$q) {
                     $returnMessage = 'Orderstatus update failed.';
                 }
-
-                debug_msg("order_status confirm: " . print_r($order_status, true));
 
                 if (MODULE_PAYMENT_QCP_ORDER_STATUS_PENDING !== $order_status) {
                     $avsStatusCode = isset($_POST['avsResponseCode']) ? $_POST['avsResponseCode'] : '';
@@ -192,12 +179,9 @@ if ($_POST) {
                         debug_msg('order confirmation has been sent.');
                     }
                 }
-
             } else {
                 $returnMessage = 'Fingerprint validation failed.';
                 debug_msg('Invalid Responsefingerprint.');
-                debug_msg('calc-fingerprint: ' . $calculated_fingerprint);
-                debug_msg('response-fingerprint: ' . $_POST['responseFingerprint']);
                 $order_status = MODULE_PAYMENT_QCP_ORDER_STATUS_FAILED;
                 $q = xtc_db_query(
                     "UPDATE " . TABLE_ORDERS . "
@@ -272,7 +256,6 @@ if ($_POST) {
                     $returnMessage = 'Statushistory update failed';
                 }
                 debug_msg('Order-Status-History updated=' . $q);
-                debug_msg('MODULE_PAYMENT_QCP_DELETE_FAILURE=' . qcp_core::constant('MODULE_PAYMENT_QCP_DELETE_FAILURE'));
 
                 if (qcp_core::constant('MODULE_PAYMENT_QCP_DELETE_FAILURE') === 'True') {
                     $canceled = false;
