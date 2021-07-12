@@ -1,0 +1,24 @@
+{literal}<style type="text/css">body {background: none !important}</style>{/literal}
+<div>
+    <div id="checkout_success" class="checkout">
+
+        {$FORM_ACTION}
+
+        <div id="wrap_box" class="wrap_shop" style="background-color: #FFF;">
+
+            <div class="heading_success">
+                {$CHECKOUT_HEADER}
+            </div>
+            <div class="content">
+                <br /><br /><br />
+                {$CHECKOUT_CONTENT}
+                <br /><br /><br />
+            </div>
+
+            <div class="continue">
+                {if !$NC_SUCCESS_INFO}<div class="continue_button" id="qcp_continue_button" style="display:none;float: right;"><a href="#" class="button_green_big button_set_big action_submit"><span class="button-outer"><span class="button-inner"><img class="png-fix" src="{$tpl_path}img/icons/icon-white-shoppingcart.png" alt="" style="margin-right:10px; float:left" />{$BUTTON_CONTINUE}</span></span></a></div>{/if}
+            </div>
+        </div>
+        {$FORM_END}
+    </div>
+</div>
