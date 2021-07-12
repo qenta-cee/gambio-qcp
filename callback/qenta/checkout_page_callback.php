@@ -15,20 +15,11 @@ require_once('includes/application_top.php');
 qcp_preserve_postparams(true);
 require_once('includes/modules/payment/qcp.php');
 
-function debug_msg_a($msg)
-{
-    $fh = fopen('logfiles/qenta_checkout_page_notify_debug.txt', 'a');
-    fwrite($fh, date('r') . ". " . $msg . "\n");
-    fclose($fh);
-}
-
-debug_msg_a('post request callback ' . print_r($_POST, true));
 
 if(isset($_POST))
 {
     $paymentState = '';
     $order_id = isset($_POST['order_id']) ? (int)$_POST['order_id'] : '';
-    debug_msg_a('post request callback order_id: ' . print_r($order_id, tue));
     $q = xtc_db_query('SELECT response FROM ' . TABLE_PAYMENT_QCP . ' WHERE orders_id = "'.$order_id.'" LIMIT 1;');
 
     if($q->num_rows) {
@@ -44,7 +35,6 @@ if(isset($_POST))
             if(defined("MODULE_PAYMENT_{$c}_ORDER_STATUS_ID"))
                 $orderStatusSuccess = constant("MODULE_PAYMENT_{$c}_ORDER_STATUS_ID");
 
-            debug_msg_a('cp callback paymentState: ' . print_r($_POST['paymentState'], true));
 
             switch ($_POST['paymentState']) {
                 case 'SUCCESS':
@@ -59,8 +49,6 @@ if(isset($_POST))
                     $order_status = MODULE_PAYMENT_QCP_ORDER_STATUS_FAILED;
             }
 
-            debug_msg_a('cp callback order_status after switch: ' . print_r($order_status, true));
-            debug_msg_a('cp callback orderStatusSuccess after switch: ' . print_r($orderStatusSuccess, true));
 
             $q = xtc_db_query(
                 'UPDATE ' . TABLE_ORDERS . ' SET orders_status=\'' . xtc_db_input(
@@ -85,12 +73,7 @@ if(isset($_POST))
         }
     }
 
-    debug_msg_a('else order_id callback ' . print_r($order_id, true));
-    debug_msg_a('post request callback ' . print_r($paymentState, true));
 
-    // if($order_id === '') {
-    //     $paymentState = 'CANCEL';
-    // }
 
     switch ($paymentState)
     {
